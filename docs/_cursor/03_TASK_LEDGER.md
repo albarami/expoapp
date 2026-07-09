@@ -299,9 +299,9 @@ T-DOC-01
 | Acceptance | All demo users login; tabs by role; 401 → login |
 | Skills | ui-ux-pro-max |
 | Local tests | `flutter analyze`, `flutter test` — **PASS 2026-07-09** (29 tests) |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29037687031 |
 | Branch/PR | `agent/T-MOB-02-auth-session` |
-| Status | **in_progress** |
+| Status | **passed** |
 
 ---
 
@@ -430,7 +430,7 @@ T-DOC-01
 4. ~~T-ENV-03~~ **passed**
 5. ~~T-API-01~~ … ~~T-API-10~~ **passed**
 6. ~~T-MOB-01~~ **passed** (CI green: run 29036867939)
-7. **T-MOB-02** — Flutter auth + session + role shell (in progress)
-8. T-MOB-03 — Flutter dashboard (next after T-MOB-02 CI green)
+7. ~~T-MOB-02~~ **passed** (CI green: run 29037687031)
+8. **T-MOB-03** — Flutter dashboard (next)
 
-**Resume at T-MOB-02 until CI green, then T-MOB-03.**
+**Resume at T-MOB-03.**
