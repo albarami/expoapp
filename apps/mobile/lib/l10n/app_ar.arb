@@ -242,5 +242,60 @@
   "riskLow": "منخفض",
   "riskMedium": "متوسط",
   "riskHigh": "عالٍ",
-  "riskCritical": "حرج"
+  "riskCritical": "حرج",
+  "review": "مراجعة",
+  "viewDetails": "عرض التفاصيل",
+  "approvalDetail": "قرار الموافقة",
+  "approvalStageManager": "موافقة المدير",
+  "approvalStageSecurity": "موافقة الأمن",
+  "approvalStageLabel": "المرحلة: {stage}",
+  "@approvalStageLabel": {
+    "placeholders": {
+      "stage": {
+        "type": "String"
+      }
+    }
+  },
+  "noApprovalsMessage": "أنت على اطلاع كامل.",
+  "noCompletedApprovals": "لا توجد موافقات مكتملة",
+  "noCompletedApprovalsMessage": "ستظهر المهام التي تم البت فيها هنا.",
+  "approveConfirmTitle": "الموافقة على هذا الطلب؟",
+  "approveConfirmMessage": "هل أنت متأكد من الموافقة على طلب الصلاحية {requestNumber}؟",
+  "@approveConfirmMessage": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "rejectConfirmTitle": "رفض هذا الطلب؟",
+  "rejectConfirmMessage": "يرجى تقديم سبب الرفض.",
+  "optionalComment": "تعليق (اختياري)",
+  "optionalCommentHint": "أضف ملاحظة لمقدّم الطلب أو المعتمد التالي.",
+  "rejectionReason": "سبب الرفض",
+  "rejectionReasonHint": "اشرح سبب رفض هذا الطلب.",
+  "rejectionCommentRequired": "سبب الرفض مطلوب.",
+  "decisionComment": "تعليق القرار",
+  "confirmApprove": "تأكيد الموافقة",
+  "confirmReject": "تأكيد الرفض",
+  "approvalApprovedSuccess": "تمت الموافقة على الطلب {requestNumber}.",
+  "@approvalApprovedSuccess": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "approvalRejectedSuccess": "تم رفض الطلب {requestNumber}.",
+  "@approvalRejectedSuccess": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "errorApprovalNotFound": "تعذّر العثور على مهمة الموافقة هذه.",
+  "errorApprovalNotPending": "تم البت في هذه الموافقة مسبقاً.",
+  "errorNotTaskAssignee": "يمكن للمعتمد المعيّن فقط البت في هذه المهمة.",
+  "errorForbidden": "ليس لديك صلاحية لهذا الإجراء."
 }

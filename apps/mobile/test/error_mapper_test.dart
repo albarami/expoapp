@@ -36,5 +36,19 @@ void main() {
       ),
       l10n.errorRequestNotCancelable,
     );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'APPROVAL_TASK_NOT_PENDING', message: 'x'),
+      ),
+      l10n.errorApprovalNotPending,
+    );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'NOT_TASK_ASSIGNEE', message: 'x'),
+      ),
+      l10n.errorNotTaskAssignee,
+    );
   });
 }

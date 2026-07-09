@@ -245,5 +245,60 @@
   "riskLow": "Low",
   "riskMedium": "Medium",
   "riskHigh": "High",
-  "riskCritical": "Critical"
+  "riskCritical": "Critical",
+  "review": "Review",
+  "viewDetails": "View details",
+  "approvalDetail": "Approval decision",
+  "approvalStageManager": "Manager approval",
+  "approvalStageSecurity": "Security approval",
+  "approvalStageLabel": "Stage: {stage}",
+  "@approvalStageLabel": {
+    "placeholders": {
+      "stage": {
+        "type": "String"
+      }
+    }
+  },
+  "noApprovalsMessage": "You are all caught up.",
+  "noCompletedApprovals": "No completed approvals",
+  "noCompletedApprovalsMessage": "Decided tasks will appear here.",
+  "approveConfirmTitle": "Approve this request?",
+  "approveConfirmMessage": "Are you sure you want to approve access request {requestNumber}?",
+  "@approveConfirmMessage": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "rejectConfirmTitle": "Reject this request?",
+  "rejectConfirmMessage": "Please provide a rejection reason.",
+  "optionalComment": "Comment (optional)",
+  "optionalCommentHint": "Add a note for the requester or next approver.",
+  "rejectionReason": "Rejection reason",
+  "rejectionReasonHint": "Explain why this request is rejected.",
+  "rejectionCommentRequired": "A rejection reason is required.",
+  "decisionComment": "Decision comment",
+  "confirmApprove": "Confirm approve",
+  "confirmReject": "Confirm reject",
+  "approvalApprovedSuccess": "Request {requestNumber} approved.",
+  "@approvalApprovedSuccess": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "approvalRejectedSuccess": "Request {requestNumber} rejected.",
+  "@approvalRejectedSuccess": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "errorApprovalNotFound": "This approval task could not be found.",
+  "errorApprovalNotPending": "This approval has already been decided.",
+  "errorNotTaskAssignee": "Only the assigned approver can decide this task.",
+  "errorForbidden": "You do not have permission for this action."
 }

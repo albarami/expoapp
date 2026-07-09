@@ -579,4 +579,96 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get riskCritical => 'Critical';
+
+  @override
+  String get review => 'Review';
+
+  @override
+  String get viewDetails => 'View details';
+
+  @override
+  String get approvalDetail => 'Approval decision';
+
+  @override
+  String get approvalStageManager => 'Manager approval';
+
+  @override
+  String get approvalStageSecurity => 'Security approval';
+
+  @override
+  String approvalStageLabel(String stage) {
+    return 'Stage: $stage';
+  }
+
+  @override
+  String get noApprovalsMessage => 'You are all caught up.';
+
+  @override
+  String get noCompletedApprovals => 'No completed approvals';
+
+  @override
+  String get noCompletedApprovalsMessage => 'Decided tasks will appear here.';
+
+  @override
+  String get approveConfirmTitle => 'Approve this request?';
+
+  @override
+  String approveConfirmMessage(String requestNumber) {
+    return 'Are you sure you want to approve access request $requestNumber?';
+  }
+
+  @override
+  String get rejectConfirmTitle => 'Reject this request?';
+
+  @override
+  String get rejectConfirmMessage => 'Please provide a rejection reason.';
+
+  @override
+  String get optionalComment => 'Comment (optional)';
+
+  @override
+  String get optionalCommentHint =>
+      'Add a note for the requester or next approver.';
+
+  @override
+  String get rejectionReason => 'Rejection reason';
+
+  @override
+  String get rejectionReasonHint => 'Explain why this request is rejected.';
+
+  @override
+  String get rejectionCommentRequired => 'A rejection reason is required.';
+
+  @override
+  String get decisionComment => 'Decision comment';
+
+  @override
+  String get confirmApprove => 'Confirm approve';
+
+  @override
+  String get confirmReject => 'Confirm reject';
+
+  @override
+  String approvalApprovedSuccess(String requestNumber) {
+    return 'Request $requestNumber approved.';
+  }
+
+  @override
+  String approvalRejectedSuccess(String requestNumber) {
+    return 'Request $requestNumber rejected.';
+  }
+
+  @override
+  String get errorApprovalNotFound => 'This approval task could not be found.';
+
+  @override
+  String get errorApprovalNotPending =>
+      'This approval has already been decided.';
+
+  @override
+  String get errorNotTaskAssignee =>
+      'Only the assigned approver can decide this task.';
+
+  @override
+  String get errorForbidden => 'You do not have permission for this action.';
 }

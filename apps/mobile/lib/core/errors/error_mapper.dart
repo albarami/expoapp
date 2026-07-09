@@ -22,6 +22,12 @@ String localizeApiError(AppLocalizations l10n, ApiError error) {
       return l10n.errorUnauthorized;
     case 'NETWORK_ERROR':
       return l10n.networkError;
+    case 'APPROVAL_TASK_NOT_PENDING':
+      return l10n.errorApprovalNotPending;
+    case 'NOT_TASK_ASSIGNEE':
+      return l10n.errorNotTaskAssignee;
+    case 'FORBIDDEN':
+      return l10n.errorForbidden;
     default:
       return error.message.isNotEmpty ? error.message : l10n.errorGeneric;
   }

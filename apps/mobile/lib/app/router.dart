@@ -8,6 +8,8 @@ import '../core/providers.dart';
 import '../features/access_requests/presentation/screens/access_request_detail_screen.dart';
 import '../features/access_requests/presentation/screens/access_requests_list_screen.dart';
 import '../features/access_requests/presentation/screens/create_access_request_screen.dart';
+import '../features/approvals/presentation/screens/approval_detail_screen.dart';
+import '../features/approvals/presentation/screens/approvals_list_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/splash_screen.dart';
 import '../features/dashboard/presentation/screens/dashboard_screen.dart';
@@ -147,10 +149,17 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/approvals',
             name: 'approvals',
-            builder: (context, state) {
-              final l10n = AppLocalizations.of(context);
-              return FoundationPlaceholderScreen(title: l10n.approvals);
-            },
+            builder: (context, state) => const ApprovalsListScreen(),
+            routes: [
+              GoRoute(
+                path: ':taskId',
+                name: 'approval-detail',
+                builder: (context, state) {
+                  final taskId = state.pathParameters['taskId'] ?? '';
+                  return ApprovalDetailScreen(taskId: taskId);
+                },
+              ),
+            ],
           ),
           GoRoute(
             path: '/audit',

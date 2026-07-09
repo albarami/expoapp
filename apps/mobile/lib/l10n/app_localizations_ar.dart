@@ -574,4 +574,96 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get riskCritical => 'حرج';
+
+  @override
+  String get review => 'مراجعة';
+
+  @override
+  String get viewDetails => 'عرض التفاصيل';
+
+  @override
+  String get approvalDetail => 'قرار الموافقة';
+
+  @override
+  String get approvalStageManager => 'موافقة المدير';
+
+  @override
+  String get approvalStageSecurity => 'موافقة الأمن';
+
+  @override
+  String approvalStageLabel(String stage) {
+    return 'المرحلة: $stage';
+  }
+
+  @override
+  String get noApprovalsMessage => 'أنت على اطلاع كامل.';
+
+  @override
+  String get noCompletedApprovals => 'لا توجد موافقات مكتملة';
+
+  @override
+  String get noCompletedApprovalsMessage =>
+      'ستظهر المهام التي تم البت فيها هنا.';
+
+  @override
+  String get approveConfirmTitle => 'الموافقة على هذا الطلب؟';
+
+  @override
+  String approveConfirmMessage(String requestNumber) {
+    return 'هل أنت متأكد من الموافقة على طلب الصلاحية $requestNumber؟';
+  }
+
+  @override
+  String get rejectConfirmTitle => 'رفض هذا الطلب؟';
+
+  @override
+  String get rejectConfirmMessage => 'يرجى تقديم سبب الرفض.';
+
+  @override
+  String get optionalComment => 'تعليق (اختياري)';
+
+  @override
+  String get optionalCommentHint =>
+      'أضف ملاحظة لمقدّم الطلب أو المعتمد التالي.';
+
+  @override
+  String get rejectionReason => 'سبب الرفض';
+
+  @override
+  String get rejectionReasonHint => 'اشرح سبب رفض هذا الطلب.';
+
+  @override
+  String get rejectionCommentRequired => 'سبب الرفض مطلوب.';
+
+  @override
+  String get decisionComment => 'تعليق القرار';
+
+  @override
+  String get confirmApprove => 'تأكيد الموافقة';
+
+  @override
+  String get confirmReject => 'تأكيد الرفض';
+
+  @override
+  String approvalApprovedSuccess(String requestNumber) {
+    return 'تمت الموافقة على الطلب $requestNumber.';
+  }
+
+  @override
+  String approvalRejectedSuccess(String requestNumber) {
+    return 'تم رفض الطلب $requestNumber.';
+  }
+
+  @override
+  String get errorApprovalNotFound => 'تعذّر العثور على مهمة الموافقة هذه.';
+
+  @override
+  String get errorApprovalNotPending => 'تم البت في هذه الموافقة مسبقاً.';
+
+  @override
+  String get errorNotTaskAssignee =>
+      'يمكن للمعتمد المعيّن فقط البت في هذه المهمة.';
+
+  @override
+  String get errorForbidden => 'ليس لديك صلاحية لهذا الإجراء.';
 }

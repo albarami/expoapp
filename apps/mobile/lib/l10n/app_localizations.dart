@@ -1177,6 +1177,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Critical'**
   String get riskCritical;
+
+  /// No description provided for @review.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get review;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View details'**
+  String get viewDetails;
+
+  /// No description provided for @approvalDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Approval decision'**
+  String get approvalDetail;
+
+  /// No description provided for @approvalStageManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager approval'**
+  String get approvalStageManager;
+
+  /// No description provided for @approvalStageSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Security approval'**
+  String get approvalStageSecurity;
+
+  /// No description provided for @approvalStageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Stage: {stage}'**
+  String approvalStageLabel(String stage);
+
+  /// No description provided for @noApprovalsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You are all caught up.'**
+  String get noApprovalsMessage;
+
+  /// No description provided for @noCompletedApprovals.
+  ///
+  /// In en, this message translates to:
+  /// **'No completed approvals'**
+  String get noCompletedApprovals;
+
+  /// No description provided for @noCompletedApprovalsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Decided tasks will appear here.'**
+  String get noCompletedApprovalsMessage;
+
+  /// No description provided for @approveConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve this request?'**
+  String get approveConfirmTitle;
+
+  /// No description provided for @approveConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to approve access request {requestNumber}?'**
+  String approveConfirmMessage(String requestNumber);
+
+  /// No description provided for @rejectConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject this request?'**
+  String get rejectConfirmTitle;
+
+  /// No description provided for @rejectConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Please provide a rejection reason.'**
+  String get rejectConfirmMessage;
+
+  /// No description provided for @optionalComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Comment (optional)'**
+  String get optionalComment;
+
+  /// No description provided for @optionalCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a note for the requester or next approver.'**
+  String get optionalCommentHint;
+
+  /// No description provided for @rejectionReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejection reason'**
+  String get rejectionReason;
+
+  /// No description provided for @rejectionReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Explain why this request is rejected.'**
+  String get rejectionReasonHint;
+
+  /// No description provided for @rejectionCommentRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'A rejection reason is required.'**
+  String get rejectionCommentRequired;
+
+  /// No description provided for @decisionComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision comment'**
+  String get decisionComment;
+
+  /// No description provided for @confirmApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm approve'**
+  String get confirmApprove;
+
+  /// No description provided for @confirmReject.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm reject'**
+  String get confirmReject;
+
+  /// No description provided for @approvalApprovedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Request {requestNumber} approved.'**
+  String approvalApprovedSuccess(String requestNumber);
+
+  /// No description provided for @approvalRejectedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Request {requestNumber} rejected.'**
+  String approvalRejectedSuccess(String requestNumber);
+
+  /// No description provided for @errorApprovalNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This approval task could not be found.'**
+  String get errorApprovalNotFound;
+
+  /// No description provided for @errorApprovalNotPending.
+  ///
+  /// In en, this message translates to:
+  /// **'This approval has already been decided.'**
+  String get errorApprovalNotPending;
+
+  /// No description provided for @errorNotTaskAssignee.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the assigned approver can decide this task.'**
+  String get errorNotTaskAssignee;
+
+  /// No description provided for @errorForbidden.
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have permission for this action.'**
+  String get errorForbidden;
 }
 
 class _AppLocalizationsDelegate

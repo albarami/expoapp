@@ -366,8 +366,10 @@ T-DOC-01
 | Files | `features/approvals/**` |
 | Acceptance | Approve/reject with confirm; refresh |
 | Skills | ui-ux-pro-max |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | `flutter analyze`, `flutter test` — **PASS 2026-07-09** (73 tests) |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-MOB-06-approvals` |
+| Status | **in_progress** |
 
 ---
 
@@ -440,6 +442,6 @@ T-DOC-01
 8. ~~T-MOB-03~~ **passed** (CI green: run 29038786051)
 9. ~~T-MOB-04~~ **passed** (CI green: run 29039489370)
 10. ~~T-MOB-05~~ **passed** (CI green: run 29040425846)
-11. **T-MOB-06** — Flutter approvals (next)
+11. **T-MOB-06** — Flutter approvals (in progress on `agent/T-MOB-06-approvals`)
 
-**Resume at T-MOB-06.**
+**Resume at T-MOB-06 until CI green, then T-MOB-07.**
