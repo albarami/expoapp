@@ -92,7 +92,76 @@
   "priorityLow": "Low",
   "priorityNormal": "Normal",
   "priorityHigh": "High",
+  "priorityCritical": "Critical",
   "priorityUrgent": "Urgent",
+  "searchNotifications": "Search notifications",
+  "filterAll": "All",
+  "filterUnread": "Unread",
+  "unread": "Unread",
+  "readStatus": "Read",
+  "notificationsUnreadCount": "{count} unread in this page",
+  "@notificationsUnreadCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationDetail": "Notification",
+  "markedAsRead": "Marked as read",
+  "deliveredCount": "Delivered",
+  "unreadCountLabel": "Unread recipients",
+  "titleEn": "Title (English)",
+  "titleArOptional": "Title (Arabic, optional)",
+  "bodyEn": "Body (English)",
+  "bodyArOptional": "Body (Arabic, optional)",
+  "priority": "Priority",
+  "audienceType": "Audience",
+  "audienceAll": "Everyone",
+  "audienceDepartment": "Departments",
+  "audienceRole": "Roles",
+  "audienceUsers": "Selected users",
+  "audienceAllHint": "This notification will be delivered to all active users.",
+  "audienceUsersUnavailable": "Selecting individual users is not available in this build. Choose All, Department, or Role.",
+  "publishNow": "Publish now",
+  "publishNowHint": "Recipients are created immediately.",
+  "schedulePublishHint": "Schedule a future publish time.",
+  "publishAt": "Publish at",
+  "expiresAtOptional": "Expires at (optional)",
+  "selectDateTime": "Select date and time",
+  "preview": "Preview",
+  "publish": "Publish",
+  "createNotificationSubtitle": "Compose a bilingual announcement for the selected audience.",
+  "criticalConfirmTitle": "Publish critical notification?",
+  "criticalConfirmMessage": "Critical notifications are urgent. Confirm you want to publish now.",
+  "notificationCreatedTitle": "Notification created",
+  "notificationCreatedMessage": "Delivered to {count} recipients.",
+  "@notificationCreatedMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "validationRequired": "This field is required.",
+  "validationMinLength": "Must be at least {min} characters.",
+  "@validationMinLength": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "validationMaxLength": "Must be at most {max} characters.",
+  "@validationMaxLength": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "validationAudienceRequired": "Select at least one audience value.",
+  "validationPublishAtRequired": "Choose a publish time when scheduling.",
   "errorManagerNotFound": "No manager found for this request.",
   "errorRoleNotRequestable": "This role cannot be requested.",
   "errorDuplicateActiveRequest": "You already have an active request for this role.",

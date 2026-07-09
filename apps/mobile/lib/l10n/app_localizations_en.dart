@@ -261,7 +261,144 @@ class AppLocalizationsEn extends AppLocalizations {
   String get priorityHigh => 'High';
 
   @override
+  String get priorityCritical => 'Critical';
+
+  @override
   String get priorityUrgent => 'Urgent';
+
+  @override
+  String get searchNotifications => 'Search notifications';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterUnread => 'Unread';
+
+  @override
+  String get unread => 'Unread';
+
+  @override
+  String get readStatus => 'Read';
+
+  @override
+  String notificationsUnreadCount(int count) {
+    return '$count unread in this page';
+  }
+
+  @override
+  String get notificationDetail => 'Notification';
+
+  @override
+  String get markedAsRead => 'Marked as read';
+
+  @override
+  String get deliveredCount => 'Delivered';
+
+  @override
+  String get unreadCountLabel => 'Unread recipients';
+
+  @override
+  String get titleEn => 'Title (English)';
+
+  @override
+  String get titleArOptional => 'Title (Arabic, optional)';
+
+  @override
+  String get bodyEn => 'Body (English)';
+
+  @override
+  String get bodyArOptional => 'Body (Arabic, optional)';
+
+  @override
+  String get priority => 'Priority';
+
+  @override
+  String get audienceType => 'Audience';
+
+  @override
+  String get audienceAll => 'Everyone';
+
+  @override
+  String get audienceDepartment => 'Departments';
+
+  @override
+  String get audienceRole => 'Roles';
+
+  @override
+  String get audienceUsers => 'Selected users';
+
+  @override
+  String get audienceAllHint =>
+      'This notification will be delivered to all active users.';
+
+  @override
+  String get audienceUsersUnavailable =>
+      'Selecting individual users is not available in this build. Choose All, Department, or Role.';
+
+  @override
+  String get publishNow => 'Publish now';
+
+  @override
+  String get publishNowHint => 'Recipients are created immediately.';
+
+  @override
+  String get schedulePublishHint => 'Schedule a future publish time.';
+
+  @override
+  String get publishAt => 'Publish at';
+
+  @override
+  String get expiresAtOptional => 'Expires at (optional)';
+
+  @override
+  String get selectDateTime => 'Select date and time';
+
+  @override
+  String get preview => 'Preview';
+
+  @override
+  String get publish => 'Publish';
+
+  @override
+  String get createNotificationSubtitle =>
+      'Compose a bilingual announcement for the selected audience.';
+
+  @override
+  String get criticalConfirmTitle => 'Publish critical notification?';
+
+  @override
+  String get criticalConfirmMessage =>
+      'Critical notifications are urgent. Confirm you want to publish now.';
+
+  @override
+  String get notificationCreatedTitle => 'Notification created';
+
+  @override
+  String notificationCreatedMessage(int count) {
+    return 'Delivered to $count recipients.';
+  }
+
+  @override
+  String get validationRequired => 'This field is required.';
+
+  @override
+  String validationMinLength(int min) {
+    return 'Must be at least $min characters.';
+  }
+
+  @override
+  String validationMaxLength(int max) {
+    return 'Must be at most $max characters.';
+  }
+
+  @override
+  String get validationAudienceRequired =>
+      'Select at least one audience value.';
+
+  @override
+  String get validationPublishAtRequired =>
+      'Choose a publish time when scheduling.';
 
   @override
   String get errorManagerNotFound => 'No manager found for this request.';

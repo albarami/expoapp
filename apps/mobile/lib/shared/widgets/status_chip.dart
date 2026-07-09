@@ -128,7 +128,7 @@ enum NotificationPriority {
   low,
   normal,
   high,
-  urgent;
+  critical;
 
   static NotificationPriority? tryParse(String? value) {
     switch (value?.toUpperCase()) {
@@ -138,8 +138,9 @@ enum NotificationPriority {
         return NotificationPriority.normal;
       case 'HIGH':
         return NotificationPriority.high;
-      case 'URGENT':
-        return NotificationPriority.urgent;
+      case 'CRITICAL':
+      case 'URGENT': // legacy alias
+        return NotificationPriority.critical;
       default:
         return null;
     }
@@ -153,8 +154,8 @@ enum NotificationPriority {
         return l10n.priorityNormal;
       case NotificationPriority.high:
         return l10n.priorityHigh;
-      case NotificationPriority.urgent:
-        return l10n.priorityUrgent;
+      case NotificationPriority.critical:
+        return l10n.priorityCritical;
     }
   }
 
@@ -166,7 +167,7 @@ enum NotificationPriority {
         return AppStatusColors.success;
       case NotificationPriority.high:
         return AppStatusColors.warning;
-      case NotificationPriority.urgent:
+      case NotificationPriority.critical:
         return AppStatusColors.danger;
     }
   }

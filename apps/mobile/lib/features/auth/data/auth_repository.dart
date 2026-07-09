@@ -1,4 +1,5 @@
 import '../../../core/api/api_client.dart';
+import '../../../core/api/api_envelope.dart';
 import '../../../core/api/api_error.dart';
 import '../../../core/auth/app_user.dart';
 
@@ -44,21 +45,13 @@ class ApiAuthRepository implements AuthRepository {
         'password': password,
       },
     );
-    final data = response.data;
-    if (data == null) {
-      throw ApiError.unknown('Empty login response');
-    }
-    return _sessionFromJson(data);
+    return _sessionFromJson(unwrapDataMap(response.data));
   }
 
   @override
   Future<AppUser> fetchCurrentUser() async {
     final response = await _api.get<Map<String, dynamic>>('/auth/me');
-    final data = response.data;
-    if (data == null) {
-      throw ApiError.unknown('Empty /auth/me response');
-    }
-    return AppUser.fromJson(data);
+    return AppUser.fromJson(unwrapDataMap(response.data));
   }
 
   @override

@@ -8,6 +8,9 @@ import '../core/providers.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/splash_screen.dart';
 import '../features/dashboard/presentation/screens/dashboard_screen.dart';
+import '../features/notifications/presentation/screens/create_notification_screen.dart';
+import '../features/notifications/presentation/screens/notification_detail_screen.dart';
+import '../features/notifications/presentation/screens/notifications_list_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../shared/widgets/foundation_placeholder_screen.dart';
 import 'app_shell.dart';
@@ -101,19 +104,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/notifications',
             name: 'notifications',
-            builder: (context, state) {
-              final l10n = AppLocalizations.of(context);
-              return FoundationPlaceholderScreen(title: l10n.notifications);
-            },
+            builder: (context, state) => const NotificationsListScreen(),
             routes: [
               GoRoute(
                 path: ':id',
                 name: 'notification-detail',
                 builder: (context, state) {
-                  final l10n = AppLocalizations.of(context);
-                  return FoundationPlaceholderScreen(
-                    title: l10n.notifications,
-                  );
+                  final id = state.pathParameters['id'] ?? '';
+                  return NotificationDetailScreen(notificationId: id);
                 },
               ),
             ],
@@ -121,12 +119,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/admin/notifications/create',
             name: 'create-notification',
-            builder: (context, state) {
-              final l10n = AppLocalizations.of(context);
-              return FoundationPlaceholderScreen(
-                title: l10n.createNotification,
-              );
-            },
+            builder: (context, state) => const CreateNotificationScreen(),
           ),
           GoRoute(
             path: '/requests',

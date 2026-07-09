@@ -258,7 +258,142 @@ class AppLocalizationsAr extends AppLocalizations {
   String get priorityHigh => 'عالية';
 
   @override
+  String get priorityCritical => 'حرجة';
+
+  @override
   String get priorityUrgent => 'عاجلة';
+
+  @override
+  String get searchNotifications => 'البحث في الإشعارات';
+
+  @override
+  String get filterAll => 'الكل';
+
+  @override
+  String get filterUnread => 'غير مقروء';
+
+  @override
+  String get unread => 'غير مقروء';
+
+  @override
+  String get readStatus => 'مقروء';
+
+  @override
+  String notificationsUnreadCount(int count) {
+    return '$count غير مقروء في هذه الصفحة';
+  }
+
+  @override
+  String get notificationDetail => 'الإشعار';
+
+  @override
+  String get markedAsRead => 'تم التحديد كمقروء';
+
+  @override
+  String get deliveredCount => 'تم التسليم';
+
+  @override
+  String get unreadCountLabel => 'مستلمون لم يقرأوا';
+
+  @override
+  String get titleEn => 'العنوان (الإنجليزية)';
+
+  @override
+  String get titleArOptional => 'العنوان (العربية، اختياري)';
+
+  @override
+  String get bodyEn => 'النص (الإنجليزية)';
+
+  @override
+  String get bodyArOptional => 'النص (العربية، اختياري)';
+
+  @override
+  String get priority => 'الأولوية';
+
+  @override
+  String get audienceType => 'الجمهور';
+
+  @override
+  String get audienceAll => 'الجميع';
+
+  @override
+  String get audienceDepartment => 'الأقسام';
+
+  @override
+  String get audienceRole => 'الأدوار';
+
+  @override
+  String get audienceUsers => 'مستخدمون محددون';
+
+  @override
+  String get audienceAllHint =>
+      'سيتم إرسال هذا الإشعار إلى جميع المستخدمين النشطين.';
+
+  @override
+  String get audienceUsersUnavailable =>
+      'اختيار مستخدمين فرديين غير متاح في هذا الإصدار. اختر الجميع أو القسم أو الدور.';
+
+  @override
+  String get publishNow => 'نشر الآن';
+
+  @override
+  String get publishNowHint => 'يتم إنشاء المستلمين فوراً.';
+
+  @override
+  String get schedulePublishHint => 'جدولة وقت نشر مستقبلي.';
+
+  @override
+  String get publishAt => 'وقت النشر';
+
+  @override
+  String get expiresAtOptional => 'ينتهي في (اختياري)';
+
+  @override
+  String get selectDateTime => 'اختر التاريخ والوقت';
+
+  @override
+  String get preview => 'معاينة';
+
+  @override
+  String get publish => 'نشر';
+
+  @override
+  String get createNotificationSubtitle =>
+      'أنشئ إعلاناً ثنائي اللغة للجمهور المحدد.';
+
+  @override
+  String get criticalConfirmTitle => 'نشر إشعار حرج؟';
+
+  @override
+  String get criticalConfirmMessage =>
+      'الإشعارات الحرجة عاجلة. أكّد أنك تريد النشر الآن.';
+
+  @override
+  String get notificationCreatedTitle => 'تم إنشاء الإشعار';
+
+  @override
+  String notificationCreatedMessage(int count) {
+    return 'تم التسليم إلى $count مستلمين.';
+  }
+
+  @override
+  String get validationRequired => 'هذا الحقل مطلوب.';
+
+  @override
+  String validationMinLength(int min) {
+    return 'يجب أن يكون على الأقل $min أحرف.';
+  }
+
+  @override
+  String validationMaxLength(int max) {
+    return 'يجب ألا يتجاوز $max أحرف.';
+  }
+
+  @override
+  String get validationAudienceRequired => 'اختر قيمة جمهور واحدة على الأقل.';
+
+  @override
+  String get validationPublishAtRequired => 'اختر وقت النشر عند الجدولة.';
 
   @override
   String get errorManagerNotFound => 'لم يتم العثور على مدير لهذا الطلب.';

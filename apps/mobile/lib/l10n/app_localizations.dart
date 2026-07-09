@@ -590,11 +590,257 @@ abstract class AppLocalizations {
   /// **'High'**
   String get priorityHigh;
 
+  /// No description provided for @priorityCritical.
+  ///
+  /// In en, this message translates to:
+  /// **'Critical'**
+  String get priorityCritical;
+
   /// No description provided for @priorityUrgent.
   ///
   /// In en, this message translates to:
   /// **'Urgent'**
   String get priorityUrgent;
+
+  /// No description provided for @searchNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Search notifications'**
+  String get searchNotifications;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @filterUnread.
+  ///
+  /// In en, this message translates to:
+  /// **'Unread'**
+  String get filterUnread;
+
+  /// No description provided for @unread.
+  ///
+  /// In en, this message translates to:
+  /// **'Unread'**
+  String get unread;
+
+  /// No description provided for @readStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Read'**
+  String get readStatus;
+
+  /// No description provided for @notificationsUnreadCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} unread in this page'**
+  String notificationsUnreadCount(int count);
+
+  /// No description provided for @notificationDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get notificationDetail;
+
+  /// No description provided for @markedAsRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Marked as read'**
+  String get markedAsRead;
+
+  /// No description provided for @deliveredCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered'**
+  String get deliveredCount;
+
+  /// No description provided for @unreadCountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Unread recipients'**
+  String get unreadCountLabel;
+
+  /// No description provided for @titleEn.
+  ///
+  /// In en, this message translates to:
+  /// **'Title (English)'**
+  String get titleEn;
+
+  /// No description provided for @titleArOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Title (Arabic, optional)'**
+  String get titleArOptional;
+
+  /// No description provided for @bodyEn.
+  ///
+  /// In en, this message translates to:
+  /// **'Body (English)'**
+  String get bodyEn;
+
+  /// No description provided for @bodyArOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Body (Arabic, optional)'**
+  String get bodyArOptional;
+
+  /// No description provided for @priority.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get priority;
+
+  /// No description provided for @audienceType.
+  ///
+  /// In en, this message translates to:
+  /// **'Audience'**
+  String get audienceType;
+
+  /// No description provided for @audienceAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone'**
+  String get audienceAll;
+
+  /// No description provided for @audienceDepartment.
+  ///
+  /// In en, this message translates to:
+  /// **'Departments'**
+  String get audienceDepartment;
+
+  /// No description provided for @audienceRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Roles'**
+  String get audienceRole;
+
+  /// No description provided for @audienceUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected users'**
+  String get audienceUsers;
+
+  /// No description provided for @audienceAllHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This notification will be delivered to all active users.'**
+  String get audienceAllHint;
+
+  /// No description provided for @audienceUsersUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Selecting individual users is not available in this build. Choose All, Department, or Role.'**
+  String get audienceUsersUnavailable;
+
+  /// No description provided for @publishNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish now'**
+  String get publishNow;
+
+  /// No description provided for @publishNowHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Recipients are created immediately.'**
+  String get publishNowHint;
+
+  /// No description provided for @schedulePublishHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a future publish time.'**
+  String get schedulePublishHint;
+
+  /// No description provided for @publishAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish at'**
+  String get publishAt;
+
+  /// No description provided for @expiresAtOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Expires at (optional)'**
+  String get expiresAtOptional;
+
+  /// No description provided for @selectDateTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select date and time'**
+  String get selectDateTime;
+
+  /// No description provided for @preview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get preview;
+
+  /// No description provided for @publish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish'**
+  String get publish;
+
+  /// No description provided for @createNotificationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Compose a bilingual announcement for the selected audience.'**
+  String get createNotificationSubtitle;
+
+  /// No description provided for @criticalConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish critical notification?'**
+  String get criticalConfirmTitle;
+
+  /// No description provided for @criticalConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Critical notifications are urgent. Confirm you want to publish now.'**
+  String get criticalConfirmMessage;
+
+  /// No description provided for @notificationCreatedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification created'**
+  String get notificationCreatedTitle;
+
+  /// No description provided for @notificationCreatedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered to {count} recipients.'**
+  String notificationCreatedMessage(int count);
+
+  /// No description provided for @validationRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required.'**
+  String get validationRequired;
+
+  /// No description provided for @validationMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Must be at least {min} characters.'**
+  String validationMinLength(int min);
+
+  /// No description provided for @validationMaxLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Must be at most {max} characters.'**
+  String validationMaxLength(int max);
+
+  /// No description provided for @validationAudienceRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Select at least one audience value.'**
+  String get validationAudienceRequired;
+
+  /// No description provided for @validationPublishAtRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a publish time when scheduling.'**
+  String get validationPublishAtRequired;
 
   /// No description provided for @errorManagerNotFound.
   ///

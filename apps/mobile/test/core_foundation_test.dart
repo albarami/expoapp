@@ -85,8 +85,12 @@ void main() {
         RequestStatus.managerPending,
       );
       expect(
+        NotificationPriority.tryParse('CRITICAL'),
+        NotificationPriority.critical,
+      );
+      expect(
         NotificationPriority.tryParse('URGENT'),
-        NotificationPriority.urgent,
+        NotificationPriority.critical,
       );
     });
   });

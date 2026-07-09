@@ -89,7 +89,76 @@
   "priorityLow": "منخفضة",
   "priorityNormal": "عادية",
   "priorityHigh": "عالية",
+  "priorityCritical": "حرجة",
   "priorityUrgent": "عاجلة",
+  "searchNotifications": "البحث في الإشعارات",
+  "filterAll": "الكل",
+  "filterUnread": "غير مقروء",
+  "unread": "غير مقروء",
+  "readStatus": "مقروء",
+  "notificationsUnreadCount": "{count} غير مقروء في هذه الصفحة",
+  "@notificationsUnreadCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationDetail": "الإشعار",
+  "markedAsRead": "تم التحديد كمقروء",
+  "deliveredCount": "تم التسليم",
+  "unreadCountLabel": "مستلمون لم يقرأوا",
+  "titleEn": "العنوان (الإنجليزية)",
+  "titleArOptional": "العنوان (العربية، اختياري)",
+  "bodyEn": "النص (الإنجليزية)",
+  "bodyArOptional": "النص (العربية، اختياري)",
+  "priority": "الأولوية",
+  "audienceType": "الجمهور",
+  "audienceAll": "الجميع",
+  "audienceDepartment": "الأقسام",
+  "audienceRole": "الأدوار",
+  "audienceUsers": "مستخدمون محددون",
+  "audienceAllHint": "سيتم إرسال هذا الإشعار إلى جميع المستخدمين النشطين.",
+  "audienceUsersUnavailable": "اختيار مستخدمين فرديين غير متاح في هذا الإصدار. اختر الجميع أو القسم أو الدور.",
+  "publishNow": "نشر الآن",
+  "publishNowHint": "يتم إنشاء المستلمين فوراً.",
+  "schedulePublishHint": "جدولة وقت نشر مستقبلي.",
+  "publishAt": "وقت النشر",
+  "expiresAtOptional": "ينتهي في (اختياري)",
+  "selectDateTime": "اختر التاريخ والوقت",
+  "preview": "معاينة",
+  "publish": "نشر",
+  "createNotificationSubtitle": "أنشئ إعلاناً ثنائي اللغة للجمهور المحدد.",
+  "criticalConfirmTitle": "نشر إشعار حرج؟",
+  "criticalConfirmMessage": "الإشعارات الحرجة عاجلة. أكّد أنك تريد النشر الآن.",
+  "notificationCreatedTitle": "تم إنشاء الإشعار",
+  "notificationCreatedMessage": "تم التسليم إلى {count} مستلمين.",
+  "@notificationCreatedMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "validationRequired": "هذا الحقل مطلوب.",
+  "validationMinLength": "يجب أن يكون على الأقل {min} أحرف.",
+  "@validationMinLength": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "validationMaxLength": "يجب ألا يتجاوز {max} أحرف.",
+  "@validationMaxLength": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "validationAudienceRequired": "اختر قيمة جمهور واحدة على الأقل.",
+  "validationPublishAtRequired": "اختر وقت النشر عند الجدولة.",
   "errorManagerNotFound": "لم يتم العثور على مدير لهذا الطلب.",
   "errorRoleNotRequestable": "لا يمكن طلب هذه الصلاحية.",
   "errorDuplicateActiveRequest": "لديك طلب نشط بالفعل لهذه الصلاحية.",
