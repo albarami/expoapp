@@ -367,9 +367,9 @@ T-DOC-01
 | Acceptance | Approve/reject with confirm; refresh |
 | Skills | ui-ux-pro-max |
 | Local tests | `flutter analyze`, `flutter test` — **PASS 2026-07-09** (73 tests) |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29041340812 |
 | Branch/PR | `agent/T-MOB-06-approvals` |
-| Status | **in_progress** |
+| Status | **passed** |
 
 ---
 
@@ -442,6 +442,7 @@ T-DOC-01
 8. ~~T-MOB-03~~ **passed** (CI green: run 29038786051)
 9. ~~T-MOB-04~~ **passed** (CI green: run 29039489370)
 10. ~~T-MOB-05~~ **passed** (CI green: run 29040425846)
-11. **T-MOB-06** — Flutter approvals (in progress on `agent/T-MOB-06-approvals`)
+11. ~~T-MOB-06~~ **passed** (CI green: run 29041340812)
+12. **T-MOB-07** — Flutter audit (next)
 
-**Resume at T-MOB-06 until CI green, then T-MOB-07.**
+**Resume at T-MOB-07.**
