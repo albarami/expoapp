@@ -1,4 +1,4 @@
-# NEXT_RUN.md ? Resume Point
+# NEXT_RUN.md — Resume Point
 
 **Updated:** 2026-07-09 (T-API-05 **passed**; CI green)  
 **Read this file first on every new Cursor session.**
@@ -7,15 +7,15 @@
 
 ## Current phase
 
-**T-API-06 Notifications module** ? next sequential foundation task per ledger.
+**T-API-06 Notifications module** — next sequential foundation task per ledger.
 
 ---
 
 ## Current branch
 
 - Branch: `agent/T-API-05-reference-dashboard` (T-API-05 merged-ready; branch T-API-06 not created yet)
-- Remote: `origin` ? `https://github.com/albarami/expoapp.git`
-- CI (T-API-05 feature): **green** ? https://github.com/albarami/expoapp/actions/runs/29030021235
+- Remote: `origin` → `https://github.com/albarami/expoapp.git`
+- CI (T-API-05 feature): **green** — https://github.com/albarami/expoapp/actions/runs/29030021235
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -24,15 +24,16 @@
 
 | Now | Next exact task |
 |---|---|
-| T-API-05 **passed** | Start **T-API-06** ? Notifications module |
+| T-API-05 **passed** | Start **T-API-06** — Notifications module |
 
 ---
 
 ## Completed this run
 
-1. T-API-05 feature commit `c2ef196` ? reference-data + dashboard
+1. T-API-05 feature commit `c2ef196` — reference-data + dashboard
 2. Local lint / unit / e2e / build **PASS**
 3. GitHub CI **green** (run 29030021235)
+4. Docs commit `44c26cc` — ledger/NEXT_RUN updated (CI green: 29030195025)
 
 ---
 
