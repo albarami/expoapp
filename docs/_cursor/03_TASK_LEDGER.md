@@ -384,9 +384,9 @@ T-DOC-01
 | Acceptance | Filters; metadata modal; route guard |
 | Skills | ui-ux-pro-max |
 | Local tests | `flutter analyze` + `flutter test` — **PASS** (81 tests) |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29042259598 |
 | Branch/PR | `agent/T-MOB-07-audit` |
-| Status | **in_progress** (implementation complete; awaiting CI) |
+| Status | **passed** |
 
 ---
 
