@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AccessRequestsModule } from './access-requests/access-requests.module';
+import { ApprovalsModule } from './approvals/approvals.module';
 import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
 import { TraceIdMiddleware } from './common/middleware/trace-id.middleware';
@@ -32,6 +33,7 @@ import { ReferenceDataModule } from './reference-data/reference-data.module';
     DashboardModule,
     NotificationsModule,
     AccessRequestsModule,
+    ApprovalsModule,
     HealthModule,
   ],
 })

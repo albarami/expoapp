@@ -232,9 +232,10 @@ T-DOC-01
 | Dependencies | T-API-07, T-API-09 |
 | Files | `approvals/**` |
 | Acceptance | Manager/security decisions; transactional; mock complete |
-| Local tests | BU-04, BI-06 |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | BU-04, BI-06 — **PASS 2026-07-09** |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-API-08-approvals` |
+| Status | **in_progress** |
 
 ---
 
