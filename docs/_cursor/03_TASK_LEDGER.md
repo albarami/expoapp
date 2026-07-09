@@ -200,10 +200,10 @@ T-DOC-01
 | Dependencies | T-API-05; prefer T-API-10 audit helper |
 | Files | `notifications/**`, `audit/**` (record helper), RBAC probe trim |
 | Acceptance | Create/publish/list/read/stats/cancel; recipients; tests |
-| Local tests | BU-02, BI-04 — **passing** locally |
-| GitHub CI | pending push / green confirmation |
+| Local tests | BU-02, BI-04 — **PASS 2026-07-09** |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29032026526 |
 | Branch/PR | `agent/T-API-06-notifications` |
-| Status | **implemented** (local PASS; mark **passed** after CI green) |
+| Status | **passed** |
 
 ---
 
