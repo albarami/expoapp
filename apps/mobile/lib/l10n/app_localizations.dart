@@ -374,17 +374,41 @@ abstract class AppLocalizations {
   /// **'Use a seeded demo account to sign in.'**
   String get demoLoginHint;
 
+  /// No description provided for @statusDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get statusDraft;
+
+  /// No description provided for @statusSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get statusSubmitted;
+
   /// No description provided for @statusManagerPending.
   ///
   /// In en, this message translates to:
   /// **'Pending Manager'**
   String get statusManagerPending;
 
+  /// No description provided for @statusManagerApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager Approved'**
+  String get statusManagerApproved;
+
   /// No description provided for @statusSecurityPending.
   ///
   /// In en, this message translates to:
   /// **'Pending Security'**
   String get statusSecurityPending;
+
+  /// No description provided for @statusSecurityApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Security Approved'**
+  String get statusSecurityApproved;
 
   /// No description provided for @statusProvisioning.
   ///
@@ -421,6 +445,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed'**
   String get statusFailed;
+
+  /// No description provided for @dashboardGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome, {name}'**
+  String dashboardGreeting(String name);
+
+  /// No description provided for @dashboardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your role-based overview'**
+  String get dashboardSubtitle;
+
+  /// No description provided for @unreadNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Unread notifications'**
+  String get unreadNotifications;
+
+  /// No description provided for @openAccessRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Open access requests'**
+  String get openAccessRequests;
+
+  /// No description provided for @completedRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed requests'**
+  String get completedRequests;
+
+  /// No description provided for @pendingApprovals.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending approvals'**
+  String get pendingApprovals;
+
+  /// No description provided for @teamOpenRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Team open requests'**
+  String get teamOpenRequests;
+
+  /// No description provided for @pendingSecurityApprovals.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending security approvals'**
+  String get pendingSecurityApprovals;
+
+  /// No description provided for @highRiskOpenRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'High-risk open requests'**
+  String get highRiskOpenRequests;
+
+  /// No description provided for @publishedNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Published notifications'**
+  String get publishedNotifications;
+
+  /// No description provided for @totalRecipients.
+  ///
+  /// In en, this message translates to:
+  /// **'Total recipients'**
+  String get totalRecipients;
+
+  /// No description provided for @readCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Read count'**
+  String get readCount;
+
+  /// No description provided for @readPercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Read percentage'**
+  String get readPercentage;
+
+  /// No description provided for @pendingManagerApprovals.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending manager approvals'**
+  String get pendingManagerApprovals;
+
+  /// No description provided for @latestNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest notifications'**
+  String get latestNotifications;
+
+  /// No description provided for @latestRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest requests'**
+  String get latestRequests;
+
+  /// No description provided for @recentAuditEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent audit events'**
+  String get recentAuditEvents;
+
+  /// No description provided for @notificationStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification stats'**
+  String get notificationStats;
+
+  /// No description provided for @accessWorkflowStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Access workflow stats'**
+  String get accessWorkflowStats;
+
+  /// No description provided for @noAuditEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'No recent audit events'**
+  String get noAuditEvents;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View all'**
+  String get viewAll;
 
   /// No description provided for @priorityLow.
   ///

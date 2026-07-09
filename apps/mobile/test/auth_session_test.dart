@@ -14,6 +14,9 @@ import 'package:expoapp_mobile/core/config/app_config.dart';
 import 'package:expoapp_mobile/core/providers.dart';
 import 'package:expoapp_mobile/features/auth/data/auth_repository.dart';
 import 'package:expoapp_mobile/features/auth/domain/demo_accounts.dart';
+import 'package:expoapp_mobile/features/dashboard/data/dashboard_repository.dart';
+import 'package:expoapp_mobile/features/dashboard/domain/dashboard_summary.dart';
+import 'package:expoapp_mobile/features/dashboard/presentation/dashboard_providers.dart';
 import 'package:expoapp_mobile/l10n/app_localizations_en.dart';
 
 class _FakeAuthRepository implements AuthRepository {
@@ -89,6 +92,49 @@ const _admin = AppUser(
   role: AppRole.systemAdmin,
   permissions: ['notifications:create', 'audit:read'],
 );
+
+class _StubDashboardRepository implements DashboardRepository {
+  _StubDashboardRepository(this.role);
+
+  final AppRole role;
+
+  @override
+  Future<DashboardSummary> fetchSummary() async {
+    return DashboardSummary(
+      role: role,
+      unreadNotifications: 0,
+      openAccessRequests: 0,
+      completedRequests: 0,
+      pendingApprovals: 0,
+      latestNotifications: const [],
+      latestRequests: const [],
+      teamOpenRequests: role == AppRole.manager ? 0 : null,
+      pendingSecurityApprovals:
+          role == AppRole.securityAdmin ? 0 : null,
+      highRiskOpenRequests: role == AppRole.securityAdmin ? 0 : null,
+      recentAuditEvents: role == AppRole.securityAdmin ||
+              role == AppRole.systemAdmin
+          ? const []
+          : null,
+      notificationStats: role == AppRole.systemAdmin
+          ? const DashboardNotificationStats(
+              publishedCount: 0,
+              recipientCount: 0,
+              readCount: 0,
+              readPercentage: 0,
+            )
+          : null,
+      accessWorkflowStats: role == AppRole.systemAdmin
+          ? const DashboardAccessWorkflowStats(
+              openAccessRequests: 0,
+              pendingManagerApprovals: 0,
+              pendingSecurityApprovals: 0,
+              completedRequests: 0,
+            )
+          : null,
+    );
+  }
+}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -393,6 +439,9 @@ void main() {
           overrides: [
             tokenStorageProvider.overrideWithValue(InMemoryTokenStorage()),
             authRepositoryProvider.overrideWithValue(auth),
+            dashboardRepositoryProvider.overrideWithValue(
+              _StubDashboardRepository(AppRole.systemAdmin),
+            ),
           ],
           child: const ExpoApp(),
         ),
@@ -423,6 +472,9 @@ void main() {
           overrides: [
             tokenStorageProvider.overrideWithValue(storage),
             authRepositoryProvider.overrideWithValue(auth),
+            dashboardRepositoryProvider.overrideWithValue(
+              _StubDashboardRepository(AppRole.employee),
+            ),
           ],
           child: const ExpoApp(),
         ),

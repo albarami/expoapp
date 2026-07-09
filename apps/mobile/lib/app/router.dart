@@ -7,6 +7,7 @@ import '../core/auth/session_controller.dart';
 import '../core/providers.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/splash_screen.dart';
+import '../features/dashboard/presentation/screens/dashboard_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../shared/widgets/foundation_placeholder_screen.dart';
 import 'app_shell.dart';
@@ -95,10 +96,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/',
             name: 'home',
-            builder: (context, state) {
-              final l10n = AppLocalizations.of(context);
-              return FoundationPlaceholderScreen(title: l10n.dashboard);
-            },
+            builder: (context, state) => const DashboardScreen(),
           ),
           GoRoute(
             path: '/notifications',

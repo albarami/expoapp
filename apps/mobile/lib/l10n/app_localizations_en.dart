@@ -151,10 +151,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get demoLoginHint => 'Use a seeded demo account to sign in.';
 
   @override
+  String get statusDraft => 'Draft';
+
+  @override
+  String get statusSubmitted => 'Submitted';
+
+  @override
   String get statusManagerPending => 'Pending Manager';
 
   @override
+  String get statusManagerApproved => 'Manager Approved';
+
+  @override
   String get statusSecurityPending => 'Pending Security';
+
+  @override
+  String get statusSecurityApproved => 'Security Approved';
 
   @override
   String get statusProvisioning => 'Provisioning';
@@ -173,6 +185,71 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get statusFailed => 'Failed';
+
+  @override
+  String dashboardGreeting(String name) {
+    return 'Welcome, $name';
+  }
+
+  @override
+  String get dashboardSubtitle => 'Your role-based overview';
+
+  @override
+  String get unreadNotifications => 'Unread notifications';
+
+  @override
+  String get openAccessRequests => 'Open access requests';
+
+  @override
+  String get completedRequests => 'Completed requests';
+
+  @override
+  String get pendingApprovals => 'Pending approvals';
+
+  @override
+  String get teamOpenRequests => 'Team open requests';
+
+  @override
+  String get pendingSecurityApprovals => 'Pending security approvals';
+
+  @override
+  String get highRiskOpenRequests => 'High-risk open requests';
+
+  @override
+  String get publishedNotifications => 'Published notifications';
+
+  @override
+  String get totalRecipients => 'Total recipients';
+
+  @override
+  String get readCount => 'Read count';
+
+  @override
+  String get readPercentage => 'Read percentage';
+
+  @override
+  String get pendingManagerApprovals => 'Pending manager approvals';
+
+  @override
+  String get latestNotifications => 'Latest notifications';
+
+  @override
+  String get latestRequests => 'Latest requests';
+
+  @override
+  String get recentAuditEvents => 'Recent audit events';
+
+  @override
+  String get notificationStats => 'Notification stats';
+
+  @override
+  String get accessWorkflowStats => 'Access workflow stats';
+
+  @override
+  String get noAuditEvents => 'No recent audit events';
+
+  @override
+  String get viewAll => 'View all';
 
   @override
   String get priorityLow => 'Low';

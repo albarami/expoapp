@@ -148,10 +148,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get demoLoginHint => 'استخدم حساب تجريبي مسجّل لتسجيل الدخول.';
 
   @override
+  String get statusDraft => 'مسودة';
+
+  @override
+  String get statusSubmitted => 'مُرسل';
+
+  @override
   String get statusManagerPending => 'بانتظار المدير';
 
   @override
+  String get statusManagerApproved => 'موافقة المدير';
+
+  @override
   String get statusSecurityPending => 'بانتظار الأمن';
+
+  @override
+  String get statusSecurityApproved => 'موافقة الأمن';
 
   @override
   String get statusProvisioning => 'جاري التنفيذ';
@@ -170,6 +182,71 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get statusFailed => 'فشل';
+
+  @override
+  String dashboardGreeting(String name) {
+    return 'مرحباً، $name';
+  }
+
+  @override
+  String get dashboardSubtitle => 'نظرة عامة حسب صلاحيتك';
+
+  @override
+  String get unreadNotifications => 'إشعارات غير مقروءة';
+
+  @override
+  String get openAccessRequests => 'طلبات صلاحية مفتوحة';
+
+  @override
+  String get completedRequests => 'طلبات مكتملة';
+
+  @override
+  String get pendingApprovals => 'موافقات معلّقة';
+
+  @override
+  String get teamOpenRequests => 'طلبات الفريق المفتوحة';
+
+  @override
+  String get pendingSecurityApprovals => 'موافقات أمنية معلّقة';
+
+  @override
+  String get highRiskOpenRequests => 'طلبات عالية المخاطر';
+
+  @override
+  String get publishedNotifications => 'إشعارات منشورة';
+
+  @override
+  String get totalRecipients => 'إجمالي المستلمين';
+
+  @override
+  String get readCount => 'عدد المقروء';
+
+  @override
+  String get readPercentage => 'نسبة القراءة';
+
+  @override
+  String get pendingManagerApprovals => 'موافقات المدير المعلّقة';
+
+  @override
+  String get latestNotifications => 'أحدث الإشعارات';
+
+  @override
+  String get latestRequests => 'أحدث الطلبات';
+
+  @override
+  String get recentAuditEvents => 'أحداث التدقيق الأخيرة';
+
+  @override
+  String get notificationStats => 'إحصاءات الإشعارات';
+
+  @override
+  String get accessWorkflowStats => 'إحصاءات سير طلبات الصلاحية';
+
+  @override
+  String get noAuditEvents => 'لا توجد أحداث تدقيق حديثة';
+
+  @override
+  String get viewAll => 'عرض الكل';
 
   @override
   String get priorityLow => 'منخفضة';

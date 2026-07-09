@@ -6,8 +6,12 @@ import '../../l10n/app_localizations.dart';
 
 /// Workflow / request status values used by chips.
 enum RequestStatus {
+  draft,
+  submitted,
   managerPending,
+  managerApproved,
   securityPending,
+  securityApproved,
   provisioning,
   completed,
   managerRejected,
@@ -17,10 +21,18 @@ enum RequestStatus {
 
   static RequestStatus? tryParse(String? value) {
     switch (value) {
+      case 'DRAFT':
+        return RequestStatus.draft;
+      case 'SUBMITTED':
+        return RequestStatus.submitted;
       case 'MANAGER_PENDING':
         return RequestStatus.managerPending;
+      case 'MANAGER_APPROVED':
+        return RequestStatus.managerApproved;
       case 'SECURITY_PENDING':
         return RequestStatus.securityPending;
+      case 'SECURITY_APPROVED':
+        return RequestStatus.securityApproved;
       case 'PROVISIONING':
         return RequestStatus.provisioning;
       case 'COMPLETED':
@@ -40,10 +52,18 @@ enum RequestStatus {
 
   String label(AppLocalizations l10n) {
     switch (this) {
+      case RequestStatus.draft:
+        return l10n.statusDraft;
+      case RequestStatus.submitted:
+        return l10n.statusSubmitted;
       case RequestStatus.managerPending:
         return l10n.statusManagerPending;
+      case RequestStatus.managerApproved:
+        return l10n.statusManagerApproved;
       case RequestStatus.securityPending:
         return l10n.statusSecurityPending;
+      case RequestStatus.securityApproved:
+        return l10n.statusSecurityApproved;
       case RequestStatus.provisioning:
         return l10n.statusProvisioning;
       case RequestStatus.completed:
@@ -61,9 +81,13 @@ enum RequestStatus {
 
   Color backgroundColor(ColorScheme scheme) {
     switch (this) {
+      case RequestStatus.draft:
+      case RequestStatus.submitted:
       case RequestStatus.managerPending:
       case RequestStatus.securityPending:
         return AppStatusColors.warning.withValues(alpha: 0.15);
+      case RequestStatus.managerApproved:
+      case RequestStatus.securityApproved:
       case RequestStatus.provisioning:
         return AppStatusColors.info.withValues(alpha: 0.15);
       case RequestStatus.completed:
@@ -79,9 +103,13 @@ enum RequestStatus {
 
   Color foregroundColor(ColorScheme scheme) {
     switch (this) {
+      case RequestStatus.draft:
+      case RequestStatus.submitted:
       case RequestStatus.managerPending:
       case RequestStatus.securityPending:
         return AppStatusColors.warning;
+      case RequestStatus.managerApproved:
+      case RequestStatus.securityApproved:
       case RequestStatus.provisioning:
         return AppStatusColors.info;
       case RequestStatus.completed:
