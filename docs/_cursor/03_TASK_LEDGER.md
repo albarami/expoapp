@@ -198,11 +198,12 @@ T-DOC-01
 | Title | Full notifications API + audience + audit |
 | Source | `15_NOTIFICATIONS_MODULE.md`, `10` |
 | Dependencies | T-API-05; prefer T-API-10 audit helper |
-| Files | `notifications/**` |
+| Files | `notifications/**`, `audit/**` (record helper), RBAC probe trim |
 | Acceptance | Create/publish/list/read/stats/cancel; recipients; tests |
-| Local tests | BU-02, BI-04 |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | BU-02, BI-04 — **passing** locally |
+| GitHub CI | pending push / green confirmation |
+| Branch/PR | `agent/T-API-06-notifications` |
+| Status | **implemented** (local PASS; mark **passed** after CI green) |
 
 ---
 
