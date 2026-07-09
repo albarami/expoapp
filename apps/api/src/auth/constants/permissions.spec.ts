@@ -12,9 +12,19 @@ describe('ROLE_PERMISSIONS', () => {
     }
   });
 
-  it('gives SYSTEM_ADMIN notification create/publish permissions', () => {
-    const permissions = getPermissionsForRole(UserRole.SYSTEM_ADMIN);
-    expect(permissions).toEqual(
+  it('gives SYSTEM_ADMIN and SECURITY_ADMIN notification admin permissions', () => {
+    const adminPermissions = getPermissionsForRole(UserRole.SYSTEM_ADMIN);
+    expect(adminPermissions).toEqual(
+      expect.arrayContaining([
+        'notifications:create',
+        'notifications:publish',
+        'notifications:stats',
+        'audit:read',
+      ]),
+    );
+
+    const securityPermissions = getPermissionsForRole(UserRole.SECURITY_ADMIN);
+    expect(securityPermissions).toEqual(
       expect.arrayContaining([
         'notifications:create',
         'notifications:publish',

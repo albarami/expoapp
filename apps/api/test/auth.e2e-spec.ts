@@ -230,6 +230,14 @@ describeDb('Auth + RBAC (e2e BI-02 / BI-03)', () => {
     const response = await request(app.getHttpServer())
       .post('/api/v1/notifications')
       .set('Authorization', `Bearer ${loginBody.data.accessToken}`)
+      .send({
+        titleEn: 'Unauthorized create attempt',
+        bodyEn: 'Employees must not create notifications.',
+        priority: 'NORMAL',
+        audienceType: 'ALL',
+        audienceFilter: { all: true },
+        publishNow: true,
+      })
       .expect(403);
 
     const body = response.body as ApiErrorResponse;
@@ -248,14 +256,40 @@ describeDb('Auth + RBAC (e2e BI-02 / BI-03)', () => {
     expect(body.error.code).toBe('FORBIDDEN');
   });
 
-  it('allows system admin RBAC probe endpoints', async () => {
+  it('allows system admin notification create and audit probe (BI-03)', async () => {
     const loginBody = await login('admin@expo.sa');
     const token = loginBody.data.accessToken;
 
-    await request(app.getHttpServer())
+    const createResponse = await request(app.getHttpServer())
       .post('/api/v1/notifications')
       .set('Authorization', `Bearer ${token}`)
+      .send({
+        titleEn: 'RBAC admin create probe',
+        bodyEn:
+          'System admin may create notifications for authorization checks.',
+        priority: 'LOW',
+        audienceType: 'USERS',
+        audienceFilter: {
+          userIds: [
+            (
+              await prisma.user.findUniqueOrThrow({
+                where: { email: 'admin@expo.sa' },
+              })
+            ).id,
+          ],
+        },
+        publishNow: true,
+      })
       .expect(201);
+
+    const created = createResponse.body as ApiSuccessResponse<{
+      id: string;
+      status: string;
+      recipientCount: number;
+    }>;
+    expect(created.data.id).toEqual(expect.any(String));
+    expect(created.data.status).toBe('PUBLISHED');
+    expect(created.data.recipientCount).toBeGreaterThanOrEqual(1);
 
     await request(app.getHttpServer())
       .get('/api/v1/audit-logs')

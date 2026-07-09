@@ -1,5 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
 import { TraceIdMiddleware } from './common/middleware/trace-id.middleware';
 import appConfig from './config/app.config';
@@ -8,6 +9,7 @@ import { validateEnv } from './config/env.validation';
 import jwtConfig from './config/jwt.config';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { HealthModule } from './health/health.module';
+import { NotificationsModule } from './notifications/notifications.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ReferenceDataModule } from './reference-data/reference-data.module';
 
@@ -21,9 +23,11 @@ import { ReferenceDataModule } from './reference-data/reference-data.module';
       validate: validateEnv,
     }),
     PrismaModule,
+    AuditModule,
     AuthModule,
     ReferenceDataModule,
     DashboardModule,
+    NotificationsModule,
     HealthModule,
   ],
 })

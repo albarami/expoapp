@@ -14,6 +14,9 @@ export const ROLE_PERMISSIONS: Record<UserRole, readonly string[]> = {
   ],
   [UserRole.SECURITY_ADMIN]: [
     'notifications:read',
+    'notifications:create',
+    'notifications:publish',
+    'notifications:stats',
     'accessRequests:create',
     'accessRequests:readOwn',
     'approvals:security',
