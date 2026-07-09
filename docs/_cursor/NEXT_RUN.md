@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-MOB-02 **passed** — CI green)  
+**Updated:** 2026-07-09 (T-MOB-03 **passed** — CI green)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-MOB-03 Flutter dashboard** — role-based dashboard from `GET /dashboard/summary`. T-MOB-02 auth + session + role shell is complete.
+**T-MOB-04 Flutter notifications (+ admin)** — list/detail/read/create/stats against notifications API. T-MOB-03 role-aware dashboard is complete.
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-MOB-02-auth-session` (T-MOB-02 complete; start T-MOB-03 from this HEAD or a new `agent/T-MOB-03-*` branch)
+- Branch: `agent/T-MOB-03-dashboard` (T-MOB-03 complete; start T-MOB-04 from this HEAD or a new `agent/T-MOB-04-*` branch)
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- Base: T-MOB-02 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29037687031
-- CI (T-MOB-02): **green** — https://github.com/albarami/expoapp/actions/runs/29037687031
+- Base: T-MOB-03 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29038786051
+- CI (T-MOB-03): **green** — https://github.com/albarami/expoapp/actions/runs/29038786051
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,41 +25,42 @@
 
 | Now | Next exact task |
 |---|---|
-| T-MOB-02 **passed** | Start **T-MOB-03** Flutter dashboard |
+| T-MOB-03 **passed** | Start **T-MOB-04** Flutter notifications (+ admin) |
 
 ---
 
-## Completed this run (T-MOB-02)
+## Completed this run (T-MOB-03)
 
-1. Real login against `POST /auth/login` with validation + localized errors
-2. Demo quick-login chips (Employee/Manager/Security Admin/System Admin) when `ENABLE_DEMO_LOGIN`
-3. Session restore via secure token + `GET /auth/me`; splash while unknown
-4. Logout via `POST /auth/logout` + local clear; 401 → expired → login
-5. Role-aware shell tabs + restricted-route redirect/snackbar
-6. Auth repository, demo accounts, EN/AR l10n strings
-7. Local `flutter analyze` clean + 29 tests; GitHub CI green
+1. `GET /dashboard/summary` repository + domain models
+2. Role-aware dashboard UI (employee / manager / security / system admin)
+3. Metrics grid, latest notifications/requests, audit + admin stats sections
+4. Loading skeletons, error+retry, empty list states, pull-to-refresh
+5. Quick actions / deep links to stub feature routes
+6. EN/AR l10n for dashboard strings; status chip coverage for all request statuses
+7. Local `flutter analyze` clean + 37 tests; GitHub CI green
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-MOB-03
+### 1. Start T-MOB-04
 
 ```bash
 cd /home/barami/projects/expoapp
-git checkout -B agent/T-MOB-03-dashboard origin/agent/T-MOB-02-auth-session
-# Implement role-based dashboard from GET /dashboard/summary
+git checkout -B agent/T-MOB-04-notifications origin/agent/T-MOB-03-dashboard
+# Implement notifications list/detail/read + admin create/stats
 # Use .cursor/skills/ui-ux-pro-max/
+# Depends on T-API-06 (already passed)
 cd apps/mobile && flutter analyze && flutter test
-git push -u origin agent/T-MOB-03-dashboard
+git push -u origin agent/T-MOB-04-notifications
 # wait for GitHub CI green; update ledger/NEXT_RUN
 ```
 
 ### 2. Sequential foundation only
 
-Auth/session foundation is now CI-green. Still prefer sequential mobile feature tasks (T-MOB-03..07) until navigation + shared contracts feel stable per `08_PARALLEL_EXECUTION_PLAN.md` before spawning parallel feature agents.
+Still prefer sequential mobile feature tasks (T-MOB-04..07) until navigation + shared contracts feel stable per `08_PARALLEL_EXECUTION_PLAN.md` before spawning parallel feature agents.
 
-Remaining sequential mobile path: T-MOB-03..07; T-L10N-01 polish later.
+Remaining sequential mobile path: T-MOB-04..07; T-L10N-01 polish later.
 
 ---
 

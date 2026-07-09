@@ -44,8 +44,8 @@ Update this file as tests are added.
 
 | ID | Area | Cases | Command | Status |
 |---|---|---|---|---|
-| FU-01 | Login | Validation; invalid credentials message | `cd apps/mobile && flutter test` | pending (T-MOB-02) |
-| FU-02 | Dashboard | Renders metrics for each role (mocked providers) | same | pending |
+| FU-01 | Login | Validation; invalid credentials message | `cd apps/mobile && flutter test` | **passing** (T-MOB-02 auth_session_test) |
+| FU-02 | Dashboard | Renders metrics for each role (mocked providers) | same | **passing** (T-MOB-03 dashboard_test) |
 | FU-03 | Notification card | Localized title; priority chip | same | pending (chip widget covered in T-MOB-01 shared_widgets_test) |
 | FU-04 | Access request form | Min justification; temporary needs end date | same | pending |
 | FU-05 | Approval confirm | Approve/reject sheets | same | pending |

@@ -315,8 +315,10 @@ T-DOC-01
 | Files | `features/dashboard/**` |
 | Acceptance | Metrics/latest items; loading/error |
 | Skills | ui-ux-pro-max |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | `flutter analyze`, `flutter test` — **PASS 2026-07-09** (37 tests) |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29038786051 |
+| Branch/PR | `agent/T-MOB-03-dashboard` |
+| Status | **passed** |
 
 ---
 
@@ -431,6 +433,7 @@ T-DOC-01
 5. ~~T-API-01~~ … ~~T-API-10~~ **passed**
 6. ~~T-MOB-01~~ **passed** (CI green: run 29036867939)
 7. ~~T-MOB-02~~ **passed** (CI green: run 29037687031)
-8. **T-MOB-03** — Flutter dashboard (next)
+8. ~~T-MOB-03~~ **passed** (CI green: run 29038786051)
+9. **T-MOB-04** — Flutter notifications (+ admin) (next)
 
-**Resume at T-MOB-03.**
+**Resume at T-MOB-04.**
