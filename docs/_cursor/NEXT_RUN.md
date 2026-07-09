@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-API-09 **passed** — CI green)  
+**Updated:** 2026-07-09 (T-API-10 **in progress** — local green, awaiting CI)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-API-10 Audit module** — `GET /audit-logs` admin-only list/filters. `AuditService.record` already shipped with T-API-06.
+**T-API-10 Audit module** — `GET /audit-logs` admin-only list/filters implemented; temporary RBAC probe removed. Awaiting GitHub CI green, then start **T-API-07** (access requests) per ledger (depends on T-API-09 + T-API-10).
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-API-09-fusion-adapter` (T-API-09 complete; start T-API-10 from this HEAD or a new `agent/T-API-10-*` branch)
+- Branch: `agent/T-API-10-audit-list`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
 - Base: T-API-09 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29032814249
-- CI (T-API-09): **green** — https://github.com/albarami/expoapp/actions/runs/29032814249
+- CI (T-API-10): pending push
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,37 +25,39 @@
 
 | Now | Next exact task |
 |---|---|
-| T-API-09 **passed** | Start **T-API-10** Audit list endpoint (`GET /audit-logs`) |
+| T-API-10 **local green** | Wait for GitHub CI green on `agent/T-API-10-audit-list`, then start **T-API-07** Access requests |
 
 ---
 
-## Completed this run (T-API-09)
+## Completed this run (T-API-10 local)
 
-1. Fusion adapter interface (`fusion-adapter.interface.ts`)
-2. `MockFusionAdapter` (seed-backed profile/roles/validate/provision/status)
-3. `OracleFusionAdapter` scaffold (`FUSION_CONFIGURATION_MISSING` when env incomplete)
-4. `FusionModule` provider selection via `FUSION_MODE` + `FUSION_ADAPTER` token
-5. `IntegrationOutboxService` enqueue/mark helpers for future provisioning path
-6. Unit tests BU-06 / FUS-01..03 + e2e `fusion.e2e-spec.ts`
-7. Wired `FusionModule` into `AppModule`
-8. Local lint/test/e2e/build green; GitHub CI green
+1. `AuditController` `GET /audit-logs` with RBAC (`SECURITY_ADMIN`, `SYSTEM_ADMIN`)
+2. List filters: actorId, actorEmail, action, entityType, entityId, from, to, page, pageSize
+3. Removed temporary `RbacProbeController`
+4. Unit tests for `AuditService.list` (BU-05) + e2e `audit.e2e-spec.ts` (BI-07, AUD-01/04)
+5. BI-03 auth e2e updated to assert real paginated audit list
+6. Local lint/test/e2e/build green
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-API-10
+### 1. Finish T-API-10 CI
 
 ```bash
 cd /home/barami/projects/expoapp
-git checkout -B agent/T-API-10-audit-list origin/agent/T-API-09-fusion-adapter
-# Implement GET /audit-logs (admin-only filters) per ledger + 18_AUDIT_LOGGING.md
-cd apps/api && npm run lint && npm run test && npm run test:e2e && npm run build
-git push -u origin agent/T-API-10-audit-list
-# wait for GitHub CI green; update ledger/NEXT_RUN
+# after push: wait for GitHub Actions green on agent/T-API-10-audit-list
+# then mark T-API-10 passed in ledger + NEXT_RUN
 ```
 
-### 2. Sequential foundation only
+### 2. Start T-API-07
+
+```bash
+git checkout -B agent/T-API-07-access-requests origin/agent/T-API-10-audit-list
+# Implement access requests per 16_ACCESS_REQUESTS_WORKFLOW.md + ledger
+```
+
+### 3. Sequential foundation only
 
 No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md`.
 

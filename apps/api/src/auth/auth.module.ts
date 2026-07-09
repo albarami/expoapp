@@ -8,7 +8,6 @@ import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { RolesGuard } from './guards/roles.guard';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { RbacProbeController } from './rbac-probe.controller';
 
 @Module({
   imports: [
@@ -27,7 +26,7 @@ import { RbacProbeController } from './rbac-probe.controller';
       },
     }),
   ],
-  controllers: [AuthController, RbacProbeController],
+  controllers: [AuthController],
   providers: [
     AuthService,
     JwtStrategy,

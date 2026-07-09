@@ -256,7 +256,7 @@ describeDb('Auth + RBAC (e2e BI-02 / BI-03)', () => {
     expect(body.error.code).toBe('FORBIDDEN');
   });
 
-  it('allows system admin notification create and audit probe (BI-03)', async () => {
+  it('allows system admin notification create and audit list (BI-03)', async () => {
     const loginBody = await login('admin@expo.sa');
     const token = loginBody.data.accessToken;
 
@@ -291,10 +291,26 @@ describeDb('Auth + RBAC (e2e BI-02 / BI-03)', () => {
     expect(created.data.status).toBe('PUBLISHED');
     expect(created.data.recipientCount).toBeGreaterThanOrEqual(1);
 
-    await request(app.getHttpServer())
+    const auditResponse = await request(app.getHttpServer())
       .get('/api/v1/audit-logs')
+      .query({ page: 1, pageSize: 5 })
       .set('Authorization', `Bearer ${token}`)
       .expect(200);
+
+    const auditBody = auditResponse.body as ApiSuccessResponse<
+      Array<{ id: string; action: string }>
+    > & {
+      pagination: {
+        page: number;
+        pageSize: number;
+        total: number;
+        totalPages: number;
+      };
+    };
+    expect(Array.isArray(auditBody.data)).toBe(true);
+    expect(auditBody.pagination.page).toBe(1);
+    expect(auditBody.pagination.pageSize).toBe(5);
+    expect(auditBody.pagination.total).toBeGreaterThanOrEqual(1);
   });
 
   it('rejects invalid login credentials with 401', async () => {

@@ -262,9 +262,10 @@ T-DOC-01
 | Dependencies | T-API-03 |
 | Files | `audit/**` |
 | Acceptance | Record helper; admin-only list/filters; immutability |
-| Local tests | AUD-*, BI-07 |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | BU-05, BI-03, BI-07, AUD-01/04 — **PASS 2026-07-09** |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-API-10-audit-list` |
+| Status | **in_progress** |
 
 ---
 

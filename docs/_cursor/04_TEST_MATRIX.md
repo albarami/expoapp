@@ -18,7 +18,7 @@ Update this file as tests are added.
 | BU-02 | Audience resolver | ALL / DEPARTMENT / ROLE / USERS; exclude inactive; invalid filter | same | **passing** |
 | BU-03 | Access request validation | Justification length; dates; inactive role; missing manager; duplicate active | same | pending |
 | BU-04 | Approval transitions | Manager approve→security; manager reject; security approve→complete (mock); security reject; already decided | same | pending |
-| BU-05 | AuditService | record writes expected fields; no secrets | same | **passing** (record helper; list API still T-API-10) |
+| BU-05 | AuditService | record writes expected fields; no secrets; list filters/pagination | same | **passing** |
 | BU-06 | MockFusionAdapter | profile; roles; validate; provision; status | same | **passing** |
 | BU-07 | Request number | Format `AR-YYYY-######` | same | pending |
 
@@ -30,11 +30,11 @@ Update this file as tests are added.
 |---|---|---|---|---|
 | BI-01 | Health | GET `/health` ok with DB | `npm run test` / e2e | **passing** (e2e envelope; DB via health unit/service) |
 | BI-02 | Auth | Login all demo users; `/auth/me`; logout | same | **passing** |
-| BI-03 | Authz | Missing token → 401; employee POST notifications → 403; employee GET audit → 403 | same | **passing** (real POST /notifications; audit-logs probe until T-API-10) |
+| BI-03 | Authz | Missing token → 401; employee POST notifications → 403; employee GET audit → 403 | same | **passing** (real POST /notifications + real GET /audit-logs) |
 | BI-04 | Notifications | Admin create+recipients; employee list/detail/read; stats; cancel | `npm run test:e2e` (`notifications.e2e-spec.ts`) | **passing** |
 | BI-05 | Access requests | Submit → MANAGER_PENDING + task; list scoped; cancel rules | same | pending |
 | BI-06 | Approvals | Manager approve creates security task; wrong assignee 403; security completes mock | same | pending |
-| BI-07 | Audit | Submit/approve write logs; filters work | same | pending |
+| BI-07 | Audit | Admin list/filters/pagination; employee/manager 403 | `npm run test:e2e` (`audit.e2e-spec.ts`) | **passing** (list/filters; submit/approve writes still T-API-07/08) |
 | BI-08 | Seed | Idempotent second run; expected entity counts/statuses | `npm run seed` ×2 + `npm run test` (`seed.idempotency.spec.ts`) | **passing** |
 | BI-09 | Reference + dashboard | Auth required; reference payload complete; role-aware `/dashboard/summary` | `npm run test:e2e` (`reference-dashboard.e2e-spec.ts`) | **passing** |
 
@@ -111,10 +111,10 @@ Update this file as tests are added.
 
 | ID | Cases | Status |
 |---|---|---|
-| AUD-01 | Login success/failure audited | pending |
+| AUD-01 | Login success/failure audited | **passing** (`audit.e2e-spec.ts`) |
 | AUD-02 | Notification create/publish/read/cancel | **passing** (covered in BI-04 e2e audit assertions) |
 | AUD-03 | Access submit/cancel + approvals + provisioning | pending |
-| AUD-04 | No password/token in metadata | pending |
+| AUD-04 | No password/token in metadata | **passing** (`audit.e2e-spec.ts` login audit scan) |
 
 ---
 
