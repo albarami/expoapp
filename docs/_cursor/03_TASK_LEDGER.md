@@ -217,9 +217,9 @@ T-DOC-01
 | Files | `access-requests/**` |
 | Acceptance | Workflow start states; validation codes; timeline |
 | Local tests | BU-03, BU-07, BI-05 — **PASS 2026-07-09** |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29035039147 |
 | Branch/PR | `agent/T-API-07-access-requests` |
-| Status | **in_progress** (local green; awaiting CI) |
+| Status | **passed** |
 
 ---
 
