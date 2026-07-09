@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-API-07 **passed** — CI green)  
+**Updated:** 2026-07-09 (T-API-08 **passed** — CI green)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-API-08 Approvals** — manager/security decisions + mock provisioning. Depends on T-API-07 (access requests) + T-API-09 (Fusion).
+**T-MOB-01 Flutter foundation** — app structure, theme, l10n, GoRouter stub, Dio, secure storage, shared widgets. All Phase-7 API tasks (T-API-01..10) are complete.
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-API-07-access-requests` (T-API-07 complete; start T-API-08 from this HEAD or a new `agent/T-API-08-*` branch)
+- Branch: `agent/T-API-08-approvals` (T-API-08 complete; start T-MOB-01 from this HEAD or a new `agent/T-MOB-01-*` branch)
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- Base: T-API-07 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29035039147
-- CI (T-API-07): **green** — https://github.com/albarami/expoapp/actions/runs/29035039147
+- Base: T-API-08 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29036247670
+- CI (T-API-08): **green** — https://github.com/albarami/expoapp/actions/runs/29036247670
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,37 +25,40 @@
 
 | Now | Next exact task |
 |---|---|
-| T-API-07 **passed** | Start **T-API-08** Approvals + mock provisioning |
+| T-API-08 **passed** | Start **T-MOB-01** Flutter foundation |
 
 ---
 
-## Completed this run (T-API-07)
+## Completed this run (T-API-08)
 
-1. `AccessRequestsModule` — POST/GET list/GET detail/PATCH cancel
-2. Request numbering `AR-YYYY-######`, Fusion `validateAccessRequest`, manager/security initial routing
-3. Approval task + timeline events + audit on submit/cancel
-4. Role-scoped lists (own / manager direct reports / security+admin all)
-5. Validation codes per workflow docs
-6. Unit (BU-03/BU-07) + e2e BI-05; local + GitHub CI green
+1. `ApprovalsModule` — GET `/approvals` (role-scoped queue) + POST `/approvals/:taskId/decision`
+2. Manager approve → SECURITY_PENDING + security task (when required) or mock provision/complete
+3. Manager/security reject → MANAGER_REJECTED / SECURITY_REJECTED + COMPLETE stage
+4. Security approve → PROVISIONING + transactional outbox + MockFusion complete path
+5. Timeline events + audit (approve/reject/provisioning/completed)
+6. Unit BU-04 + e2e BI-06; local + GitHub CI green
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-API-08
+### 1. Start T-MOB-01
 
 ```bash
 cd /home/barami/projects/expoapp
-git checkout -B agent/T-API-08-approvals origin/agent/T-API-07-access-requests
-# Implement approvals per 17_APPROVAL_ENGINE.md + ledger + 10_API_CONTRACT.md
-cd apps/api && npm run lint && npm run test && npm run test:e2e && npm run build
-git push -u origin agent/T-API-08-approvals
+git checkout -B agent/T-MOB-01-flutter-foundation origin/agent/T-API-08-approvals
+# Implement Flutter foundation per 12_FLUTTER_ARCHITECTURE.md + ledger
+# Use .cursor/skills/ui-ux-pro-max/ for theme/widgets
+cd apps/mobile && flutter analyze && flutter test
+git push -u origin agent/T-MOB-01-flutter-foundation
 # wait for GitHub CI green; update ledger/NEXT_RUN
 ```
 
 ### 2. Sequential foundation only
 
-No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md`.
+No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md` (architecture, CI, auth, navigation, Prisma, localization, shared contracts).
+
+Remaining sequential mobile path after T-MOB-01: T-MOB-02 (auth/session) → T-MOB-03..07 feature screens.
 
 ---
 
@@ -67,8 +70,7 @@ See `PORTS.md`.
 
 ## Do not do next
 
-- Do not skip to Flutter feature modules before remaining API foundations (approvals)
-- Do not spawn parallel feature agents yet
+- Do not spawn parallel feature agents yet (mobile foundations incomplete)
 - Do not create Expo React Native apps
 - Do not force-push `main`
 - Do not require real Oracle credentials in Phase 1

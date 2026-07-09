@@ -233,9 +233,9 @@ T-DOC-01
 | Files | `approvals/**` |
 | Acceptance | Manager/security decisions; transactional; mock complete |
 | Local tests | BU-04, BI-06 — **PASS 2026-07-09** |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29036247670 |
 | Branch/PR | `agent/T-API-08-approvals` |
-| Status | **in_progress** |
+| Status | **passed** |
 
 ---
 
