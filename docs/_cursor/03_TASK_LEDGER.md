@@ -329,11 +329,13 @@ T-DOC-01
 | Title | List/detail/read/create/stats |
 | Source | `15`, `19`, `20` screens 4–6 |
 | Dependencies | T-MOB-02, T-API-06 |
-| Files | `features/notifications/**`, `features/admin/**` |
+| Files | `features/notifications/**`, create under admin route |
 | Acceptance | E2E with seed/API; employee cannot open create |
 | Skills | ui-ux-pro-max |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | `flutter analyze`, `flutter test` — **PASS 2026-07-09** (52 tests) |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29039489370 |
+| Branch/PR | `agent/T-MOB-04-notifications` |
+| Status | **passed** |
 
 ---
 
@@ -434,6 +436,7 @@ T-DOC-01
 6. ~~T-MOB-01~~ **passed** (CI green: run 29036867939)
 7. ~~T-MOB-02~~ **passed** (CI green: run 29037687031)
 8. ~~T-MOB-03~~ **passed** (CI green: run 29038786051)
-9. **T-MOB-04** — Flutter notifications (+ admin) (next)
+9. ~~T-MOB-04~~ **passed** (CI green: run 29039489370)
+10. **T-MOB-05** — Flutter access requests (next)
 
-**Resume at T-MOB-04.**
+**Resume at T-MOB-05.**
