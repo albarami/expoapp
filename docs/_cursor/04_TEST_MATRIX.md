@@ -47,7 +47,7 @@ Update this file as tests are added.
 | FU-01 | Login | Validation; invalid credentials message | `cd apps/mobile && flutter test` | **passing** (T-MOB-02 auth_session_test) |
 | FU-02 | Dashboard | Renders metrics for each role (mocked providers) | same | **passing** (T-MOB-03 dashboard_test) |
 | FU-03 | Notification card | Localized title; priority chip; AR title | same | **passing** (T-MOB-04 notifications_test) |
-| FU-04 | Access request form | Min justification; temporary needs end date | same | pending |
+| FU-04 | Access request form | Catalog load; payload contract; list/detail/cancel UI | same | **passing** (T-MOB-05 access_requests_test) |
 | FU-05 | Approval confirm | Approve/reject sheets | same | pending |
 | FU-06 | Router guards | Employee blocked from `/audit` and create notification | same | **passing** (create route in T-MOB-04; audit covered T-MOB-02) |
 | FU-07 | Error mapping | Known codes → l10n | same | **passing** (T-MOB-01 error_mapper_test) |
@@ -71,6 +71,7 @@ Update this file as tests are added.
 |---|---|---|
 | RP-01 | ApiClient attaches Bearer; maps 401 | **passing** (T-MOB-02 ApiClient 401 test) |
 | RP-02 | NotificationsProvider loading/error/data | **passing** (T-MOB-04 list/error/empty/detail/create tests) |
+| RP-02b | AccessRequestsProvider list/error/empty/detail/cancel | **passing** (T-MOB-05 access_requests_test) |
 | RP-03 | SessionController restore from secure storage | **passing** (T-MOB-02 `/auth/me` restore) |
 
 ---

@@ -349,8 +349,10 @@ T-DOC-01
 | Files | `features/access_requests/**` |
 | Acceptance | Submit returns request number; timeline; validation |
 | Skills | ui-ux-pro-max |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | `flutter analyze`, `flutter test` — **PASS 2026-07-09** (63 tests) |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-MOB-05-access-requests` |
+| Status | **in_progress** (local green; awaiting CI) |
 
 ---
 
@@ -437,6 +439,7 @@ T-DOC-01
 7. ~~T-MOB-02~~ **passed** (CI green: run 29037687031)
 8. ~~T-MOB-03~~ **passed** (CI green: run 29038786051)
 9. ~~T-MOB-04~~ **passed** (CI green: run 29039489370)
-10. **T-MOB-05** — Flutter access requests (next)
+10. **T-MOB-05** — Flutter access requests (local green; awaiting CI)
+11. **T-MOB-06** — Flutter approvals (next after T-MOB-05 CI green)
 
-**Resume at T-MOB-05.**
+**Resume at T-MOB-05 CI gate, then T-MOB-06.**

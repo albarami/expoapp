@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-MOB-04 **passed** — CI green)  
+**Updated:** 2026-07-09 (T-MOB-05 local green — awaiting CI)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-MOB-05 Flutter access requests** — my requests, form, detail/timeline, cancel against access-requests API. T-MOB-04 notifications (+ admin) is complete.
+**T-MOB-05 Flutter access requests** — my requests, form, detail/timeline, cancel against access-requests API. Local `flutter analyze` + 63 tests green; push and wait for GitHub CI.
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-MOB-04-notifications` (T-MOB-04 complete; start T-MOB-05 from this HEAD or a new `agent/T-MOB-05-*` branch)
+- Branch: `agent/T-MOB-05-access-requests`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
 - Base: T-MOB-04 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29039489370
-- CI (T-MOB-04): **green** — https://github.com/albarami/expoapp/actions/runs/29039489370
+- CI (T-MOB-05): **pending** after push
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,42 +25,50 @@
 
 | Now | Next exact task |
 |---|---|
-| T-MOB-04 **passed** | Start **T-MOB-05** Flutter access requests |
+| T-MOB-05 local green | Wait for GitHub CI green, then start **T-MOB-06** Flutter approvals |
 
 ---
 
-## Completed this run (T-MOB-04)
+## Completed this run (T-MOB-05)
 
-1. Notifications list with search, filter chips (All/Unread/High/Critical), pull-to-refresh
-2. Notification detail + explicit mark-as-read; admin stats on detail
-3. Admin create notification form (priority, audience, publish/schedule, critical confirm, preview)
-4. Role guard: employee cannot open `/admin/notifications/create`
-5. API envelope unwrap for auth/dashboard/notifications; CRITICAL priority aligned with backend
-6. EN/AR l10n; ui-ux-pro-max applied to inbox/detail/create
-7. Local `flutter analyze` clean + 52 tests; GitHub CI green
+1. My Requests list with status tabs (All/Pending/Completed/Rejected), pull-to-refresh, FAB
+2. New Access Request form (system/role from reference-data, justification, duration, dates, urgency)
+3. Request detail with timeline + cancel when requester + cancelable status
+4. EN/AR l10n; error codes for invalid dates / not cancelable / inactive user
+5. Routes `/requests`, `/requests/new`, `/requests/:id` wired (stubs replaced)
+6. ui-ux-pro-max applied to list/form/detail
+7. Local `flutter analyze` clean + 63 tests
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-MOB-05
+### 1. Confirm T-MOB-05 CI green
 
 ```bash
 cd /home/barami/projects/expoapp
-git checkout -B agent/T-MOB-05-access-requests origin/agent/T-MOB-04-notifications
-# Implement my requests / form / detail+timeline / cancel
+gh run list --branch agent/T-MOB-05-access-requests --limit 3
+# when green: update ledger Status to passed + CI URL; then start T-MOB-06
+```
+
+### 2. Start T-MOB-06
+
+```bash
+cd /home/barami/projects/expoapp
+git checkout -B agent/T-MOB-06-approvals origin/agent/T-MOB-05-access-requests
+# Implement approval queue + decision UI
 # Use .cursor/skills/ui-ux-pro-max/
-# Depends on T-API-07 (already passed)
+# Depends on T-API-08 (already passed)
 cd apps/mobile && flutter analyze && flutter test
-git push -u origin agent/T-MOB-05-access-requests
+git push -u origin agent/T-MOB-06-approvals
 # wait for GitHub CI green; update ledger/NEXT_RUN
 ```
 
-### 2. Sequential foundation only
+### 3. Sequential foundation only
 
-Still prefer sequential mobile feature tasks (T-MOB-05..07) until navigation + shared contracts feel stable per `08_PARALLEL_EXECUTION_PLAN.md` before spawning parallel feature agents.
+Still prefer sequential mobile feature tasks (T-MOB-06..07) until navigation + shared contracts feel stable per `08_PARALLEL_EXECUTION_PLAN.md` before spawning parallel feature agents.
 
-Remaining sequential mobile path: T-MOB-05..07; T-L10N-01 polish later.
+Remaining sequential mobile path: T-MOB-06..07; T-L10N-01 polish later.
 
 ---
 
