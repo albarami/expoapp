@@ -37,13 +37,6 @@ const _security = AppUser(
   role: AppRole.securityAdmin,
 );
 
-const _admin = AppUser(
-  id: 'u-admin',
-  email: 'admin@expo.sa',
-  displayName: 'Expo System Admin',
-  role: AppRole.systemAdmin,
-);
-
 DashboardSummary _employeeSummary({
   int unread = 2,
   List<DashboardNotificationItem> notifications = const [],
