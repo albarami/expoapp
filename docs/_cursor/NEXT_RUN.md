@@ -1,15 +1,15 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-L10N-01 local green — CI pending)  
+**Updated:** 2026-07-09 (T-L10N-01 passed — CI green)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-L10N-01 Localization & RTL polish** — **passed locally** on `agent/T-L10N-01-polish`. Next: **T-QA-01**.
+**T-L10N-01 Localization & RTL polish** — **passed** on `agent/T-L10N-01-polish`. Next: **T-QA-01**.
 
-CI: pending after push — update URL when green.
+CI: https://github.com/albarami/expoapp/actions/runs/29043070135
 
 ---
 
@@ -17,7 +17,7 @@ CI: pending after push — update URL when green.
 
 - Branch: `agent/T-L10N-01-polish`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- CI (T-L10N-01): **pending**
+- CI (T-L10N-01): **green** — https://github.com/albarami/expoapp/actions/runs/29043070135
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -26,30 +26,23 @@ CI: pending after push — update URL when green.
 
 | Now | Next exact task |
 |---|---|
-| T-L10N-01 **passed** (local; CI pending) | Start **T-QA-01** Automated + manual QA |
+| T-L10N-01 **passed** | Start **T-QA-01** Automated + manual QA |
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Confirm T-L10N-01 CI green
-
-```bash
-gh run list --branch agent/T-L10N-01-polish --limit 3
-# gh run watch <id> --exit-status
-# Then mark ledger CI URL and Status passed with green CI
-```
-
-### 2. Start T-QA-01
+### 1. Start T-QA-01
 
 ```bash
 cd /home/barami/projects/expoapp
 git checkout -B agent/T-QA-01-qa origin/agent/T-L10N-01-polish
 # Complete test matrix + demo scenarios per ledger / 04_TEST_MATRIX.md
+# Update MAN-* device sign-offs where still deferred
 git push -u origin agent/T-QA-01-qa
 ```
 
-### 3. Sequential path remaining
+### 2. Sequential path remaining
 
 T-QA-01 → T-REL-01.
 

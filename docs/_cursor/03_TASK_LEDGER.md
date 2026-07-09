@@ -399,8 +399,8 @@ T-DOC-01
 | Dependencies | T-MOB-03..07 |
 | Files | `l10n/*.arb`, feature UIs |
 | Acceptance | No hardcoded UI strings; Scenario 4 pass |
-| GitHub CI | **pending** — push `agent/T-L10N-01-polish`; update URL when green |
-| Status | **passed** (local analyze+test green; CI pending) |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29043070135 |
+| Status | **passed** |
 
 ---
 
@@ -446,7 +446,7 @@ T-DOC-01
 10. ~~T-MOB-05~~ **passed** (CI green: run 29040425846)
 11. ~~T-MOB-06~~ **passed** (CI green: run 29041340812)
 12. ~~T-MOB-07~~ **passed** (CI green: run 29042259598)
-13. ~~T-L10N-01~~ **passed** (local green; CI pending)
+13. ~~T-L10N-01~~ **passed** (CI green: run 29043070135)
 14. **T-QA-01** — Automated + manual QA (next)
 
 **Resume at T-QA-01.**
