@@ -300,5 +300,51 @@
   "errorApprovalNotFound": "This approval task could not be found.",
   "errorApprovalNotPending": "This approval has already been decided.",
   "errorNotTaskAssignee": "Only the assigned approver can decide this task.",
-  "errorForbidden": "You do not have permission for this action."
+  "errorForbidden": "You do not have permission for this action.",
+  "close": "Close",
+  "viewMetadata": "View metadata",
+  "searchActorEmail": "Search by actor email",
+  "filterAction": "Action",
+  "filterEntityType": "Entity",
+  "filterFromDate": "From date",
+  "filterToDate": "To date",
+  "clearFilters": "Clear filters",
+  "noAuditLogs": "No audit logs",
+  "noAuditLogsMessage": "Security and admin events will appear here.",
+  "noAuditLogsFilteredMessage": "No logs match the current filters.",
+  "auditActorUnknown": "Unknown actor",
+  "auditEntityLabel": "Entity: {entityType}",
+  "@auditEntityLabel": {
+    "placeholders": {
+      "entityType": {
+        "type": "String"
+      }
+    }
+  },
+  "auditMetadataTitle": "Audit event detail",
+  "auditNoMetadata": "No metadata recorded.",
+  "auditFieldAction": "Action",
+  "auditFieldActor": "Actor",
+  "auditFieldEntity": "Entity type",
+  "auditFieldEntityId": "Entity ID",
+  "auditFieldWhen": "When",
+  "auditFieldIp": "IP address",
+  "auditFieldUserAgent": "User agent",
+  "auditFieldMetadata": "Metadata",
+  "previousPage": "Previous page",
+  "nextPage": "Next page",
+  "auditPageStatus": "Page {page} of {totalPages} · {total} events",
+  "@auditPageStatus": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "totalPages": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
 }

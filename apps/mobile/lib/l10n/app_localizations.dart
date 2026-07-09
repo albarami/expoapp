@@ -1339,6 +1339,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You do not have permission for this action.'**
   String get errorForbidden;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @viewMetadata.
+  ///
+  /// In en, this message translates to:
+  /// **'View metadata'**
+  String get viewMetadata;
+
+  /// No description provided for @searchActorEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by actor email'**
+  String get searchActorEmail;
+
+  /// No description provided for @filterAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Action'**
+  String get filterAction;
+
+  /// No description provided for @filterEntityType.
+  ///
+  /// In en, this message translates to:
+  /// **'Entity'**
+  String get filterEntityType;
+
+  /// No description provided for @filterFromDate.
+  ///
+  /// In en, this message translates to:
+  /// **'From date'**
+  String get filterFromDate;
+
+  /// No description provided for @filterToDate.
+  ///
+  /// In en, this message translates to:
+  /// **'To date'**
+  String get filterToDate;
+
+  /// No description provided for @clearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filters'**
+  String get clearFilters;
+
+  /// No description provided for @noAuditLogs.
+  ///
+  /// In en, this message translates to:
+  /// **'No audit logs'**
+  String get noAuditLogs;
+
+  /// No description provided for @noAuditLogsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Security and admin events will appear here.'**
+  String get noAuditLogsMessage;
+
+  /// No description provided for @noAuditLogsFilteredMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No logs match the current filters.'**
+  String get noAuditLogsFilteredMessage;
+
+  /// No description provided for @auditActorUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown actor'**
+  String get auditActorUnknown;
+
+  /// No description provided for @auditEntityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Entity: {entityType}'**
+  String auditEntityLabel(String entityType);
+
+  /// No description provided for @auditMetadataTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Audit event detail'**
+  String get auditMetadataTitle;
+
+  /// No description provided for @auditNoMetadata.
+  ///
+  /// In en, this message translates to:
+  /// **'No metadata recorded.'**
+  String get auditNoMetadata;
+
+  /// No description provided for @auditFieldAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Action'**
+  String get auditFieldAction;
+
+  /// No description provided for @auditFieldActor.
+  ///
+  /// In en, this message translates to:
+  /// **'Actor'**
+  String get auditFieldActor;
+
+  /// No description provided for @auditFieldEntity.
+  ///
+  /// In en, this message translates to:
+  /// **'Entity type'**
+  String get auditFieldEntity;
+
+  /// No description provided for @auditFieldEntityId.
+  ///
+  /// In en, this message translates to:
+  /// **'Entity ID'**
+  String get auditFieldEntityId;
+
+  /// No description provided for @auditFieldWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'When'**
+  String get auditFieldWhen;
+
+  /// No description provided for @auditFieldIp.
+  ///
+  /// In en, this message translates to:
+  /// **'IP address'**
+  String get auditFieldIp;
+
+  /// No description provided for @auditFieldUserAgent.
+  ///
+  /// In en, this message translates to:
+  /// **'User agent'**
+  String get auditFieldUserAgent;
+
+  /// No description provided for @auditFieldMetadata.
+  ///
+  /// In en, this message translates to:
+  /// **'Metadata'**
+  String get auditFieldMetadata;
+
+  /// No description provided for @previousPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous page'**
+  String get previousPage;
+
+  /// No description provided for @nextPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Next page'**
+  String get nextPage;
+
+  /// No description provided for @auditPageStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {page} of {totalPages} · {total} events'**
+  String auditPageStatus(int page, int totalPages, int total);
 }
 
 class _AppLocalizationsDelegate

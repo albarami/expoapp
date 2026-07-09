@@ -10,6 +10,7 @@ import '../features/access_requests/presentation/screens/access_requests_list_sc
 import '../features/access_requests/presentation/screens/create_access_request_screen.dart';
 import '../features/approvals/presentation/screens/approval_detail_screen.dart';
 import '../features/approvals/presentation/screens/approvals_list_screen.dart';
+import '../features/audit/presentation/screens/audit_logs_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/splash_screen.dart';
 import '../features/dashboard/presentation/screens/dashboard_screen.dart';
@@ -164,10 +165,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/audit',
             name: 'audit',
-            builder: (context, state) {
-              final l10n = AppLocalizations.of(context);
-              return FoundationPlaceholderScreen(title: l10n.auditLogs);
-            },
+            builder: (context, state) => const AuditLogsScreen(),
           ),
           GoRoute(
             path: '/profile',

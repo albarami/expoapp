@@ -671,4 +671,87 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorForbidden => 'You do not have permission for this action.';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get viewMetadata => 'View metadata';
+
+  @override
+  String get searchActorEmail => 'Search by actor email';
+
+  @override
+  String get filterAction => 'Action';
+
+  @override
+  String get filterEntityType => 'Entity';
+
+  @override
+  String get filterFromDate => 'From date';
+
+  @override
+  String get filterToDate => 'To date';
+
+  @override
+  String get clearFilters => 'Clear filters';
+
+  @override
+  String get noAuditLogs => 'No audit logs';
+
+  @override
+  String get noAuditLogsMessage =>
+      'Security and admin events will appear here.';
+
+  @override
+  String get noAuditLogsFilteredMessage => 'No logs match the current filters.';
+
+  @override
+  String get auditActorUnknown => 'Unknown actor';
+
+  @override
+  String auditEntityLabel(String entityType) {
+    return 'Entity: $entityType';
+  }
+
+  @override
+  String get auditMetadataTitle => 'Audit event detail';
+
+  @override
+  String get auditNoMetadata => 'No metadata recorded.';
+
+  @override
+  String get auditFieldAction => 'Action';
+
+  @override
+  String get auditFieldActor => 'Actor';
+
+  @override
+  String get auditFieldEntity => 'Entity type';
+
+  @override
+  String get auditFieldEntityId => 'Entity ID';
+
+  @override
+  String get auditFieldWhen => 'When';
+
+  @override
+  String get auditFieldIp => 'IP address';
+
+  @override
+  String get auditFieldUserAgent => 'User agent';
+
+  @override
+  String get auditFieldMetadata => 'Metadata';
+
+  @override
+  String get previousPage => 'Previous page';
+
+  @override
+  String get nextPage => 'Next page';
+
+  @override
+  String auditPageStatus(int page, int totalPages, int total) {
+    return 'Page $page of $totalPages · $total events';
+  }
 }

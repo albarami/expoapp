@@ -666,4 +666,87 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get errorForbidden => 'ليس لديك صلاحية لهذا الإجراء.';
+
+  @override
+  String get close => 'إغلاق';
+
+  @override
+  String get viewMetadata => 'عرض البيانات الوصفية';
+
+  @override
+  String get searchActorEmail => 'البحث ببريد الفاعل';
+
+  @override
+  String get filterAction => 'الإجراء';
+
+  @override
+  String get filterEntityType => 'الكيان';
+
+  @override
+  String get filterFromDate => 'من تاريخ';
+
+  @override
+  String get filterToDate => 'إلى تاريخ';
+
+  @override
+  String get clearFilters => 'مسح عوامل التصفية';
+
+  @override
+  String get noAuditLogs => 'لا توجد سجلات تدقيق';
+
+  @override
+  String get noAuditLogsMessage => 'ستظهر هنا أحداث الأمن والإدارة.';
+
+  @override
+  String get noAuditLogsFilteredMessage =>
+      'لا توجد سجلات تطابق عوامل التصفية الحالية.';
+
+  @override
+  String get auditActorUnknown => 'فاعل غير معروف';
+
+  @override
+  String auditEntityLabel(String entityType) {
+    return 'الكيان: $entityType';
+  }
+
+  @override
+  String get auditMetadataTitle => 'تفاصيل حدث التدقيق';
+
+  @override
+  String get auditNoMetadata => 'لا توجد بيانات وصفية مسجّلة.';
+
+  @override
+  String get auditFieldAction => 'الإجراء';
+
+  @override
+  String get auditFieldActor => 'الفاعل';
+
+  @override
+  String get auditFieldEntity => 'نوع الكيان';
+
+  @override
+  String get auditFieldEntityId => 'معرّف الكيان';
+
+  @override
+  String get auditFieldWhen => 'الوقت';
+
+  @override
+  String get auditFieldIp => 'عنوان IP';
+
+  @override
+  String get auditFieldUserAgent => 'وكيل المستخدم';
+
+  @override
+  String get auditFieldMetadata => 'البيانات الوصفية';
+
+  @override
+  String get previousPage => 'الصفحة السابقة';
+
+  @override
+  String get nextPage => 'الصفحة التالية';
+
+  @override
+  String auditPageStatus(int page, int totalPages, int total) {
+    return 'صفحة $page من $totalPages · $total حدث';
+  }
 }

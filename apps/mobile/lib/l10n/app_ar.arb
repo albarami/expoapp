@@ -297,5 +297,51 @@
   "errorApprovalNotFound": "تعذّر العثور على مهمة الموافقة هذه.",
   "errorApprovalNotPending": "تم البت في هذه الموافقة مسبقاً.",
   "errorNotTaskAssignee": "يمكن للمعتمد المعيّن فقط البت في هذه المهمة.",
-  "errorForbidden": "ليس لديك صلاحية لهذا الإجراء."
+  "errorForbidden": "ليس لديك صلاحية لهذا الإجراء.",
+  "close": "إغلاق",
+  "viewMetadata": "عرض البيانات الوصفية",
+  "searchActorEmail": "البحث ببريد الفاعل",
+  "filterAction": "الإجراء",
+  "filterEntityType": "الكيان",
+  "filterFromDate": "من تاريخ",
+  "filterToDate": "إلى تاريخ",
+  "clearFilters": "مسح عوامل التصفية",
+  "noAuditLogs": "لا توجد سجلات تدقيق",
+  "noAuditLogsMessage": "ستظهر هنا أحداث الأمن والإدارة.",
+  "noAuditLogsFilteredMessage": "لا توجد سجلات تطابق عوامل التصفية الحالية.",
+  "auditActorUnknown": "فاعل غير معروف",
+  "auditEntityLabel": "الكيان: {entityType}",
+  "@auditEntityLabel": {
+    "placeholders": {
+      "entityType": {
+        "type": "String"
+      }
+    }
+  },
+  "auditMetadataTitle": "تفاصيل حدث التدقيق",
+  "auditNoMetadata": "لا توجد بيانات وصفية مسجّلة.",
+  "auditFieldAction": "الإجراء",
+  "auditFieldActor": "الفاعل",
+  "auditFieldEntity": "نوع الكيان",
+  "auditFieldEntityId": "معرّف الكيان",
+  "auditFieldWhen": "الوقت",
+  "auditFieldIp": "عنوان IP",
+  "auditFieldUserAgent": "وكيل المستخدم",
+  "auditFieldMetadata": "البيانات الوصفية",
+  "previousPage": "الصفحة السابقة",
+  "nextPage": "الصفحة التالية",
+  "auditPageStatus": "صفحة {page} من {totalPages} · {total} حدث",
+  "@auditPageStatus": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "totalPages": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  }
 }
