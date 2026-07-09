@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-API-08 **passed** — CI green)  
+**Updated:** 2026-07-09 (T-MOB-01 **passed** — CI green)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-MOB-01 Flutter foundation** — app structure, theme, l10n, GoRouter stub, Dio, secure storage, shared widgets. All Phase-7 API tasks (T-API-01..10) are complete.
+**T-MOB-02 Flutter auth + session + role shell** — login, demo buttons, token session, `/auth/me`, role tabs. T-MOB-01 Flutter foundation is complete.
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-API-08-approvals` (T-API-08 complete; start T-MOB-01 from this HEAD or a new `agent/T-MOB-01-*` branch)
+- Branch: `agent/T-MOB-01-flutter-foundation` (T-MOB-01 complete; start T-MOB-02 from this HEAD or a new `agent/T-MOB-02-*` branch)
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- Base: T-API-08 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29036247670
-- CI (T-API-08): **green** — https://github.com/albarami/expoapp/actions/runs/29036247670
+- Base: T-MOB-01 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29036867939
+- CI (T-MOB-01): **green** — https://github.com/albarami/expoapp/actions/runs/29036867939
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,40 +25,41 @@
 
 | Now | Next exact task |
 |---|---|
-| T-API-08 **passed** | Start **T-MOB-01** Flutter foundation |
+| T-MOB-01 **passed** | Start **T-MOB-02** Flutter auth + session + role shell |
 
 ---
 
-## Completed this run (T-API-08)
+## Completed this run (T-MOB-01)
 
-1. `ApprovalsModule` — GET `/approvals` (role-scoped queue) + POST `/approvals/:taskId/decision`
-2. Manager approve → SECURITY_PENDING + security task (when required) or mock provision/complete
-3. Manager/security reject → MANAGER_REJECTED / SECURITY_REJECTED + COMPLETE stage
-4. Security approve → PROVISIONING + transactional outbox + MockFusion complete path
-5. Timeline events + audit (approve/reject/provisioning/completed)
-6. Unit BU-04 + e2e BI-06; local + GitHub CI green
+1. Feature-first Flutter layout under `apps/mobile/lib` (`app/`, `core/`, `features/`, `l10n/`, `shared/`)
+2. Material 3 theme + design tokens (`AppSpacing`, `AppRadius`, status colors) via **ui-ux-pro-max**
+3. EN/AR ARB + `flutter gen-l10n`; locale controller + language switcher
+4. GoRouter shell with role-aware tabs, route stubs, auth redirects
+5. Dio `ApiClient`, secure token storage, session controller, Riverpod providers
+6. Shared widgets: scaffold, cards, buttons, fields, loading/empty/error, chips, confirm sheet
+7. Local `flutter analyze` + 14 tests; GitHub CI green
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-MOB-01
+### 1. Start T-MOB-02
 
 ```bash
 cd /home/barami/projects/expoapp
-git checkout -B agent/T-MOB-01-flutter-foundation origin/agent/T-API-08-approvals
-# Implement Flutter foundation per 12_FLUTTER_ARCHITECTURE.md + ledger
-# Use .cursor/skills/ui-ux-pro-max/ for theme/widgets
+git checkout -B agent/T-MOB-02-auth-session origin/agent/T-MOB-01-flutter-foundation
+# Implement login + demo users + /auth/me session restore + role shell polish
+# Use .cursor/skills/ui-ux-pro-max/ for login UI
 cd apps/mobile && flutter analyze && flutter test
-git push -u origin agent/T-MOB-01-flutter-foundation
+git push -u origin agent/T-MOB-02-auth-session
 # wait for GitHub CI green; update ledger/NEXT_RUN
 ```
 
 ### 2. Sequential foundation only
 
-No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md` (architecture, CI, auth, navigation, Prisma, localization, shared contracts).
+No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md` are stable (auth UI + session still incomplete until T-MOB-02).
 
-Remaining sequential mobile path after T-MOB-01: T-MOB-02 (auth/session) → T-MOB-03..07 feature screens.
+Remaining sequential mobile path after T-MOB-02: T-MOB-03..07 feature screens; T-L10N-01 polish later.
 
 ---
 
@@ -70,7 +71,7 @@ See `PORTS.md`.
 
 ## Do not do next
 
-- Do not spawn parallel feature agents yet (mobile foundations incomplete)
+- Do not spawn parallel feature agents yet (auth/session foundation incomplete)
 - Do not create Expo React Native apps
 - Do not force-push `main`
 - Do not require real Oracle credentials in Phase 1

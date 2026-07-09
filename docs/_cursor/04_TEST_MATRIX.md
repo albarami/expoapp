@@ -44,13 +44,13 @@ Update this file as tests are added.
 
 | ID | Area | Cases | Command | Status |
 |---|---|---|---|---|
-| FU-01 | Login | Validation; invalid credentials message | `cd apps/mobile && flutter test` | pending |
+| FU-01 | Login | Validation; invalid credentials message | `cd apps/mobile && flutter test` | pending (T-MOB-02) |
 | FU-02 | Dashboard | Renders metrics for each role (mocked providers) | same | pending |
-| FU-03 | Notification card | Localized title; priority chip | same | pending |
+| FU-03 | Notification card | Localized title; priority chip | same | pending (chip widget covered in T-MOB-01 shared_widgets_test) |
 | FU-04 | Access request form | Min justification; temporary needs end date | same | pending |
 | FU-05 | Approval confirm | Approve/reject sheets | same | pending |
-| FU-06 | Router guards | Employee blocked from `/audit` | same | pending |
-| FU-07 | Error mapping | Known codes → l10n | same | pending |
+| FU-06 | Router guards | Employee blocked from `/audit` | same | pending (redirect stub in T-MOB-01 router) |
+| FU-07 | Error mapping | Known codes → l10n | same | **passing** (T-MOB-01 error_mapper_test) |
 
 ---
 
@@ -58,7 +58,7 @@ Update this file as tests are added.
 
 | ID | Cases | Status |
 |---|---|---|
-| NAV-01 | Unauthenticated → `/login` | pending |
+| NAV-01 | Unauthenticated → `/login` | **passing** (T-MOB-01 widget smoke) |
 | NAV-02 | Authenticated `/login` → `/` | pending |
 | NAV-03 | Role tab sets match `06` / `13` | pending |
 | NAV-04 | Deep restricted route shows unauthorized | pending |

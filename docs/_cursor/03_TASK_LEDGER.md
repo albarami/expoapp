@@ -281,9 +281,10 @@ T-DOC-01
 | Files | `apps/mobile/lib/**` |
 | Acceptance | App starts; analyze clean; Material 3 tokens; ARB wired |
 | Skills | **ui-ux-pro-max** (+ flutter.csv) for widgets/theme |
-| Local tests | `flutter analyze`, `flutter test` |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | `flutter analyze`, `flutter test` — **PASS 2026-07-09** (14 tests) |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29036867939 |
+| Branch/PR | `agent/T-MOB-01-flutter-foundation` |
+| Status | **passed** |
 
 ---
 
