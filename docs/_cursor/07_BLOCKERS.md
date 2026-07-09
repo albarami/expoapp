@@ -1,6 +1,6 @@
 # Blockers — ExpoApp
 
-**Updated:** 2026-07-09 (CI green; B-003 cleared)  
+**Updated:** 2026-07-09 (T-QA-01; Phase 2 externals unchanged)  
 **Rule:** Only true blockers. Product/engineering decisions are made and recorded in architecture docs — not listed here.
 
 ---
@@ -28,6 +28,9 @@
 | E-005 | FCM/APNs credentials | Real push | Waiting on client |
 | E-006 | Production hosting/DB/network allowlists | Production deploy | Waiting on client |
 | E-007 | Official Expo Saudi brand assets | Final branding | Optional; use placeholder |
+| E-008 | Interactive Android emulator / physical device sign-off (PL-01) | Store demo polish | Optional for Phase 1; automated API+widget coverage complete |
+| E-009 | iOS Simulator / Xcode (PL-02) | iOS store demo | Host limitation on WSL/Linux; Flutter iOS-ready code retained |
+| E-010 | Interactive Flutter Web browser sign-off (PL-03) | Stakeholder web demo | Optional; Flutter Web target supported |
 
 These are documented per master prompt §16 — continue Phase 1 without them.
 

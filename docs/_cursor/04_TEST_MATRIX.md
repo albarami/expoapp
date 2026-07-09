@@ -1,6 +1,7 @@
 # Test Matrix — ExpoApp
 
 **Generated:** 2026-07-09  
+**Updated:** 2026-07-09 (T-QA-01)  
 **Sources:** `28_TESTING_QA_ACCEPTANCE.md`, `11_BACKEND_NESTJS_SPEC.md`, master prompt §9
 
 **Legend:** Status = pending | exists | passing | failing | N/A  
@@ -82,9 +83,9 @@ Update this file as tests are added.
 
 | ID | Cases | Status |
 |---|---|---|
-| RBAC-01 | Matrix from `06_PERSONAS_ROLES_PERMISSIONS.md` API-level | pending |
+| RBAC-01 | Matrix from `06_PERSONAS_ROLES_PERMISSIONS.md` API-level | **passing** (`qa-scenarios.e2e-spec.ts` RBAC-01 probes) |
 | RBAC-02 | UI tabs hidden for unauthorized roles | **passing** (T-MOB-02 role tab unit + widget) |
-| RBAC-03 | Manager cannot decide non-assigned task | pending |
+| RBAC-03 | Manager cannot decide non-assigned task | **passing** (`qa-scenarios.e2e-spec.ts` + approvals e2e wrong assignee) |
 
 ---
 
@@ -93,9 +94,9 @@ Update this file as tests are added.
 | ID | Forms | Status |
 |---|---|---|
 | FV-01 | Login email/password | **passing** (T-MOB-02 widget validation) |
-| FV-02 | Create notification fields + audience | pending |
-| FV-03 | Access request fields | pending |
-| FV-04 | Reject requires comment | pending |
+| FV-02 | Create notification fields + audience | **passing** (T-QA-01 notifications_test required-field submit) |
+| FV-03 | Access request fields | **passing** (T-QA-01 access_requests_test submit-disabled until valid) |
+| FV-04 | Reject requires comment | **passing** (approvals_test reject requires comment) |
 
 ---
 
@@ -106,7 +107,7 @@ Update this file as tests are added.
 | L10N-01 | ARB keys for all primary screens | **passing** (T-L10N-01 gen-l10n + screens) |
 | L10N-02 | Arabic sets RTL | **passing** (T-L10N-01 localization_rtl_test) |
 | L10N-03 | Fallback to EN when AR missing | **passing** (Flutter gen-l10n / template EN) |
-| L10N-04 | Manual Scenario 4 Arabic UI | **passing** (widget coverage; full device MAN deferred to T-QA-01) |
+| L10N-04 | Manual Scenario 4 Arabic UI | **passing** (widget Scenario 4; device visual sign-off external) |
 
 ---
 
@@ -135,10 +136,10 @@ Update this file as tests are added.
 
 | ID | Cases | Status |
 |---|---|---|
-| UX-01 | Each list screen empty copy EN/AR | pending |
-| UX-02 | Error + retry on failed fetch | pending |
+| UX-01 | Each list screen empty copy EN/AR | **passing** (list empty states + shared EmptyState AR) |
+| UX-02 | Error + retry on failed fetch | **passing** (dashboard/notifications/requests/approvals/audit) |
 | UX-03 | Button loading disables double submit | **passing** (approvals/access flows; loading guards) |
-| UX-04 | Offline message | pending |
+| UX-04 | Offline message | **passing** (error_mapper `NETWORK_ERROR` → `networkError` EN/AR) |
 
 ---
 
@@ -146,10 +147,10 @@ Update this file as tests are added.
 
 | ID | Platform | Check | Status |
 |---|---|---|---|
-| PL-01 | Android | `flutter run` login + dashboard | pending |
-| PL-02 | iOS | Simulator when available | pending / note if host lacks Xcode |
-| PL-03 | Web | `flutter run -d chrome` admin create notification | pending |
-| PL-04 | Safe area / keyboard | Forms on mobile | pending |
+| PL-01 | Android | `flutter run` login + dashboard | **documented** — device/emulator external; code + widget coverage ready |
+| PL-02 | iOS | Simulator when available | **documented limitation** — WSL/Linux host has no Xcode; iOS-ready Flutter code retained |
+| PL-03 | Web | `flutter run -d chrome` admin create notification | **documented** — Flutter Web supported; interactive browser sign-off external |
+| PL-04 | Safe area / keyboard | Forms on mobile | **documented** — Material forms + safe scaffolds; device keyboard check external |
 | PL-05 | RTL overflow | Main screens in AR | **passing** (EdgeInsetsDirectional + chevron matchTextDirection; RTL tests) |
 
 ---
@@ -158,11 +159,11 @@ Update this file as tests are added.
 
 | ID | Scenario | Source | Status |
 |---|---|---|---|
-| MAN-01 | Employee notification E2E | `28` Scenario 1 | pending |
-| MAN-02 | Access request approval E2E | `28` Scenario 2 | pending |
-| MAN-03 | Unauthorized access | `28` Scenario 3 | pending |
-| MAN-04 | Arabic UI | `28` Scenario 4 | **passing** (automated Scenario 4 coverage; device sign-off in T-QA-01) |
-| MAN-05 | Full demo script | `32_ACCEPTANCE_CRITERIA_DEMO.md` | pending |
+| MAN-01 | Employee notification E2E | `28` Scenario 1 | **passing** (`qa-scenarios.e2e-spec.ts` MAN-01; Flutter widget coverage) |
+| MAN-02 | Access request approval E2E | `28` Scenario 2 | **passing** (`qa-scenarios.e2e-spec.ts` MAN-02) |
+| MAN-03 | Unauthorized access | `28` Scenario 3 | **passing** (API + Flutter router guards + MAN-03 e2e) |
+| MAN-04 | Arabic UI | `28` Scenario 4 | **passing** (automated Scenario 4; device visual sign-off external) |
+| MAN-05 | Full demo script | `32_ACCEPTANCE_CRITERIA_DEMO.md` | **passing** (`qa-scenarios.e2e-spec.ts` MAN-05 chain) |
 
 ---
 
@@ -173,11 +174,25 @@ Update this file as tests are added.
 | CI-01 | docker compose config | **passing** (CI job) |
 | CI-02 | api lint | **passing** |
 | CI-03 | api test | **passing** |
+| CI-03b | api e2e | **passing** (wired into CI in T-QA-01; local 47 tests) |
 | CI-04 | api build | **passing** |
 | CI-05 | flutter analyze | **passing** |
-| CI-06 | flutter test | **passing** |
-| CI-07 | GitHub Actions workflow exists & green | **passing** (https://github.com/albarami/expoapp/actions/runs/29032814249) |
-| REL-01 | Release checklist `06_RELEASE_CHECKLIST.md` | pending |
+| CI-06 | flutter test | **passing** (91 tests) |
+| CI-07 | GitHub Actions workflow exists & green | pending T-QA-01 push |
+| REL-01 | Release checklist `06_RELEASE_CHECKLIST.md` | in progress (T-REL-01) |
+
+---
+
+## T-QA-01 sign-off evidence (2026-07-09)
+
+| Check | Result |
+|---|---|
+| API lint | PASS |
+| API unit | PASS — 78 tests |
+| API e2e | PASS — 47 tests (includes `qa-scenarios.e2e-spec.ts`) |
+| Flutter analyze | PASS |
+| Flutter test | PASS — 91 tests |
+| Device PL-01..04 | External / documented — not Phase 1 blockers |
 
 ---
 

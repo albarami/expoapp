@@ -411,10 +411,12 @@ T-DOC-01
 | Title | Complete test matrix + demo scenarios |
 | Source | `28`, `32`, `04_TEST_MATRIX.md` |
 | Dependencies | Feature tasks merged |
-| Files | `apps/api/test/**`, `apps/mobile/test/**` |
+| Files | `apps/api/test/qa-scenarios.e2e-spec.ts`, Flutter FV tests, `.github/workflows/ci.yml`, `docs/_cursor/04_TEST_MATRIX.md` |
 | Acceptance | Matrix statuses updated; MAN-01..05 pass |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | API lint/test/e2e (78 unit + 47 e2e) + flutter analyze/test (91) — **PASS 2026-07-09** |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-QA-01-qa` |
+| Status | **in_progress** |
 
 ---
 
@@ -447,6 +449,7 @@ T-DOC-01
 11. ~~T-MOB-06~~ **passed** (CI green: run 29041340812)
 12. ~~T-MOB-07~~ **passed** (CI green: run 29042259598)
 13. ~~T-L10N-01~~ **passed** (CI green: run 29043070135)
-14. **T-QA-01** — Automated + manual QA (next)
+14. **T-QA-01** — Automated + manual QA (**in_progress** — local PASS; awaiting CI)
+15. **T-REL-01** — Release readiness (next after T-QA-01 CI green)
 
-**Resume at T-QA-01.**
+**Resume at T-QA-01 CI gate, then T-REL-01.**
