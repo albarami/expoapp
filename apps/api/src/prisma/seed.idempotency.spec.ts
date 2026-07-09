@@ -24,8 +24,9 @@ describeDb('Prisma seed idempotency (T-API-04 / BI-08)', () => {
 
     expect(first.departments).toBeGreaterThanOrEqual(5);
     expect(first.users).toBeGreaterThanOrEqual(5);
-    expect(first.systems).toBe(5);
-    expect(first.securityRoles).toBe(9);
+    expect(first.systems).toBeGreaterThanOrEqual(5);
+    // Seed upserts the 9 demo roles; e2e suites may leave additional catalog rows.
+    expect(first.securityRoles).toBeGreaterThanOrEqual(9);
     expect(first.notifications).toBeGreaterThanOrEqual(6);
     expect(first.accessRequests).toBeGreaterThanOrEqual(4);
     expect(first.approvalTasks).toBeGreaterThanOrEqual(5);

@@ -623,6 +623,63 @@ void main() {
       expect(json['urgency'], 'URGENT');
       expect(json.containsKey('endDate'), isTrue);
     });
+
+    testWidgets('FV-03 keeps submit disabled until justification is long enough',
+        (tester) async {
+      final repo = _FakeAccessRequestsRepository();
+      final storage = InMemoryTokenStorage();
+      await storage.writeTokens(accessToken: 'tok', refreshToken: 'ref');
+      await tester.binding.setSurfaceSize(const Size(800, 1800));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            tokenStorageProvider.overrideWithValue(storage),
+            authRepositoryProvider
+                .overrideWithValue(_FakeAuthRepository(_employee)),
+            accessRequestsRepositoryProvider.overrideWithValue(repo),
+            accessReferenceDataRepositoryProvider.overrideWithValue(
+              _FakeAccessReferenceDataRepository(),
+            ),
+          ],
+          child: MaterialApp(
+            locale: const Locale('en'),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            theme: AppTheme.light(),
+            home: const CreateAccessRequestScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Permanent'));
+      await tester.pumpAndSettle();
+
+      final systemField = find.byType(DropdownButtonFormField<String>).first;
+      await tester.tap(systemField);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Oracle Fusion ERP').last);
+      await tester.pumpAndSettle();
+
+      final roleField = find.byType(DropdownButtonFormField<String>).at(1);
+      await tester.tap(roleField);
+      await tester.pumpAndSettle();
+      await tester.tap(find.textContaining('AP Inquiry').last);
+      await tester.pumpAndSettle();
+
+      final submitFinder = find.widgetWithText(FilledButton, 'Submit');
+      expect(tester.widget<FilledButton>(submitFinder).onPressed, isNull);
+
+      await tester.enterText(
+        find.byType(TextFormField).first,
+        'Need temporary AP inquiry access for month-end close.',
+      );
+      await tester.pumpAndSettle();
+
+      expect(tester.widget<FilledButton>(submitFinder).onPressed, isNotNull);
+    });
   });
 
   group('AccessRequestDetailScreen', () {

@@ -534,5 +534,48 @@ void main() {
       expect(json['audienceFilter'], {'all': true});
       expect(json['publishNow'], isTrue);
     });
+
+    testWidgets('FV-02 validates required title and body before publish',
+        (tester) async {
+      final repo = _FakeNotificationsRepository();
+      final storage = InMemoryTokenStorage();
+      await storage.writeTokens(accessToken: 'tok', refreshToken: 'ref');
+      await tester.binding.setSurfaceSize(const Size(800, 1600));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            tokenStorageProvider.overrideWithValue(storage),
+            authRepositoryProvider.overrideWithValue(_FakeAuthRepository(_admin)),
+            notificationsRepositoryProvider.overrideWithValue(repo),
+            referenceDataRepositoryProvider
+                .overrideWithValue(_FakeReferenceDataRepository()),
+          ],
+          child: MaterialApp(
+            locale: const Locale('en'),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            theme: AppTheme.light(),
+            home: const CreateNotificationScreen(),
+          ),
+        ),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+
+      final publishButton = find.byKey(const Key('publishNotificationButton'));
+      await tester.scrollUntilVisible(
+        publishButton,
+        400,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pump();
+      await tester.tap(publishButton);
+      await tester.pumpAndSettle();
+
+      expect(find.text('This field is required.'), findsWidgets);
+      expect(repo.lastCreate, isNull);
+    });
   });
 }

@@ -41,6 +41,15 @@ jobs:
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     env:
       NODE_ENV: test
       API_PREFIX: api/v1
@@ -78,6 +87,9 @@ jobs:
 
       - name: Test
         run: npm run test
+
+      - name: E2E
+        run: npm run test:e2e
 
       - name: Build
         run: npm run build
