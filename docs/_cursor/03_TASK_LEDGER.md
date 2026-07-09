@@ -71,7 +71,7 @@ T-DOC-01
 | Files | `apps/**`, `docker-compose.yml`, `.env.example`, `.gitignore`, `README.md` |
 | Acceptance | Folders exist; `npm run lint/test/build` and `flutter analyze/test` runnable |
 | Local tests | See acceptance |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29030021235 |
 | Branch/PR | `agent/T-ENV-01-setup-control` |
 | Status | **passed** |
 
@@ -185,9 +185,9 @@ T-DOC-01
 | Files | `apps/api/src/reference-data/**`, `apps/api/src/dashboard/**`, `apps/api/test/reference-dashboard.e2e-spec.ts` |
 | Acceptance | Role-aware dashboard; reference payload complete |
 | Local tests | unit + e2e — **PASS 2026-07-09** |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29030021235 |
 | Branch/PR | `agent/T-API-05-reference-dashboard` |
-| Status | **in_progress** |
+| Status | **passed** |
 
 ---
 
