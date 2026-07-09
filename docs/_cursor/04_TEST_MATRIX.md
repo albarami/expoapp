@@ -167,13 +167,13 @@ Update this file as tests are added.
 
 | ID | Check | Status |
 |---|---|---|
-| CI-01 | docker compose config | pending (no compose yet) |
-| CI-02 | api lint | pending |
-| CI-03 | api test | pending |
-| CI-04 | api build | pending |
-| CI-05 | flutter analyze | pending |
-| CI-06 | flutter test | pending |
-| CI-07 | GitHub Actions workflow exists & green | pending |
+| CI-01 | docker compose config | **passing** (CI job) |
+| CI-02 | api lint | **passing** |
+| CI-03 | api test | **passing** |
+| CI-04 | api build | **passing** |
+| CI-05 | flutter analyze | **passing** |
+| CI-06 | flutter test | **passing** |
+| CI-07 | GitHub Actions workflow exists & green | **passing** (https://github.com/albarami/expoapp/actions/runs/29032814249) |
 | REL-01 | Release checklist `06_RELEASE_CHECKLIST.md` | pending |
 
 ---

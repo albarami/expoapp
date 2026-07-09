@@ -246,10 +246,10 @@ T-DOC-01
 | Dependencies | T-API-01 |
 | Files | `fusion/**` |
 | Acceptance | Mock works; oracle throws clear config error; no controller coupling |
-| Local tests | FUS-01..03 |
-| GitHub CI | pending push |
+| Local tests | FUS-01..03, BU-06 (unit + e2e) |
+| GitHub CI | green — https://github.com/albarami/expoapp/actions/runs/29032814249 |
 | Branch/PR | `agent/T-API-09-fusion-adapter` |
-| Status | **in_progress** |
+| Status | **passed** |
 
 ---
 
