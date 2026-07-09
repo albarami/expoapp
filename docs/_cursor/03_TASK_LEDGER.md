@@ -263,9 +263,9 @@ T-DOC-01
 | Files | `audit/**` |
 | Acceptance | Record helper; admin-only list/filters; immutability |
 | Local tests | BU-05, BI-03, BI-07, AUD-01/04 — **PASS 2026-07-09** |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29033402305 |
 | Branch/PR | `agent/T-API-10-audit-list` |
-| Status | **in_progress** |
+| Status | **passed** |
 
 ---
 
