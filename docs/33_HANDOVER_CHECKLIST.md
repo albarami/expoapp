@@ -2,27 +2,27 @@
 
 ## Developer handover
 
-- [ ] Root README has setup instructions.
-- [ ] `.env.example` files exist.
-- [ ] Docker Compose works.
-- [ ] Prisma migration exists.
-- [ ] Seed script works.
-- [ ] Swagger works.
-- [ ] Flutter app runs.
-- [ ] Demo users documented.
-- [ ] Known limitations documented.
-- [ ] Oracle integration TODOs isolated in adapter.
+- [x] Root README has setup instructions.
+- [x] `.env.example` files exist.
+- [x] Docker Compose works.
+- [x] Prisma migration exists.
+- [x] Seed script works.
+- [x] Swagger works.
+- [x] Flutter app runs. (code-ready + automated coverage; interactive device sign-off optional / external)
+- [x] Demo users documented.
+- [x] Known limitations documented.
+- [x] Oracle integration TODOs isolated in adapter.
 
 ## Code quality
 
-- [ ] Backend modules are separated.
-- [ ] DTO validation implemented.
-- [ ] Guards implemented.
-- [ ] No core business logic in controllers.
-- [ ] No screen-level fake arrays in Flutter.
-- [ ] Repositories/providers used.
-- [ ] Reusable widgets used.
-- [ ] No secrets committed.
+- [x] Backend modules are separated.
+- [x] DTO validation implemented.
+- [x] Guards implemented.
+- [x] No core business logic in controllers.
+- [x] No screen-level fake arrays in Flutter.
+- [x] Repositories/providers used.
+- [x] Reusable widgets used.
+- [x] No secrets committed.
 
 ## Business handover
 

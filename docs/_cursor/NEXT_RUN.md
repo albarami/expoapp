@@ -1,22 +1,25 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-QA-01 local PASS — push + await CI)  
+**Updated:** 2026-07-09 (T-REL-01 in progress)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-QA-01 Automated + manual QA** — local validation **PASS**. Push `agent/T-QA-01-qa` and wait for GitHub CI green, then mark passed and start **T-REL-01**.
+**T-REL-01 Release readiness** — **in_progress** on `agent/T-REL-01-release`.  
+T-QA-01 **passed** (CI green: https://github.com/albarami/expoapp/actions/runs/29044389419).
+
+After T-REL-01 is pushed and CI green: **Phase 1 complete**. No further Phase 1 tasks; remaining work is Phase 2 externals only (Oracle, SSO, push, store signing, production hosting).
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-QA-01-qa`
-- Base: `origin/agent/T-L10N-01-polish` (CI green: https://github.com/albarami/expoapp/actions/runs/29043070135)
+- Branch: `agent/T-REL-01-release`
+- Base: `origin/agent/T-QA-01-qa` (CI green: https://github.com/albarami/expoapp/actions/runs/29044389419)
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- CI (T-QA-01): pending first push
+- CI (T-REL-01): pending push
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,32 +28,30 @@
 
 | Now | Next exact task |
 |---|---|
-| T-QA-01 local **PASS** | Push + green CI → mark **passed** → **T-REL-01** |
+| T-REL-01 **in_progress** | Finalize docs → push → green CI → mark **passed** → Phase 1 complete |
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Finish T-QA-01 CI gate
+### 1. Finish T-REL-01 packaging (this branch)
+
+- README known limitations + migrate/seed/e2e commands
+- Release checklist verdict YES
+- Handover + definition-of-done checkboxes for Phase 1
+- Blockers: Phase 2 externals only
+
+### 2. Push and CI gate
 
 ```bash
 cd /home/barami/projects/expoapp
-git push -u origin agent/T-QA-01-qa
-# Wait for Actions green; fix until green
-# Then update ledger status to passed + CI URL
+git push -u origin agent/T-REL-01-release
+# Wait for Actions green; then mark T-REL-01 passed + REL-01 complete
 ```
 
-### 2. Start T-REL-01
+### 3. After T-REL-01
 
-```bash
-git checkout -B agent/T-REL-01-release origin/agent/T-QA-01-qa
-# Finalize README known limitations, release checklist verdict, handover docs
-# Phase 1 go-live YES when checklist A–G complete
-```
-
-### 3. Sequential path remaining
-
-T-QA-01 (CI) → T-REL-01.
+Phase 1 complete. No further Phase 1 tasks. Phase 2 externals only — see `07_BLOCKERS.md`.
 
 ---
 

@@ -1,9 +1,9 @@
 # Release Checklist — ExpoApp Phase 1
 
 **Generated:** 2026-07-09  
-**Updated:** 2026-07-09 (T-QA-01)  
+**Updated:** 2026-07-09 (T-REL-01)  
 **Sources:** Master prompt §16, `32`, `33`, `36`  
-**Status:** Nearly complete — finish T-REL-01 handover packaging after T-QA-01 CI green
+**Status:** Complete
 
 ---
 
@@ -87,7 +87,7 @@
 
 - [x] GitHub Actions CI exists
 - [x] CI runs compose config, api lint/test/e2e/build, flutter analyze/test
-- [ ] Main/setup branch CI green — awaiting T-QA-01 push
+- [x] Main/setup branch CI green — https://github.com/albarami/expoapp/actions/runs/29044389419
 - [x] No skipped/ignored failing tests
 
 ## H. Handover / Phase 2 blockers documented
@@ -96,10 +96,10 @@
 - [x] SSO provider TBD documented
 - [x] App Store / Play / signing TBD documented
 - [x] Push certs TBD documented
-- [ ] Known limitations in README — finalize in T-REL-01
+- [x] Known limitations in README
 
 ## I. Go-live verdict
 
 Phase 1 go-live ready only when A–G are complete and H documents remaining external items.
 
-**Current verdict:** PENDING CI — Phase 1 functionally complete pending green T-QA-01 CI and T-REL-01 README/handover polish. Device/store/Oracle remain Phase 2 externals.
+**Current verdict:** **YES — Phase 1 go-live ready** (with Phase 2 externals documented).

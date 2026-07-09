@@ -1,11 +1,13 @@
 # Blockers — ExpoApp
 
-**Updated:** 2026-07-09 (T-QA-01; Phase 2 externals unchanged)  
+**Updated:** 2026-07-09 (T-REL-01; Phase 1 complete pending T-REL-01 CI)  
 **Rule:** Only true blockers. Product/engineering decisions are made and recorded in architecture docs — not listed here.
 
 ---
 
 ## Active blockers (Phase 1 delivery)
+
+None. Phase 1 product/engineering work is complete; T-REL-01 packaging is in progress on `agent/T-REL-01-release`. After T-REL-01 CI green, Phase 1 is closed. Remaining items below are Phase 2 externals only.
 
 ### B-003 — GitHub CI green gate (**cleared**)
 
@@ -14,6 +16,8 @@
 **Detail:** CI green on `agent/T-ENV-01-setup-control` — https://github.com/albarami/expoapp/actions/runs/29025032699  
 **Resolution:** Confirmed Actions success 2026-07-09  
 **Status:** Cleared
+
+T-QA-01 CI also green: https://github.com/albarami/expoapp/actions/runs/29044389419
 
 ---
 
@@ -32,7 +36,7 @@
 | E-009 | iOS Simulator / Xcode (PL-02) | iOS store demo | Host limitation on WSL/Linux; Flutter iOS-ready code retained |
 | E-010 | Interactive Flutter Web browser sign-off (PL-03) | Stakeholder web demo | Optional; Flutter Web target supported |
 
-These are documented per master prompt §16 — continue Phase 1 without them.
+These are documented per master prompt §16 — Phase 1 continues/completes without them.
 
 ---
 

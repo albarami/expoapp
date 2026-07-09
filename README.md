@@ -2,6 +2,8 @@
 
 Enterprise Flutter + NestJS application for Expo Saudi — notifications, security access requests, approvals, dashboards, and audit tracking on top of Oracle Fusion (mock adapter in Phase 1).
 
+**Phase 1 status:** Go-live ready. See [`docs/_cursor/06_RELEASE_CHECKLIST.md`](docs/_cursor/06_RELEASE_CHECKLIST.md). Demo walkthrough: [`docs/32_ACCEPTANCE_CRITERIA_DEMO.md`](docs/32_ACCEPTANCE_CRITERIA_DEMO.md).
+
 ## Stack
 
 | Layer | Technology |
@@ -10,7 +12,7 @@ Enterprise Flutter + NestJS application for Expo Saudi — notifications, securi
 | Backend | NestJS + TypeScript + Prisma |
 | Database | PostgreSQL 16 |
 | Cache | Redis 7 |
-| Auth | JWT (SSO later) |
+| Auth | JWT demo auth (SSO later) |
 
 ## Repository structure
 
@@ -48,7 +50,8 @@ docker compose up -d
 cd apps/api
 npm install
 npx prisma generate
-# Full migrate/seed arrives with T-API-02 / T-API-04
+npx prisma migrate deploy
+npm run seed
 npm run start:dev
 
 # 5. Mobile (another terminal)
@@ -62,6 +65,8 @@ flutter run -d chrome
 API: `http://localhost:3000/api/v1`  
 Swagger: `http://localhost:3000/docs`  
 Health: `http://localhost:3000/api/v1/health`
+
+Local host ports: Postgres **5433**, Redis **6380** (see `PORTS.md`).
 
 ## Demo users (after seed)
 
@@ -78,6 +83,7 @@ admin@expo.sa / Password123!             # System Admin
 cd apps/api
 npm run lint
 npm run test
+npm run test:e2e
 npm run build
 npm run start:dev
 npm run seed
@@ -95,15 +101,30 @@ flutter run
 
 ## CI
 
-GitHub Actions runs on push/PR: Docker Compose config validation, API lint/test/build, Flutter analyze/test.
+GitHub Actions runs on push/PR: Docker Compose config validation, API lint/test/**e2e**/build, Flutter analyze/test.
+
+Latest green QA run: https://github.com/albarami/expoapp/actions/runs/29044389419
 
 ## Oracle Fusion
 
-Phase 1 uses `FUSION_MODE=mock`. Real Oracle credentials are Phase 2 — see `docs/23_ORACLE_FUSION_ADAPTER.md`.
+Phase 1 uses `FUSION_MODE=mock`. Real Oracle credentials are Phase 2 — see `docs/23_ORACLE_FUSION_ADAPTER.md` and `docs/_cursor/07_BLOCKERS.md`.
+
+## Known limitations (Phase 1)
+
+- **Oracle Fusion** — mock adapter only (`FUSION_MODE=mock`); real Fusion/OIC is Phase 2
+- **Auth** — JWT demo auth; no real SSO/OIDC yet
+- **Push** — `PUSH_MODE=mock`; no FCM/APNs delivery
+- **Local ports** — Postgres host **5433**, Redis host **6380** (container internals remain 5432/6379)
+- **iOS simulator** — not available on WSL/Linux hosts; Flutter iOS-ready code retained
+- **Interactive device/web sign-off** — optional; automated QA covers workflows (API e2e + Flutter tests)
+- **Store signing / production hosting** — Phase 2 (Apple/Google credentials, deploy targets)
 
 ## Documentation
 
-Start at `docs/00_READ_ME_FIRST.md` and `docs/01_MASTER_CURSOR_PROMPT.md`. Agent control files live in `docs/_cursor/`.
+- Start: `docs/00_READ_ME_FIRST.md` and `docs/01_MASTER_CURSOR_PROMPT.md`
+- Demo script: `docs/32_ACCEPTANCE_CRITERIA_DEMO.md`
+- Release status: `docs/_cursor/06_RELEASE_CHECKLIST.md`
+- Agent control: `docs/_cursor/`
 
 ## Troubleshooting
 

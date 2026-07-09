@@ -1,7 +1,7 @@
 # Test Matrix — ExpoApp
 
 **Generated:** 2026-07-09  
-**Updated:** 2026-07-09 (T-QA-01)  
+**Updated:** 2026-07-09 (T-REL-01)  
 **Sources:** `28_TESTING_QA_ACCEPTANCE.md`, `11_BACKEND_NESTJS_SPEC.md`, master prompt §9
 
 **Legend:** Status = pending | exists | passing | failing | N/A  
@@ -178,8 +178,8 @@ Update this file as tests are added.
 | CI-04 | api build | **passing** |
 | CI-05 | flutter analyze | **passing** |
 | CI-06 | flutter test | **passing** (91 tests) |
-| CI-07 | GitHub Actions workflow exists & green | pending T-QA-01 push |
-| REL-01 | Release checklist `06_RELEASE_CHECKLIST.md` | in progress (T-REL-01) |
+| CI-07 | GitHub Actions workflow exists & green | **passing** — https://github.com/albarami/expoapp/actions/runs/29044389419 |
+| REL-01 | Release checklist `06_RELEASE_CHECKLIST.md` | **in progress** (T-REL-01 on `agent/T-REL-01-release`) |
 
 ---
 

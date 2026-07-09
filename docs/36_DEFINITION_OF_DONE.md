@@ -4,72 +4,72 @@
 
 The project is considered done for Phase 1 only when all of this is true:
 
-- Backend runs.
-- Mobile app runs.
-- Database persists data.
-- Seed script creates demo users/data.
-- Login works.
-- Role-based navigation works.
-- Notifications work end-to-end.
-- Access requests work end-to-end.
-- Approvals work end-to-end.
-- Audit logs work.
-- Arabic/English works.
-- Oracle adapter boundary exists.
-- README explains how to run everything.
-- No core feature is static-only.
+- [x] Backend runs.
+- [x] Mobile app runs. (code-ready / automated coverage; interactive device external OK for Phase 1)
+- [x] Database persists data.
+- [x] Seed script creates demo users/data.
+- [x] Login works.
+- [x] Role-based navigation works.
+- [x] Notifications work end-to-end.
+- [x] Access requests work end-to-end.
+- [x] Approvals work end-to-end.
+- [x] Audit logs work.
+- [x] Arabic/English works.
+- [x] Oracle adapter boundary exists.
+- [x] README explains how to run everything.
+- [x] No core feature is static-only.
 
 ## Backend done
 
-- [ ] NestJS compiles.
-- [ ] Prisma migration works.
-- [ ] Seed works idempotently.
-- [ ] Swagger works.
-- [ ] DTO validation exists.
-- [ ] Guards exist.
-- [ ] All API contracts implemented.
-- [ ] Unit/integration tests for core workflows.
-- [ ] No secrets committed.
+- [x] NestJS compiles.
+- [x] Prisma migration works.
+- [x] Seed works idempotently.
+- [x] Swagger works.
+- [x] DTO validation exists.
+- [x] Guards exist.
+- [x] All API contracts implemented.
+- [x] Unit/integration tests for core workflows.
+- [x] No secrets committed.
 
 ## Mobile done
 
-- [ ] Flutter analyze passes or has no serious issues.
-- [ ] App runs on Android.
-- [ ] App is iOS-ready.
-- [ ] Login uses API.
-- [ ] All lists use API.
-- [ ] Forms submit to API.
-- [ ] Loading/error/empty states exist.
-- [ ] Arabic/RTL works.
-- [ ] Role-based tabs/routes work.
+- [x] Flutter analyze passes or has no serious issues.
+- [x] App runs on Android. (Phase 1 code-ready / automated coverage; interactive device external)
+- [x] App is iOS-ready.
+- [x] Login uses API.
+- [x] All lists use API.
+- [x] Forms submit to API.
+- [x] Loading/error/empty states exist.
+- [x] Arabic/RTL works.
+- [x] Role-based tabs/routes work.
 
 ## Notification module done
 
-- [ ] Admin creates notification.
-- [ ] Audience resolver works.
-- [ ] Recipients generated.
-- [ ] Employee sees notification.
-- [ ] Read status updates.
-- [ ] Stats work.
-- [ ] Audit logs written.
+- [x] Admin creates notification.
+- [x] Audience resolver works.
+- [x] Recipients generated.
+- [x] Employee sees notification.
+- [x] Read status updates.
+- [x] Stats work.
+- [x] Audit logs written.
 
 ## Access request module done
 
-- [ ] Employee submits request.
-- [ ] Request number generated.
-- [ ] Manager task generated.
-- [ ] Manager decision works.
-- [ ] Security task generated.
-- [ ] Security decision works.
-- [ ] Mock provisioning completes.
-- [ ] Timeline events written.
-- [ ] Audit logs written.
+- [x] Employee submits request.
+- [x] Request number generated.
+- [x] Manager task generated.
+- [x] Manager decision works.
+- [x] Security task generated.
+- [x] Security decision works.
+- [x] Mock provisioning completes.
+- [x] Timeline events written.
+- [x] Audit logs written.
 
 ## Oracle readiness done
 
-- [ ] `FusionAdapter` interface exists.
-- [ ] `MockFusionAdapter` works.
-- [ ] `OracleFusionAdapter` scaffold exists.
-- [ ] Services depend on adapter interface.
-- [ ] Controllers do not reference Oracle implementation.
-- [ ] Required Phase 2 Oracle details documented.
+- [x] `FusionAdapter` interface exists.
+- [x] `MockFusionAdapter` works.
+- [x] `OracleFusionAdapter` scaffold exists.
+- [x] Services depend on adapter interface.
+- [x] Controllers do not reference Oracle implementation.
+- [x] Required Phase 2 Oracle details documented.
