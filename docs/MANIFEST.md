@@ -1,0 +1,52 @@
+# Documentation Manifest
+
+```json
+{
+  "project": "ExpoApp",
+  "repository": "https://github.com/albarami/expoapp",
+  "generated_for": "Cursor build specification",
+  "generated_date": "2026-07-09",
+  "file_count": 39,
+  "files": [
+    "00_READ_ME_FIRST.md",
+    "01_MASTER_CURSOR_PROMPT.md",
+    "02_PRODUCT_SCOPE_AND_DELIVERY.md",
+    "03_ARCHITECTURE_DECISIONS.md",
+    "04_REPOSITORY_STRUCTURE.md",
+    "05_ENVIRONMENTS_AND_CONFIG.md",
+    "06_PERSONAS_ROLES_PERMISSIONS.md",
+    "07_DATA_MODEL.md",
+    "08_DATABASE_SCHEMA_PRISMA.md",
+    "09_SEED_DATA.md",
+    "10_API_CONTRACT.md",
+    "11_BACKEND_NESTJS_SPEC.md",
+    "12_FLUTTER_ARCHITECTURE.md",
+    "13_NAVIGATION_AND_STATE.md",
+    "14_AUTH_AND_RBAC.md",
+    "15_NOTIFICATIONS_MODULE.md",
+    "16_ACCESS_REQUESTS_WORKFLOW.md",
+    "17_APPROVAL_ENGINE.md",
+    "18_AUDIT_LOGGING.md",
+    "19_ADMIN_EXPERIENCE.md",
+    "20_MOBILE_SCREEN_SPECIFICATIONS.md",
+    "21_UI_UX_DESIGN_SYSTEM.md",
+    "22_LOCALIZATION_RTL.md",
+    "23_ORACLE_FUSION_ADAPTER.md",
+    "24_FUSION_INTEGRATION_MAPPING.md",
+    "25_PERFORMANCE_CACHING_OFFLINE.md",
+    "26_SECURITY_PRIVACY.md",
+    "27_ERROR_HANDLING_AND_EMPTY_STATES.md",
+    "28_TESTING_QA_ACCEPTANCE.md",
+    "29_CI_CD_DEPLOYMENT.md",
+    "30_OBSERVABILITY.md",
+    "31_CURSOR_BUILD_TASKS.md",
+    "32_ACCEPTANCE_CRITERIA_DEMO.md",
+    "33_HANDOVER_CHECKLIST.md",
+    "34_RISKS_ASSUMPTIONS_DEPENDENCIES.md",
+    "35_ITERATIVE_CURSOR_PROMPTS.md",
+    "36_DEFINITION_OF_DONE.md",
+    "37_ORACLE_REFERENCES_AND_INTEGRATION_NOTES.md",
+    "MANIFEST.md"
+  ]
+}
+```

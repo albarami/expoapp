@@ -1,0 +1,29 @@
+---
+description: Use installed Cursor skills and plugins when relevant to the task
+alwaysApply: true
+---
+
+# Use available skills when relevant
+
+Before implementing, check whether a skill or plugin applies. If there is even a small chance one fits, read and follow it.
+
+## Project skills (`.cursor/skills/`)
+
+- `frontend-design` — UI, landing/hero, branding, typography, visual layout
+- `ui-ux-pro-max` — Design intelligence for professional apps (styles, palettes, Flutter/mobile stacks). Prefer this for Flutter iOS/Android UI/UX.
+
+## Plugin skills (use when the domain matches)
+
+- **Superpowers:** `brainstorming`, `writing-plans`, `executing-plans`, `test-driven-development`, `systematic-debugging`, `verification-before-completion`, `using-git-worktrees`, `finishing-a-development-branch`, `requesting-code-review`, `receiving-code-review`, `subagent-driven-development`, `dispatching-parallel-agents`
+- **Supabase:** `supabase`, `supabase-postgres-best-practices`
+- **Datadog:** `ddsetup`, `ddconfig`, `ddtoolsets`
+- **Browserbase:** `functions`
+- **Cursor SDK:** `cursor-sdk` / `sdk`
+- **CLI for Agents:** `cli-for-agents`
+- **Agent Compatibility:** `check-agent-compatibility`
+
+## Built-in Cursor skills
+
+`automate`, `babysit`, `canvas`, `create-hook`, `create-rule`, `create-skill`, `loop`, `split-to-prs`, `statusline`, `update-cursor-settings`, `review-bugbot`, `review-security`
+
+Do not invent parallel workflows when a skill already covers the task.
