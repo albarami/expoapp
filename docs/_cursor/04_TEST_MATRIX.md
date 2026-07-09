@@ -179,7 +179,7 @@ Update this file as tests are added.
 | CI-05 | flutter analyze | **passing** |
 | CI-06 | flutter test | **passing** (91 tests) |
 | CI-07 | GitHub Actions workflow exists & green | **passing** — https://github.com/albarami/expoapp/actions/runs/29044389419 |
-| REL-01 | Release checklist `06_RELEASE_CHECKLIST.md` | **in progress** (T-REL-01 on `agent/T-REL-01-release`) |
+| REL-01 | Release checklist `06_RELEASE_CHECKLIST.md` | **passing** — T-REL-01 CI green: https://github.com/albarami/expoapp/actions/runs/29045013104 |
 
 ---
 

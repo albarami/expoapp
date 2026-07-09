@@ -1,25 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-REL-01 in progress)  
+**Updated:** 2026-07-09 (T-REL-01 **passed**; Phase 1 complete)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-REL-01 Release readiness** — **in_progress** on `agent/T-REL-01-release`.  
-T-QA-01 **passed** (CI green: https://github.com/albarami/expoapp/actions/runs/29044389419).
-
-After T-REL-01 is pushed and CI green: **Phase 1 complete**. No further Phase 1 tasks; remaining work is Phase 2 externals only (Oracle, SSO, push, store signing, production hosting).
+**Phase 1 complete.** T-REL-01 **passed** (CI green: https://github.com/albarami/expoapp/actions/runs/29045013104).  
+No further Phase 1 autonomous build tasks. Remaining work is **Phase 2 externals only** (Oracle, SSO, push, store signing, production hosting) — see `07_BLOCKERS.md`.
 
 ---
 
 ## Current branch
 
 - Branch: `agent/T-REL-01-release`
-- Base: `origin/agent/T-QA-01-qa` (CI green: https://github.com/albarami/expoapp/actions/runs/29044389419)
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- CI (T-REL-01): pending push
+- CI (T-REL-01): **green** — https://github.com/albarami/expoapp/actions/runs/29045013104
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -28,30 +25,19 @@ After T-REL-01 is pushed and CI green: **Phase 1 complete**. No further Phase 1 
 
 | Now | Next exact task |
 |---|---|
-| T-REL-01 **in_progress** | Finalize docs → push → green CI → mark **passed** → Phase 1 complete |
+| Phase 1 **complete** | Phase 2 externals only (client-provided) |
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Finish T-REL-01 packaging (this branch)
+### 1. Phase 1 closed
 
-- README known limitations + migrate/seed/e2e commands
-- Release checklist verdict YES
-- Handover + definition-of-done checkboxes for Phase 1
-- Blockers: Phase 2 externals only
+All Phase 1 tasks through T-REL-01 are **passed**. Do not open new Phase 1 feature work unless a regression is found.
 
-### 2. Push and CI gate
+### 2. Phase 2 externals
 
-```bash
-cd /home/barami/projects/expoapp
-git push -u origin agent/T-REL-01-release
-# Wait for Actions green; then mark T-REL-01 passed + REL-01 complete
-```
-
-### 3. After T-REL-01
-
-Phase 1 complete. No further Phase 1 tasks. Phase 2 externals only — see `07_BLOCKERS.md`.
+Track and unblock items in `07_BLOCKERS.md` (E-001..E-010): Oracle Fusion, SSO/OIDC, store signing, FCM/APNs, production hosting, optional device/web sign-off.
 
 ---
 

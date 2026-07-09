@@ -1,13 +1,13 @@
 # Blockers — ExpoApp
 
-**Updated:** 2026-07-09 (T-REL-01; Phase 1 complete pending T-REL-01 CI)  
+**Updated:** 2026-07-09 (T-REL-01 **passed**; Phase 1 delivery complete)  
 **Rule:** Only true blockers. Product/engineering decisions are made and recorded in architecture docs — not listed here.
 
 ---
 
 ## Active blockers (Phase 1 delivery)
 
-None. Phase 1 product/engineering work is complete; T-REL-01 packaging is in progress on `agent/T-REL-01-release`. After T-REL-01 CI green, Phase 1 is closed. Remaining items below are Phase 2 externals only.
+None. **Phase 1 delivery complete.** T-REL-01 **passed** (CI green: https://github.com/albarami/expoapp/actions/runs/29045013104). Remaining items below are Phase 2 externals only.
 
 ### B-003 — GitHub CI green gate (**cleared**)
 
@@ -18,6 +18,8 @@ None. Phase 1 product/engineering work is complete; T-REL-01 packaging is in pro
 **Status:** Cleared
 
 T-QA-01 CI also green: https://github.com/albarami/expoapp/actions/runs/29044389419
+
+T-REL-01 CI also green: https://github.com/albarami/expoapp/actions/runs/29045013104
 
 ---
 

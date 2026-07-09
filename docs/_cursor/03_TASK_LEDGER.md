@@ -429,9 +429,9 @@ T-DOC-01
 | Dependencies | T-QA-01 |
 | Files | `README.md`, `docs/_cursor/*` |
 | Acceptance | Checklist complete; Phase 1 go-live verdict YES |
-| GitHub CI | pending push |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29045013104 |
 | Branch/PR | `agent/T-REL-01-release` |
-| Status | **in_progress** |
+| Status | **passed** |
 
 ---
 
@@ -451,6 +451,6 @@ T-DOC-01
 12. ~~T-MOB-07~~ **passed** (CI green: run 29042259598)
 13. ~~T-L10N-01~~ **passed** (CI green: run 29043070135)
 14. ~~T-QA-01~~ **passed** (CI green: https://github.com/albarami/expoapp/actions/runs/29044389419)
-15. **T-REL-01** — Release readiness (**in_progress** — branch `agent/T-REL-01-release`)
+15. ~~T-REL-01~~ **passed** (CI green: https://github.com/albarami/expoapp/actions/runs/29045013104)
 
-**Resume at T-REL-01.**
+**Phase 1 complete.** Remaining work is Phase 2 externals only — see `07_BLOCKERS.md`.
