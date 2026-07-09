@@ -247,8 +247,9 @@ T-DOC-01
 | Files | `fusion/**` |
 | Acceptance | Mock works; oracle throws clear config error; no controller coupling |
 | Local tests | FUS-01..03 |
-| GitHub CI | green |
-| Status | **pending** |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-API-09-fusion-adapter` |
+| Status | **in_progress** |
 
 ---
 

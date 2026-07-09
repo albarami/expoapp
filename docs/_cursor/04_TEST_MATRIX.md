@@ -19,7 +19,7 @@ Update this file as tests are added.
 | BU-03 | Access request validation | Justification length; dates; inactive role; missing manager; duplicate active | same | pending |
 | BU-04 | Approval transitions | Manager approve→security; manager reject; security approve→complete (mock); security reject; already decided | same | pending |
 | BU-05 | AuditService | record writes expected fields; no secrets | same | **passing** (record helper; list API still T-API-10) |
-| BU-06 | MockFusionAdapter | profile; roles; validate; provision; status | same | pending |
+| BU-06 | MockFusionAdapter | profile; roles; validate; provision; status | same | **passing** |
 | BU-07 | Request number | Format `AR-YYYY-######` | same | pending |
 
 ---
@@ -122,9 +122,9 @@ Update this file as tests are added.
 
 | ID | Cases | Status |
 |---|---|---|
-| FUS-01 | Mock provision returns MOCK-FUSION-* | pending |
-| FUS-02 | Oracle adapter throws FUSION_CONFIGURATION_MISSING without env | pending |
-| FUS-03 | Services use interface token only | pending |
+| FUS-01 | Mock provision returns MOCK-FUSION-* | **passing** (unit + e2e `fusion.e2e-spec.ts`) |
+| FUS-02 | Oracle adapter throws FUSION_CONFIGURATION_MISSING without env | **passing** |
+| FUS-03 | Services use interface token only | **passing** (`FusionModule` `FUSION_ADAPTER` token) |
 
 ---
 

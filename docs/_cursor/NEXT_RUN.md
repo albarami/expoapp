@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-API-06 **passed**; CI green)  
+**Updated:** 2026-07-09 (T-API-09 **in progress** — implementation ready for local validation / CI)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-API-09 Fusion adapter** — next sequential foundation task per ledger (T-API-06 notifications **passed**; T-API-10 audit list endpoint still pending — `AuditService.record` already shipped with T-API-06).
+**T-API-09 Fusion adapter** — interface + MockFusionAdapter + Oracle scaffold + `FUSION_ADAPTER` provider + IntegrationOutbox helper. Validate locally, push, wait for CI green, then continue to **T-API-10** (audit list endpoint).
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-API-06-notifications` (T-API-06 green; start T-API-09 from this HEAD)
+- Branch: `agent/T-API-09-fusion-adapter` (from T-API-06 green HEAD)
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
 - Base: T-API-06 green HEAD (`e0f7503` / CI https://github.com/albarami/expoapp/actions/runs/29032026526)
-- CI (T-API-06): **green** — https://github.com/albarami/expoapp/actions/runs/29032026526
+- CI (T-API-09): pending push / validation
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,27 +25,41 @@
 
 | Now | Next exact task |
 |---|---|
-| T-API-06 **passed** | Start **T-API-09** — Fusion adapter |
+| T-API-09 **in_progress** | Finish local lint/test/e2e/build → push → CI green → mark passed → start **T-API-10** |
 
 ---
 
 ## Completed this run
 
-1. T-API-06 feature commit `99f19df` — notifications + audience + audit helper
-2. Docs commit `e0f7503` — ledger/NEXT_RUN/test matrix for implemented state
-3. Local lint / unit / e2e / build **PASS**
-4. GitHub CI **green** (run 29032026526)
+1. Fusion adapter interface (`fusion-adapter.interface.ts`)
+2. `MockFusionAdapter` (seed-backed profile/roles/validate/provision/status)
+3. `OracleFusionAdapter` scaffold (`FUSION_CONFIGURATION_MISSING` when env incomplete)
+4. `FusionModule` provider selection via `FUSION_MODE` + `FUSION_ADAPTER` token
+5. `IntegrationOutboxService` enqueue/mark helpers for future provisioning path
+6. Unit tests BU-06 / FUS-01..03 + e2e `fusion.e2e-spec.ts`
+7. Wired `FusionModule` into `AppModule`
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-API-09 (Fusion adapter)
+### 1. Finish T-API-09 validation
 
-Per `03_TASK_LEDGER.md` / `23_ORACLE_FUSION_ADAPTER.md`.  
-Branch pattern: `agent/T-API-09-fusion-adapter` from T-API-06 green HEAD.
+```bash
+cd /home/barami/projects/expoapp
+git checkout -B agent/T-API-09-fusion-adapter e0f7503  # if branch not yet created from green HEAD
+# ensure fusion changes are on this branch
+cd apps/api && npm run lint && npm run test && npm run test:e2e && npm run build
+git push -u origin agent/T-API-09-fusion-adapter
+# wait for GitHub CI green; update ledger/NEXT_RUN
+```
 
-### 2. Sequential foundation only
+### 2. After T-API-09 green → T-API-10
+
+Per ledger: Audit module list endpoint (`GET /audit-logs`), admin-only filters.  
+`AuditService.record` already shipped with T-API-06.
+
+### 3. Sequential foundation only
 
 No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md`.
 
@@ -59,7 +73,8 @@ See `PORTS.md`.
 
 ## Do not do next
 
-- Do not skip to Flutter feature modules before remaining API foundations (Fusion, audit list, access, approvals)
+- Do not skip to Flutter feature modules before remaining API foundations (audit list, access, approvals)
 - Do not spawn parallel feature agents yet
 - Do not create Expo React Native apps
 - Do not force-push `main`
+- Do not require real Oracle credentials in Phase 1
