@@ -305,14 +305,28 @@ describeDb('Approvals module (e2e BI-06 / BU-04)', () => {
     return body.data.accessToken;
   }
 
+  let requestNumberSeq = 0;
+
+  function uniqueRequestNumber(): string {
+    requestNumberSeq += 1;
+    const n =
+      ((Date.now() % 800000) +
+        requestNumberSeq * 17 +
+        Math.floor(Math.random() * 50)) %
+      900000;
+    return `AR-2026-${String(100000 + n).slice(0, 6)}`;
+  }
+
   async function createPendingManagerRequest(params: {
     requesterId: string;
     securityRoleId: string;
     systemIdForRole: string;
-    requestNumber: string;
+    requestNumber?: string;
   }): Promise<{ requestId: string; taskId: string }> {
+    const requestNumber = params.requestNumber ?? uniqueRequestNumber();
+
     const existing = await prisma.accessRequest.findUnique({
-      where: { requestNumber: params.requestNumber },
+      where: { requestNumber },
       select: { id: true },
     });
     if (existing) {
@@ -343,7 +357,7 @@ describeDb('Approvals module (e2e BI-06 / BU-04)', () => {
 
     const accessRequest = await prisma.accessRequest.create({
       data: {
-        requestNumber: params.requestNumber,
+        requestNumber,
         requesterId: params.requesterId,
         systemId: params.systemIdForRole,
         securityRoleId: params.securityRoleId,
@@ -376,7 +390,6 @@ describeDb('Approvals module (e2e BI-06 / BU-04)', () => {
       requesterId: employeeId,
       securityRoleId: roleWithSecurityId,
       systemIdForRole: systemId,
-      requestNumber: 'AR-2026-900001',
     });
 
     const managerToken = await login(MANAGER_EMAIL);
@@ -403,7 +416,6 @@ describeDb('Approvals module (e2e BI-06 / BU-04)', () => {
       requesterId: employeeId,
       securityRoleId: roleWithSecurityId,
       systemIdForRole: systemId,
-      requestNumber: 'AR-2026-900002',
     });
 
     const securityToken = await login(SECURITY_EMAIL);
@@ -453,7 +465,6 @@ describeDb('Approvals module (e2e BI-06 / BU-04)', () => {
       requesterId: employeeId,
       securityRoleId: roleWithSecurityId,
       systemIdForRole: systemId,
-      requestNumber: 'AR-2026-900003',
     });
 
     const managerToken = await login(MANAGER_EMAIL);
@@ -513,7 +524,6 @@ describeDb('Approvals module (e2e BI-06 / BU-04)', () => {
       requesterId: employeeId,
       securityRoleId: roleWithSecurityId,
       systemIdForRole: systemId,
-      requestNumber: 'AR-2026-900004',
     });
 
     const managerToken = await login(MANAGER_EMAIL);
@@ -545,7 +555,6 @@ describeDb('Approvals module (e2e BI-06 / BU-04)', () => {
       requesterId: employeeId,
       securityRoleId: roleWithSecurityId,
       systemIdForRole: systemId,
-      requestNumber: 'AR-2026-900005',
     });
 
     const managerToken = await login(MANAGER_EMAIL);
@@ -588,7 +597,6 @@ describeDb('Approvals module (e2e BI-06 / BU-04)', () => {
       requesterId: employeeId,
       securityRoleId: roleManagerOnlyId,
       systemIdForRole: eventSystem.id,
-      requestNumber: 'AR-2026-900006',
     });
 
     const managerToken = await login(MANAGER_EMAIL);

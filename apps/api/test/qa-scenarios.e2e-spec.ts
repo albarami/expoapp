@@ -339,6 +339,17 @@ describeDb('T-QA-01 demo scenarios (MAN-01..03 / MAN-05 / RBAC)', () => {
     });
   }
 
+  let qaRequestSeq = 0;
+  function uniqueRequestNumber(): string {
+    qaRequestSeq += 1;
+    const n =
+      ((Date.now() % 800000) +
+        qaRequestSeq * 23 +
+        Math.floor(Math.random() * 40)) %
+      900000;
+    return `AR-2026-${String(100000 + n).slice(0, 6)}`;
+  }
+
   it('MAN-01 Scenario 1: admin notify → employee read → unread decreases + audit', async () => {
     const adminToken = await login(ADMIN_EMAIL);
     const employeeToken = await login(EMPLOYEE_EMAIL);
@@ -729,7 +740,7 @@ describeDb('T-QA-01 demo scenarios (MAN-01..03 / MAN-05 / RBAC)', () => {
   it('RBAC-03 manager cannot decide a task assigned to another manager', async () => {
     const accessRequest = await prisma.accessRequest.create({
       data: {
-        requestNumber: `AR-2026-9${String(Date.now()).slice(-5)}`,
+        requestNumber: uniqueRequestNumber(),
         requesterId: employeeId,
         systemId,
         securityRoleId: roleWithSecurityId,

@@ -229,14 +229,17 @@ describeDb('Reference data + dashboard (e2e T-API-05)', () => {
       },
     });
 
+    const dashboardRequestNumber = `AR-2026-${String(
+      700000 + (Date.now() % 99999),
+    ).slice(0, 6)}`;
     const existingRequest = await prisma.accessRequest.findFirst({
-      where: { requestNumber: 'AR-2026-900001' },
+      where: { requestNumber: dashboardRequestNumber },
     });
     const accessRequest =
       existingRequest ??
       (await prisma.accessRequest.create({
         data: {
-          requestNumber: 'AR-2026-900001',
+          requestNumber: dashboardRequestNumber,
           requesterId: employee.id,
           systemId: system.id,
           securityRoleId: securityRole.id,

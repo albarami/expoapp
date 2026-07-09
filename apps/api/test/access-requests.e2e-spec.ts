@@ -594,6 +594,49 @@ describeDb('Access requests module (e2e BI-05 / BU-03)', () => {
 
   it('returns DUPLICATE_ACTIVE_REQUEST for same active role', async () => {
     const token = await login(EMPLOYEE_EMAIL);
+
+    // Ensure a known active request exists for this role before asserting duplicate.
+    const prior = await prisma.accessRequest.findMany({
+      where: {
+        requesterId: employeeId,
+        securityRoleId: uniqueRoleId,
+      },
+      select: { id: true },
+    });
+    const priorIds = prior.map((row) => row.id);
+    if (priorIds.length > 0) {
+      await prisma.accessRequestEvent.deleteMany({
+        where: { accessRequestId: { in: priorIds } },
+      });
+      await prisma.approvalTask.deleteMany({
+        where: { accessRequestId: { in: priorIds } },
+      });
+      await prisma.auditLog.deleteMany({
+        where: {
+          entityType: 'AccessRequest',
+          entityId: { in: priorIds },
+        },
+      });
+      await prisma.accessRequest.deleteMany({
+        where: { id: { in: priorIds } },
+      });
+    }
+
+    await request(app.getHttpServer())
+      .post(`${API}/access-requests`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        systemId,
+        securityRoleId: uniqueRoleId,
+        businessJustification:
+          'First active request used to set up duplicate detection coverage.',
+        accessDuration: AccessDuration.TEMPORARY,
+        startDate: '2026-07-10T00:00:00.000Z',
+        endDate: '2026-08-10T00:00:00.000Z',
+        urgency: AccessUrgency.NORMAL,
+      })
+      .expect(201);
+
     const response = await request(app.getHttpServer())
       .post(`${API}/access-requests`)
       .set('Authorization', `Bearer ${token}`)
