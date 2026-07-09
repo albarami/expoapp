@@ -6,8 +6,10 @@ import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
 import { validateEnv } from './config/env.validation';
 import jwtConfig from './config/jwt.config';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { HealthModule } from './health/health.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { ReferenceDataModule } from './reference-data/reference-data.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { PrismaModule } from './prisma/prisma.module';
     }),
     PrismaModule,
     AuthModule,
+    ReferenceDataModule,
+    DashboardModule,
     HealthModule,
   ],
 })

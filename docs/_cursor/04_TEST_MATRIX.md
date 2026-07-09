@@ -13,6 +13,8 @@ Update this file as tests are added.
 | ID | Area | Cases | Command | Status |
 |---|---|---|---|---|
 | BU-01 | AuthService | Login success; wrong password; inactive user | `cd apps/api && npm run test` | **passing** |
+| BU-08 | ReferenceDataService | Departments/systems/securityRoles + enum catalogs | same | **passing** |
+| BU-09 | DashboardService | Employee core counters; manager team; security widgets; admin stats | same | **passing** |
 | BU-02 | Audience resolver | ALL / DEPARTMENT / ROLE / USERS; exclude inactive; invalid filter | same | pending |
 | BU-03 | Access request validation | Justification length; dates; inactive role; missing manager; duplicate active | same | pending |
 | BU-04 | Approval transitions | Manager approve→security; manager reject; security approve→complete (mock); security reject; already decided | same | pending |
@@ -34,6 +36,7 @@ Update this file as tests are added.
 | BI-06 | Approvals | Manager approve creates security task; wrong assignee 403; security completes mock | same | pending |
 | BI-07 | Audit | Submit/approve write logs; filters work | same | pending |
 | BI-08 | Seed | Idempotent second run; expected entity counts/statuses | `npm run seed` ×2 + `npm run test` (`seed.idempotency.spec.ts`) | **passing** |
+| BI-09 | Reference + dashboard | Auth required; reference payload complete; role-aware `/dashboard/summary` | `npm run test:e2e` (`reference-dashboard.e2e-spec.ts`) | **passing** |
 
 ---
 

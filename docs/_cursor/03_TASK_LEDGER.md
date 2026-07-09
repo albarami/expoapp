@@ -182,11 +182,12 @@ T-DOC-01
 | Title | GET /reference-data, GET /dashboard/summary |
 | Source | `10_API_CONTRACT.md` |
 | Dependencies | T-API-03, T-API-04 |
-| Files | `reference-data/**`, `dashboard/**` |
+| Files | `apps/api/src/reference-data/**`, `apps/api/src/dashboard/**`, `apps/api/test/reference-dashboard.e2e-spec.ts` |
 | Acceptance | Role-aware dashboard; reference payload complete |
-| Local tests | API tests |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | unit + e2e — **PASS 2026-07-09** |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-API-05-reference-dashboard` |
+| Status | **in_progress** |
 
 ---
 

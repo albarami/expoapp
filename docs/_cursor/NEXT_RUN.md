@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-API-04 CI green)  
+**Updated:** 2026-07-09 (T-API-05 local PASS; CI pending)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-API-04 Seed data passed** (full idempotent seed per `09_SEED_DATA.md`).  
-**Resume at T-API-05** (reference-data + dashboard).
+**T-API-05 Reference data + dashboard** implemented locally.  
+Await GitHub CI green, then resume at **T-API-06** (notifications) — or next sequential foundation per ledger.
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-API-04-seed-data`
+- Branch: `agent/T-API-05-reference-dashboard`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- CI: **success** — https://github.com/albarami/expoapp/actions/runs/29028738943
+- CI: pending first push/run
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,32 +25,35 @@
 
 | Now | Next exact task |
 |---|---|
-| T-API-04 **passed** (local + CI green) | Start **T-API-05** — Reference data + dashboard |
+| T-API-05 **local PASS** (CI pending) | Confirm CI green → start **T-API-06** — Notifications module |
 
 ---
 
 ## Completed this run
 
-1. Branched `agent/T-API-04-seed-data` from T-API-03 green HEAD
-2. Expanded `apps/api/prisma/seed.ts` to full `09_SEED_DATA.md`
-3. Seeded: 5 departments, 5 users, 5 systems, 9 security roles, 6 notifications (+ recipients), 4 access requests, 5 approval tasks, 11 request events, 25 seed-keyed audit logs
-4. Idempotent upserts / find-first sync; second `npm run seed` stable
-5. BI-08 Jest DB test `seed.idempotency.spec.ts`
+1. Branched `agent/T-API-05-reference-dashboard` from T-API-04 green HEAD
+2. Implemented `ReferenceDataModule` — `GET /api/v1/reference-data`
+3. Implemented `DashboardModule` — `GET /api/v1/dashboard/summary` (role-aware)
+4. Kept RBAC probe routes (notifications/audit still owned by later tasks)
+5. Unit tests BU-08/BU-09 + e2e BI-09
 6. Local lint / unit / e2e / build PASS
-7. GitHub Actions CI **green** (run 29028738943)
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-API-05 (Reference data + dashboard)
+### 1. Confirm T-API-05 CI green
 
-Implement GET `/reference-data` and GET `/dashboard/summary` per `10_API_CONTRACT.md`.  
-Branch pattern: `agent/T-API-05-reference-dashboard` from T-API-04 green HEAD.
+Push branch if not pushed; wait for GitHub Actions success; update ledger CI fields.
 
-### 2. Then sequential foundation
+### 2. Start T-API-06 (Notifications)
 
-T-API-06+ per `03_TASK_LEDGER.md`  
+Per `03_TASK_LEDGER.md` / `15_NOTIFICATIONS_MODULE.md` + `10_API_CONTRACT.md`.  
+Branch pattern: `agent/T-API-06-notifications` from T-API-05 green HEAD.  
+Replace RBAC probe `POST /notifications` with real module (keep BI-03 authz behavior).
+
+### 3. Sequential foundation only
+
 No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md`.
 
 ---
@@ -63,7 +66,7 @@ See `PORTS.md`.
 
 ## Do not do next
 
-- Do not skip T-API-05 and jump to feature modules or T-MOB-*
+- Do not skip T-API-06 and jump to Flutter feature modules
 - Do not spawn parallel feature agents yet
 - Do not create Expo React Native apps
 - Do not force-push `main`
