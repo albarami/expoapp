@@ -94,7 +94,8 @@
 - [x] GitHub Actions CI exists
 - [x] CI runs compose config, api lint/test/e2e/build, flutter analyze/test
 - [x] Prior release branch CI green — https://github.com/albarami/expoapp/actions/runs/29045013104
-- [ ] T-FIX-01 branch CI green — pending push of `agent/T-FIX-01-audit-gaps`
+- [x] T-FIX-01 branch CI green — https://github.com/albarami/expoapp/actions/runs/29049070164
+- [x] `main` created from green T-FIX-01 HEAD and pushed (no force)
 - [x] No skipped/ignored failing tests
 
 ## H. Handover / Phase 2 blockers documented
@@ -109,4 +110,4 @@
 
 Phase 1 go-live ready only when A–G are complete and H documents remaining external items.
 
-**Current verdict:** **YES — Phase 1 go-live ready** (with Phase 2 externals documented). T-FIX-01 closes the audit-identified gaps (users lookup, device-token registration, scheduled publishing, real Settings/Profile screens, RBAC alignment); verdict is confirmed once `agent/T-FIX-01-audit-gaps` CI is green.
+**Current verdict:** **YES — Phase 1 go-live ready** (with Phase 2 externals documented). T-FIX-01 closes the audit-identified gaps (users lookup, device-token registration, scheduled publishing, real Settings/Profile screens, RBAC alignment) with CI green (https://github.com/albarami/expoapp/actions/runs/29049070164) and `main` created from that HEAD.

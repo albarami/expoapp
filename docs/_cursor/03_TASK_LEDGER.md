@@ -445,9 +445,9 @@ T-DOC-01
 | Scope | (1) `GET /users` + Flutter USERS audience picker; (2) `POST /device-tokens`; (3) real Settings screen; (4) Profile role/department/employee number + rename `ProfilePlaceholderScreen`→`ProfileScreen`; (5) scheduled-notification publisher (ADR-C012); (6) RBAC access-request divergence resolved (ADR-C013) |
 | Files | `apps/api/src/{users,device-tokens}/**`, `apps/api/src/notifications/scheduled-notifications.service.ts`, `apps/api/src/access-requests/access-requests.service.ts`, `apps/api/src/auth/**`, `apps/mobile/lib/features/{profile,settings}/**`, `apps/mobile/lib/features/notifications/**` |
 | Local validation | API lint/build clean; API unit 88 passing; API e2e 58 passing (incl. users/device-tokens/scheduled); `flutter analyze` clean; `flutter test` 99 passing |
-| GitHub CI | pending push |
-| Branch/PR | `agent/T-FIX-01-audit-gaps` from `agent/T-REL-01-release` |
-| Status | in progress |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29049070164 |
+| Branch/PR | `agent/T-FIX-01-audit-gaps` from `agent/T-REL-01-release`; `main` created from this HEAD |
+| Status | **passed** |
 
 Decisions: scheduled publishing implemented (ADR-C012); SYSTEM_ADMIN may submit own access requests (ADR-C013); `GET /users` scope (ADR-C014). Conflicts recorded in `07_BLOCKERS.md`.
 

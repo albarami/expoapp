@@ -15,9 +15,9 @@
 
 - Branch: `agent/T-FIX-01-audit-gaps` (from `agent/T-REL-01-release` HEAD)
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- CI (T-FIX-01): pending push (see below)
+- CI (T-FIX-01): **green** — https://github.com/albarami/expoapp/actions/runs/29049070164
 - Local validation: API lint/build clean; API unit 88 + e2e 58 passing; `flutter analyze` clean; `flutter test` 99 passing
-- `main`: create from final green HEAD once T-FIX-01 CI is green
+- `main`: **created** from green T-FIX-01 HEAD (`bbba38d`) and pushed (no force)
 
 ---
 
@@ -25,15 +25,15 @@
 
 | Now | Next exact task |
 |---|---|
-| T-FIX-01 pushed; awaiting/confirming CI green | Create `main` from green HEAD; then Phase 2 externals only |
+| T-FIX-01 CI green; `main` created | Phase 2 externals only (client-provided) |
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Confirm T-FIX-01 CI green + create `main`
+### 1. T-FIX-01 done
 
-Push `agent/T-FIX-01-audit-gaps`, wait for GitHub CI green, then create `main` from that HEAD (no force-push). Update this file and `06_RELEASE_CHECKLIST.md` with the run URL.
+`agent/T-FIX-01-audit-gaps` CI green (run 29049070164) and `main` created from that HEAD. No open Phase 1 build tasks remain.
 
 ### 2. Phase 1 closed
 
