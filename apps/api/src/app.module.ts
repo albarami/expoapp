@@ -8,6 +8,7 @@ import databaseConfig from './config/database.config';
 import { validateEnv } from './config/env.validation';
 import jwtConfig from './config/jwt.config';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { FusionModule } from './fusion/fusion.module';
 import { HealthModule } from './health/health.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { PrismaModule } from './prisma/prisma.module';
@@ -24,6 +25,7 @@ import { ReferenceDataModule } from './reference-data/reference-data.module';
     }),
     PrismaModule,
     AuditModule,
+    FusionModule,
     AuthModule,
     ReferenceDataModule,
     DashboardModule,
