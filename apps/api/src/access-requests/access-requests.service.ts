@@ -106,8 +106,9 @@ export class AccessRequestsService {
     dto: CreateAccessRequestDto,
     request?: Request,
   ): Promise<SubmitAccessRequestResult> {
-    this.assertCanCreate(requester);
-
+    // Doc 06 permission matrix: every role (including SYSTEM_ADMIN) may
+    // submit its own access request. See docs/_cursor/01_ARCHITECTURE_DECISIONS.md
+    // (ADR-C013) for the recorded conflict resolution.
     const dbRequester = await this.prisma.user.findUnique({
       where: { id: requester.id },
       select: {
@@ -555,16 +556,6 @@ export class AccessRequestsService {
       status: updated.status,
       currentStage: updated.currentStage,
     };
-  }
-
-  private assertCanCreate(user: AuthUser): void {
-    if (user.role === UserRole.SYSTEM_ADMIN) {
-      throw new BusinessException({
-        code: ErrorCode.FORBIDDEN,
-        message: 'System admin cannot submit access requests',
-        status: HttpStatus.FORBIDDEN,
-      });
-    }
   }
 
   private async assertCanRead(

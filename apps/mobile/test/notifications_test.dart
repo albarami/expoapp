@@ -17,6 +17,7 @@ import 'package:expoapp_mobile/features/dashboard/domain/dashboard_summary.dart'
 import 'package:expoapp_mobile/features/dashboard/presentation/dashboard_providers.dart';
 import 'package:expoapp_mobile/features/notifications/data/notifications_repository.dart';
 import 'package:expoapp_mobile/features/notifications/data/reference_data_repository.dart';
+import 'package:expoapp_mobile/features/notifications/data/users_repository.dart';
 import 'package:expoapp_mobile/features/notifications/domain/notification_models.dart';
 import 'package:expoapp_mobile/features/notifications/presentation/notifications_providers.dart';
 import 'package:expoapp_mobile/features/notifications/presentation/screens/create_notification_screen.dart';
@@ -169,6 +170,56 @@ class _FakeNotificationsRepository implements NotificationsRepository {
           unreadCount: 6,
           readPercentage: 40,
         );
+  }
+}
+
+class _FakeUsersRepository implements UsersRepository {
+  _FakeUsersRepository({List<AudienceUser>? users})
+      : users = users ??
+            const [
+              AudienceUser(
+                id: 'u-emp',
+                email: 'noura.alharbi@expo.sa',
+                fullNameEn: 'Noura Alharbi',
+                fullNameAr: 'نورة الحربي',
+                employeeNumber: 'E1001',
+                departmentCode: 'OPS',
+              ),
+              AudienceUser(
+                id: 'u-mgr',
+                email: 'faisal.otaibi@expo.sa',
+                fullNameEn: 'Faisal Otaibi',
+                employeeNumber: 'M2001',
+                departmentCode: 'OPS',
+              ),
+            ];
+
+  final List<AudienceUser> users;
+  String? lastQuery;
+
+  @override
+  Future<UserListResult> search({
+    String? query,
+    int page = 1,
+    int pageSize = 50,
+  }) async {
+    lastQuery = query;
+    final q = query?.trim().toLowerCase() ?? '';
+    final matches = q.isEmpty
+        ? users
+        : users
+            .where(
+              (user) =>
+                  user.fullNameEn.toLowerCase().contains(q) ||
+                  user.email.toLowerCase().contains(q),
+            )
+            .toList(growable: false);
+    return UserListResult(
+      items: matches,
+      page: page,
+      pageSize: pageSize,
+      total: matches.length,
+    );
   }
 }
 
@@ -576,6 +627,139 @@ void main() {
 
       expect(find.text('This field is required.'), findsWidgets);
       expect(repo.lastCreate, isNull);
+    });
+  });
+
+  group('CreateNotificationScreen USERS audience picker', () {
+    Future<
+        ({
+          _FakeNotificationsRepository repo,
+          _FakeUsersRepository users,
+        })> pumpCreateScreen(
+      WidgetTester tester, {
+      _FakeUsersRepository? usersRepository,
+    }) async {
+      final repo = _FakeNotificationsRepository();
+      final users = usersRepository ?? _FakeUsersRepository();
+      final storage = InMemoryTokenStorage();
+      await storage.writeTokens(accessToken: 'tok', refreshToken: 'ref');
+      await tester.binding.setSurfaceSize(const Size(800, 1800));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            tokenStorageProvider.overrideWithValue(storage),
+            authRepositoryProvider.overrideWithValue(_FakeAuthRepository(_admin)),
+            notificationsRepositoryProvider.overrideWithValue(repo),
+            referenceDataRepositoryProvider
+                .overrideWithValue(_FakeReferenceDataRepository()),
+            usersRepositoryProvider.overrideWithValue(users),
+          ],
+          child: MaterialApp(
+            locale: const Locale('en'),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            theme: AppTheme.light(),
+            home: const CreateNotificationScreen(),
+          ),
+        ),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 50));
+      return (repo: repo, users: users);
+    }
+
+    Future<void> selectUsersAudience(WidgetTester tester) async {
+      await tester.tap(find.byType(DropdownButtonFormField<AppAudienceType>));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Selected users').last);
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('publishes with selected userIds (happy path)', (tester) async {
+      final harness = await pumpCreateScreen(tester);
+
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Title (English)'),
+        'Targeted notice',
+      );
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Body (English)'),
+        'Direct message for selected users only.',
+      );
+
+      await selectUsersAudience(tester);
+      expect(find.byKey(const Key('audienceUserSearchField')), findsOneWidget);
+      expect(find.text('Noura Alharbi'), findsOneWidget);
+
+      await tester.tap(find.byKey(const Key('audienceUser-u-emp')));
+      await tester.pump();
+      expect(find.text('1 selected'), findsOneWidget);
+
+      final publishButton = find.byKey(const Key('publishNotificationButton'));
+      await tester.scrollUntilVisible(
+        publishButton,
+        400,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pump();
+      await tester.tap(publishButton);
+      // The submit flow keeps the button in a loading state while awaiting the
+      // success dialog, so pump with bounded frames instead of pumpAndSettle.
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 100));
+
+      final created = harness.repo.lastCreate;
+      expect(created, isNotNull);
+      expect(created!.audienceType, AppAudienceType.users);
+      expect(created.audienceFilter, {
+        'userIds': ['u-emp'],
+      });
+    });
+
+    testWidgets('search filters and shows doc-19 empty state (edge)',
+        (tester) async {
+      final harness = await pumpCreateScreen(tester);
+
+      await selectUsersAudience(tester);
+      await tester.enterText(
+        find.byKey(const Key('audienceUserSearchField')),
+        'zzz-no-match',
+      );
+      await tester.pumpAndSettle();
+
+      expect(harness.users.lastQuery, 'zzz-no-match');
+      expect(find.text('No matching users found'), findsOneWidget);
+    });
+
+    testWidgets('blocks publish when no user selected (failure path)',
+        (tester) async {
+      final harness = await pumpCreateScreen(tester);
+
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Title (English)'),
+        'Targeted notice',
+      );
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Body (English)'),
+        'Direct message for selected users only.',
+      );
+
+      await selectUsersAudience(tester);
+
+      final publishButton = find.byKey(const Key('publishNotificationButton'));
+      await tester.scrollUntilVisible(
+        publishButton,
+        400,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pump();
+      await tester.tap(publishButton);
+      await tester.pumpAndSettle();
+
+      expect(find.text('Select at least one audience value.'), findsOneWidget);
+      expect(harness.repo.lastCreate, isNull);
     });
   });
 }

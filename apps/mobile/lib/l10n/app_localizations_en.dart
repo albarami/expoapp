@@ -75,13 +75,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loading => 'Loading…';
 
   @override
-  String get comingSoon => 'Coming soon';
-
-  @override
-  String get foundationPlaceholder =>
-      'Foundation screen — feature UI arrives in a later task.';
-
-  @override
   String get noNotifications => 'No notifications yet';
 
   @override
@@ -336,8 +329,15 @@ class AppLocalizationsEn extends AppLocalizations {
       'This notification will be delivered to all active users.';
 
   @override
-  String get audienceUsersUnavailable =>
-      'Selecting individual users is not available in this build. Choose All, Department, or Role.';
+  String get searchUsers => 'Search users';
+
+  @override
+  String get noUsersFound => 'No matching users found';
+
+  @override
+  String selectedUsersCount(int count) {
+    return '$count selected';
+  }
 
   @override
   String get publishNow => 'Publish now';
@@ -476,6 +476,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get create => 'Create';
+
+  @override
+  String get role => 'Role';
+
+  @override
+  String get department => 'Department';
+
+  @override
+  String get employeeNumber => 'Employee number';
+
+  @override
+  String get notAvailable => 'Not available';
+
+  @override
+  String get roleEmployee => 'Employee';
+
+  @override
+  String get roleManager => 'Manager';
+
+  @override
+  String get roleSecurityAdmin => 'Security Admin';
+
+  @override
+  String get roleSystemAdmin => 'System Admin';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get appVersion => 'App version';
+
+  @override
+  String get apiEnvironment => 'API environment';
+
+  @override
+  String get apiBaseUrl => 'API base URL';
 
   @override
   String get filterPending => 'Pending';

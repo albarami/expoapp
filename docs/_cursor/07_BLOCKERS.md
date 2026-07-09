@@ -49,6 +49,8 @@ These are documented per master prompt §16 — Phase 1 continues/completes with
 | Repository named “expoapp” vs Expo React Native | **Flutter** stack per master prompt — do not create RN/Expo app |
 | SECURITY_ADMIN optional notification create | Allow optional; SYSTEM_ADMIN is primary (`01_ARCHITECTURE_DECISIONS.md`) |
 | Docs show Postgres `5432` / Redis `6379` | Local host remapped to **5433** / **6380** due to `uaid_os` containers — see `PORTS.md` |
+| Doc 06 matrix "Submit own access request = Yes for all roles" vs `assertCanCreate` 403 for SYSTEM_ADMIN vs sysadmin tab bar lacking a Requests tab | Docs are internally inconsistent. Permission matrix + doc 10 endpoint table (`POST /access-requests` = authenticated) are authoritative for backend RBAC; the tab bar is a navigation choice only. **Resolved 2026-07-09 (T-FIX-01):** backend allows all roles to submit; sysadmin tab bar unchanged. See ADR-C013 |
+| Scheduled notifications had no publisher (SCHEDULED rows were a dead end) vs docs 15/19/20 Phase 1 schedule workflow | **Resolved 2026-07-09 (T-FIX-01):** in-process scheduled publisher implemented (ADR-C012); scheduling is Phase 1 scope per docs |
 
 No conflict currently blocks implementation.
 

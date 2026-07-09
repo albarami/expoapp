@@ -203,6 +203,40 @@ Flutter: official `flutter` / `dart` toolchain; `pubspec.yaml` + `pubspec.lock`.
 
 ---
 
+## ADR-C012: Scheduled notification publishing (T-FIX-01)
+
+**Decision:** Implement scheduled publishing in Phase 1 via an in-process interval publisher (`ScheduledNotificationsService` in `NotificationsModule`) instead of an external cron or `@nestjs/schedule` dependency.
+
+**Doc basis:** Docs 15/19/20 all specify "publish now or schedule" in the Phase 1 admin create-notification workflow (`publishAt` required for schedule; doc 07/08 define `SCHEDULED` status + `publishAt` index). No doc defers scheduled *publishing* to Phase 2 — only push channels (FCM/APNs) are deferred. A `SCHEDULED` notification that never publishes would violate doc 15's "recipients generated on publish" behavior.
+
+**Mechanics:**
+- Interval loop (default 30s, `NOTIFICATION_SCHEDULER_INTERVAL_MS` env override, min 1s) finds `SCHEDULED` rows with `publishAt <= now`.
+- Per notification: resolve audience → transaction { `updateMany` status guard SCHEDULED→PUBLISHED (prevents double publish/cancel race), `createMany` recipients with `deliveredAt`, `skipDuplicates` } → audit `NOTIFICATION_PUBLISHED` with `metadata.scheduled=true`, actor = creator.
+- Loop disabled under `NODE_ENV=test`; tests call `publishDueNotifications()` directly.
+- Failures on one notification are logged and do not block others.
+
+**Consequences:** Single-instance semantics are fine for Phase 1 demo; the status-guard makes multi-instance safe (first claim wins). Phase 2 may move to BullMQ/cron if horizontal scale requires it.
+
+---
+
+## ADR-C013: SYSTEM_ADMIN may submit own access requests (T-FIX-01)
+
+**Decision:** Remove the `assertCanCreate` block that returned 403 for `SYSTEM_ADMIN` on `POST /access-requests`. All roles may submit their own access requests.
+
+**Doc basis (conflict resolved):** Doc 06 permission matrix — "Submit own access request: Yes" for Employee, Manager, Security Admin **and** System Admin; doc 06 RBAC table and doc 10 both list `POST /access-requests` as "authenticated" with no role carve-out. The only contrary signal is the System Admin tab bar (doc 06 UI routing) having no Requests tab — that is a navigation-emphasis choice, not a permission rule. The permission matrix + endpoint tables are authoritative for backend RBAC (doc 06: "Backend enforcement is mandatory").
+
+**Consequences:** Sysadmin submissions follow the same workflow rules (manager required → `MANAGER_NOT_FOUND` if none; security-only roles route to security queue). Flutter sysadmin shell keeps its documented tabs (no Requests tab) — UI unchanged, backend now doc-compliant. E2E coverage added in `access-requests.e2e-spec.ts`. Conflict recorded in `07_BLOCKERS.md`.
+
+---
+
+## ADR-C014: `GET /users` scope (T-FIX-01)
+
+**Decision:** `GET /users` (admin audience lookup) allows `SYSTEM_ADMIN` and `SECURITY_ADMIN`, returns **active users only**, supports `search`/`role`/`departmentCode` filters and standard pagination.
+
+**Doc basis:** Doc 10 endpoint table ("User lookup for admin audience — System Admin") + doc 19 ("user picker can be simple list from `/users`", searchable, empty state "No matching users found"). SECURITY_ADMIN is included because this repo opted into the doc-06 "Optional" SECURITY_ADMIN notification-create capability (see conflicts table below); a role that can compose USERS-audience notifications must be able to look up users. Active-only matches doc 15 recipient resolution (inactive users excluded).
+
+---
+
 ## Conflicts / clarifications recorded
 
 | Topic | Decision |
@@ -210,5 +244,7 @@ Flutter: official `flutter` / `dart` toolchain; `pubspec.yaml` + `pubspec.lock`.
 | Repo name "expoapp" vs Expo RN | **Flutter**, not Expo React Native (`01_MASTER` hard rule) |
 | Admin separate app? | Same Flutter app + Web |
 | SECURITY_ADMIN create notifications | Optional per matrix; Phase 1 implement SYSTEM_ADMIN required; SECURITY_ADMIN optional flag can default off unless docs say Optional = allow — **Decision:** allow SECURITY_ADMIN create/publish/stats to match API contract optional language, but primary persona is SYSTEM_ADMIN |
+| SYSTEM_ADMIN submit access requests | Doc 06 matrix says **Yes** for all roles; earlier code blocked SYSTEM_ADMIN. **Resolved:** allow (ADR-C013) |
+| Scheduled notifications | Phase 1 behavior per docs 15/19/20 → in-process publisher (ADR-C012) |
 | RETURNED approval | Future; not Phase 1 |
 | Full offline | Not required; graceful network errors only |

@@ -196,6 +196,10 @@ describeDb('Auth + RBAC (e2e BI-02 / BI-03)', () => {
     const me = meResponse.body as ApiSuccessResponse<MeResponseDto>;
     expect(me.data.email).toBe('admin@expo.sa');
     expect(me.data.role).toBe(UserRole.SYSTEM_ADMIN);
+    expect(me.data.employeeNumber).toBe('A9001');
+    expect(me.data.department).toEqual(
+      expect.objectContaining({ code: 'TECH' }),
+    );
     expect(me.data.permissions).toEqual(
       expect.arrayContaining([
         'notifications:create',

@@ -74,10 +74,12 @@ describeDb('Access requests module (e2e BI-05 / BU-03)', () => {
   let employeeId = '';
   let otherEmployeeId = '';
   let managerId = '';
+  let adminId = '';
   let systemId = '';
   let roleId = '';
   let inactiveRoleId = '';
   let uniqueRoleId = '';
+  let securityOnlyRoleId = '';
 
   beforeAll(async () => {
     const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 10);
@@ -182,6 +184,9 @@ describeDb('Access requests module (e2e BI-05 / BU-03)', () => {
       if (user.email === MANAGER_EMAIL) {
         managerId = row.id;
       }
+      if (user.email === ADMIN_EMAIL) {
+        adminId = row.id;
+      }
     }
 
     await prisma.user.update({
@@ -269,6 +274,56 @@ describeDb('Access requests module (e2e BI-05 / BU-03)', () => {
       update: { isActive: true },
     });
     uniqueRoleId = uniqueRole.id;
+
+    const securityOnlyRole = await prisma.securityRoleCatalog.upsert({
+      where: {
+        systemId_code: {
+          systemId,
+          code: 'FUSION_SECURITY_ONLY',
+        },
+      },
+      create: {
+        systemId,
+        code: 'FUSION_SECURITY_ONLY',
+        nameEn: 'Security-Only Approval Role',
+        riskLevel: RiskLevel.LOW,
+        requiresManagerApproval: false,
+        requiresSecurityApproval: true,
+        isActive: true,
+      },
+      update: {
+        isActive: true,
+        requiresManagerApproval: false,
+        requiresSecurityApproval: true,
+      },
+    });
+    securityOnlyRoleId = securityOnlyRole.id;
+
+    const priorAdminRequests = await prisma.accessRequest.findMany({
+      where: {
+        requesterId: adminId,
+        securityRoleId: securityOnlyRoleId,
+      },
+      select: { id: true },
+    });
+    const priorAdminIds = priorAdminRequests.map((row) => row.id);
+    if (priorAdminIds.length > 0) {
+      await prisma.accessRequestEvent.deleteMany({
+        where: { accessRequestId: { in: priorAdminIds } },
+      });
+      await prisma.approvalTask.deleteMany({
+        where: { accessRequestId: { in: priorAdminIds } },
+      });
+      await prisma.auditLog.deleteMany({
+        where: {
+          entityType: 'AccessRequest',
+          entityId: { in: priorAdminIds },
+        },
+      });
+      await prisma.accessRequest.deleteMany({
+        where: { id: { in: priorAdminIds } },
+      });
+    }
 
     const prior = await prisma.accessRequest.findMany({
       where: {
@@ -744,5 +799,33 @@ describeDb('Access requests module (e2e BI-05 / BU-03)', () => {
 
     const body = response.body as ApiErrorResponse;
     expect(body.error.code).toBe(ErrorCode.FORBIDDEN);
+  });
+
+  it('allows system admin to submit an own access request (doc 06 matrix, ADR-C013)', async () => {
+    const adminToken = await login(ADMIN_EMAIL);
+
+    const response = await request(app.getHttpServer())
+      .post(`${API}/access-requests`)
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({
+        systemId,
+        securityRoleId: securityOnlyRoleId,
+        businessJustification:
+          'System admin needs security-only access to validate audit tooling.',
+        accessDuration: AccessDuration.PERMANENT,
+        startDate: '2026-07-10T00:00:00.000Z',
+        urgency: AccessUrgency.NORMAL,
+      })
+      .expect(201);
+
+    const body = response.body as ApiSuccessResponse<SubmitResult>;
+    expect(body.data.requestNumber).toMatch(/^AR-\d{4}-\d{6}$/);
+    expect(body.data.status).toBe(AccessRequestStatus.SECURITY_PENDING);
+    expect(body.data.currentStage).toBe(AccessRequestStage.SECURITY);
+
+    const stored = await prisma.accessRequest.findUniqueOrThrow({
+      where: { id: body.data.id },
+    });
+    expect(stored.requesterId).toBe(adminId);
   });
 });

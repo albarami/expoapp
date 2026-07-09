@@ -115,6 +115,7 @@ export class AuthService {
       email: user.email,
       fullNameEn: user.fullNameEn,
       fullNameAr: user.fullNameAr,
+      employeeNumber: user.employeeNumber,
       role: user.role,
       permissions: getPermissionsForRole(user.role),
       department: user.department,

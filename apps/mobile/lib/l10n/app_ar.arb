@@ -22,8 +22,6 @@
   "submit": "إرسال",
   "retry": "إعادة المحاولة",
   "loading": "جاري التحميل…",
-  "comingSoon": "قريباً",
-  "foundationPlaceholder": "شاشة أساسية — واجهة الميزة ستأتي في مهمة لاحقة.",
   "noNotifications": "لا توجد إشعارات حتى الآن",
   "noNotificationsMessage": "ستظهر الإعلانات المهمة هنا.",
   "noRequests": "لا توجد طلبات صلاحيات حتى الآن",
@@ -120,7 +118,16 @@
   "audienceRole": "الأدوار",
   "audienceUsers": "مستخدمون محددون",
   "audienceAllHint": "سيتم إرسال هذا الإشعار إلى جميع المستخدمين النشطين.",
-  "audienceUsersUnavailable": "اختيار مستخدمين فرديين غير متاح في هذا الإصدار. اختر الجميع أو القسم أو الدور.",
+  "searchUsers": "البحث عن مستخدمين",
+  "noUsersFound": "لا يوجد مستخدمون مطابقون",
+  "selectedUsersCount": "{count} محدد",
+  "@selectedUsersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "publishNow": "نشر الآن",
   "publishNowHint": "يتم إنشاء المستلمين فوراً.",
   "schedulePublishHint": "جدولة وقت نشر مستقبلي.",
@@ -190,6 +197,18 @@
   },
   "security": "الأمن",
   "create": "إنشاء",
+  "role": "الدور",
+  "department": "القسم",
+  "employeeNumber": "الرقم الوظيفي",
+  "notAvailable": "غير متوفر",
+  "roleEmployee": "موظف",
+  "roleManager": "مدير",
+  "roleSecurityAdmin": "مسؤول الأمن",
+  "roleSystemAdmin": "مسؤول النظام",
+  "about": "حول التطبيق",
+  "appVersion": "إصدار التطبيق",
+  "apiEnvironment": "بيئة الواجهة البرمجية",
+  "apiBaseUrl": "عنوان الواجهة البرمجية",
   "filterPending": "معلّق",
   "filterCompleted": "مكتمل",
   "filterRejected": "مرفوض",

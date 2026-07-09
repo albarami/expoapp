@@ -75,13 +75,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loading => 'جاري التحميل…';
 
   @override
-  String get comingSoon => 'قريباً';
-
-  @override
-  String get foundationPlaceholder =>
-      'شاشة أساسية — واجهة الميزة ستأتي في مهمة لاحقة.';
-
-  @override
   String get noNotifications => 'لا توجد إشعارات حتى الآن';
 
   @override
@@ -334,8 +327,15 @@ class AppLocalizationsAr extends AppLocalizations {
       'سيتم إرسال هذا الإشعار إلى جميع المستخدمين النشطين.';
 
   @override
-  String get audienceUsersUnavailable =>
-      'اختيار مستخدمين فرديين غير متاح في هذا الإصدار. اختر الجميع أو القسم أو الدور.';
+  String get searchUsers => 'البحث عن مستخدمين';
+
+  @override
+  String get noUsersFound => 'لا يوجد مستخدمون مطابقون';
+
+  @override
+  String selectedUsersCount(int count) {
+    return '$count محدد';
+  }
 
   @override
   String get publishNow => 'نشر الآن';
@@ -472,6 +472,42 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get create => 'إنشاء';
+
+  @override
+  String get role => 'الدور';
+
+  @override
+  String get department => 'القسم';
+
+  @override
+  String get employeeNumber => 'الرقم الوظيفي';
+
+  @override
+  String get notAvailable => 'غير متوفر';
+
+  @override
+  String get roleEmployee => 'موظف';
+
+  @override
+  String get roleManager => 'مدير';
+
+  @override
+  String get roleSecurityAdmin => 'مسؤول الأمن';
+
+  @override
+  String get roleSystemAdmin => 'مسؤول النظام';
+
+  @override
+  String get about => 'حول التطبيق';
+
+  @override
+  String get appVersion => 'إصدار التطبيق';
+
+  @override
+  String get apiEnvironment => 'بيئة الواجهة البرمجية';
+
+  @override
+  String get apiBaseUrl => 'عنوان الواجهة البرمجية';
 
   @override
   String get filterPending => 'معلّق';

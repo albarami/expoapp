@@ -17,9 +17,9 @@ import '../features/dashboard/presentation/screens/dashboard_screen.dart';
 import '../features/notifications/presentation/screens/create_notification_screen.dart';
 import '../features/notifications/presentation/screens/notification_detail_screen.dart';
 import '../features/notifications/presentation/screens/notifications_list_screen.dart';
+import '../features/profile/presentation/screens/profile_screen.dart';
+import '../features/settings/presentation/screens/settings_screen.dart';
 import '../l10n/app_localizations.dart';
-import '../shared/widgets/foundation_placeholder_screen.dart';
-import 'app_shell.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _scaffoldMessengerKey =
@@ -170,15 +170,12 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/profile',
             name: 'profile',
-            builder: (context, state) => const ProfilePlaceholderScreen(),
+            builder: (context, state) => const ProfileScreen(),
           ),
           GoRoute(
             path: '/settings',
             name: 'settings',
-            builder: (context, state) {
-              final l10n = AppLocalizations.of(context);
-              return FoundationPlaceholderScreen(title: l10n.settings);
-            },
+            builder: (context, state) => const SettingsScreen(),
           ),
         ],
       ),

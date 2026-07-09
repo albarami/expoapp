@@ -42,7 +42,10 @@ class AppUser {
     required this.displayName,
     required this.role,
     this.displayNameAr,
+    this.employeeNumber,
     this.departmentId,
+    this.departmentNameEn,
+    this.departmentNameAr,
     this.managerId,
     this.permissions = const [],
   });
@@ -52,7 +55,10 @@ class AppUser {
   final String displayName;
   final String? displayNameAr;
   final AppRole role;
+  final String? employeeNumber;
   final String? departmentId;
+  final String? departmentNameEn;
+  final String? departmentNameAr;
   final String? managerId;
   final List<String> permissions;
 
@@ -81,12 +87,26 @@ class AppUser {
     return displayName;
   }
 
+  String? localizedDepartment({required bool arabic}) {
+    if (arabic && departmentNameAr != null && departmentNameAr!.isNotEmpty) {
+      return departmentNameAr;
+    }
+    if (departmentNameEn != null && departmentNameEn!.isNotEmpty) {
+      return departmentNameEn;
+    }
+    return null;
+  }
+
   factory AppUser.fromJson(Map<String, dynamic> json) {
     final role = AppRole.tryParse(json['role']?.toString()) ?? AppRole.employee;
     final department = json['department'];
     String? departmentId = json['departmentId']?.toString();
-    if (departmentId == null && department is Map<String, dynamic>) {
-      departmentId = department['id']?.toString();
+    String? departmentNameEn = json['departmentNameEn']?.toString();
+    String? departmentNameAr = json['departmentNameAr']?.toString();
+    if (department is Map<String, dynamic>) {
+      departmentId ??= department['id']?.toString();
+      departmentNameEn ??= department['nameEn']?.toString();
+      departmentNameAr ??= department['nameAr']?.toString();
     }
 
     final permissionsRaw = json['permissions'];
@@ -107,7 +127,10 @@ class AppUser {
           '',
       displayNameAr: fullNameAr,
       role: role,
+      employeeNumber: json['employeeNumber']?.toString(),
       departmentId: departmentId,
+      departmentNameEn: departmentNameEn,
+      departmentNameAr: departmentNameAr,
       managerId: json['managerId']?.toString(),
       permissions: permissions,
     );
@@ -120,7 +143,10 @@ class AppUser {
         'fullNameEn': displayName,
         'fullNameAr': displayNameAr,
         'role': role.apiValue,
+        'employeeNumber': employeeNumber,
         'departmentId': departmentId,
+        'departmentNameEn': departmentNameEn,
+        'departmentNameAr': departmentNameAr,
         'managerId': managerId,
         'permissions': permissions,
       };

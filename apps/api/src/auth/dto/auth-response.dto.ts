@@ -59,6 +59,9 @@ export class MeResponseDto {
   @ApiPropertyOptional({ example: 'مدير النظام', nullable: true })
   fullNameAr!: string | null;
 
+  @ApiProperty({ example: 'A9001', description: 'HR employee number' })
+  employeeNumber!: string;
+
   @ApiProperty({ enum: UserRole, example: UserRole.SYSTEM_ADMIN })
   role!: UserRole;
 

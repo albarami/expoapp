@@ -435,6 +435,24 @@ T-DOC-01
 
 ---
 
+## T-FIX-01 — Post-Phase-1 audit gap closure
+
+| Field | Value |
+|---|---|
+| Title | Close real gaps found by independent audit vs documented Phase 1 deliverables |
+| Source | Audit vs docs 06, 10, 15, 19, 20 |
+| Dependencies | T-REL-01 |
+| Scope | (1) `GET /users` + Flutter USERS audience picker; (2) `POST /device-tokens`; (3) real Settings screen; (4) Profile role/department/employee number + rename `ProfilePlaceholderScreen`→`ProfileScreen`; (5) scheduled-notification publisher (ADR-C012); (6) RBAC access-request divergence resolved (ADR-C013) |
+| Files | `apps/api/src/{users,device-tokens}/**`, `apps/api/src/notifications/scheduled-notifications.service.ts`, `apps/api/src/access-requests/access-requests.service.ts`, `apps/api/src/auth/**`, `apps/mobile/lib/features/{profile,settings}/**`, `apps/mobile/lib/features/notifications/**` |
+| Local validation | API lint/build clean; API unit 88 passing; API e2e 58 passing (incl. users/device-tokens/scheduled); `flutter analyze` clean; `flutter test` 99 passing |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-FIX-01-audit-gaps` from `agent/T-REL-01-release` |
+| Status | in progress |
+
+Decisions: scheduled publishing implemented (ADR-C012); SYSTEM_ADMIN may submit own access requests (ADR-C013); `GET /users` scope (ADR-C014). Conflicts recorded in `07_BLOCKERS.md`.
+
+---
+
 ## Priority queue (next actions)
 
 1. ~~T-ENV-01~~ **passed**
@@ -452,5 +470,6 @@ T-DOC-01
 13. ~~T-L10N-01~~ **passed** (CI green: run 29043070135)
 14. ~~T-QA-01~~ **passed** (CI green: https://github.com/albarami/expoapp/actions/runs/29044389419)
 15. ~~T-REL-01~~ **passed** (CI green: https://github.com/albarami/expoapp/actions/runs/29045013104)
+16. T-FIX-01 — audit gap closure (`agent/T-FIX-01-audit-gaps`)
 
-**Phase 1 complete.** Remaining work is Phase 2 externals only — see `07_BLOCKERS.md`.
+**Phase 1 complete.** T-FIX-01 closes audit-identified gaps against documented Phase 1 deliverables. Remaining work beyond it is Phase 2 externals only — see `07_BLOCKERS.md`.

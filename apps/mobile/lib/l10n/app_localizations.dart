@@ -230,18 +230,6 @@ abstract class AppLocalizations {
   /// **'Loading…'**
   String get loading;
 
-  /// No description provided for @comingSoon.
-  ///
-  /// In en, this message translates to:
-  /// **'Coming soon'**
-  String get comingSoon;
-
-  /// No description provided for @foundationPlaceholder.
-  ///
-  /// In en, this message translates to:
-  /// **'Foundation screen — feature UI arrives in a later task.'**
-  String get foundationPlaceholder;
-
   /// No description provided for @noNotifications.
   ///
   /// In en, this message translates to:
@@ -734,11 +722,23 @@ abstract class AppLocalizations {
   /// **'This notification will be delivered to all active users.'**
   String get audienceAllHint;
 
-  /// No description provided for @audienceUsersUnavailable.
+  /// No description provided for @searchUsers.
   ///
   /// In en, this message translates to:
-  /// **'Selecting individual users is not available in this build. Choose All, Department, or Role.'**
-  String get audienceUsersUnavailable;
+  /// **'Search users'**
+  String get searchUsers;
+
+  /// No description provided for @noUsersFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching users found'**
+  String get noUsersFound;
+
+  /// No description provided for @selectedUsersCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} selected'**
+  String selectedUsersCount(int count);
 
   /// No description provided for @publishNow.
   ///
@@ -985,6 +985,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create'**
   String get create;
+
+  /// No description provided for @role.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get role;
+
+  /// No description provided for @department.
+  ///
+  /// In en, this message translates to:
+  /// **'Department'**
+  String get department;
+
+  /// No description provided for @employeeNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee number'**
+  String get employeeNumber;
+
+  /// No description provided for @notAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get notAvailable;
+
+  /// No description provided for @roleEmployee.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee'**
+  String get roleEmployee;
+
+  /// No description provided for @roleManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager'**
+  String get roleManager;
+
+  /// No description provided for @roleSecurityAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Security Admin'**
+  String get roleSecurityAdmin;
+
+  /// No description provided for @roleSystemAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'System Admin'**
+  String get roleSystemAdmin;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @appVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'App version'**
+  String get appVersion;
+
+  /// No description provided for @apiEnvironment.
+  ///
+  /// In en, this message translates to:
+  /// **'API environment'**
+  String get apiEnvironment;
+
+  /// No description provided for @apiBaseUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'API base URL'**
+  String get apiBaseUrl;
 
   /// No description provided for @filterPending.
   ///

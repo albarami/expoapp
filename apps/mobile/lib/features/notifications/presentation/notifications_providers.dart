@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/providers.dart';
 import '../data/notifications_repository.dart';
 import '../data/reference_data_repository.dart';
+import '../data/users_repository.dart';
 import '../domain/notification_models.dart';
 
 final notificationsRepositoryProvider = Provider<NotificationsRepository>((ref) {
@@ -11,6 +12,22 @@ final notificationsRepositoryProvider = Provider<NotificationsRepository>((ref) 
 
 final referenceDataRepositoryProvider = Provider<ReferenceDataRepository>((ref) {
   return ApiReferenceDataRepository(ref.watch(apiClientProvider));
+});
+
+final usersRepositoryProvider = Provider<UsersRepository>((ref) {
+  return ApiUsersRepository(ref.watch(apiClientProvider));
+});
+
+/// Search text for the USERS audience picker.
+final audienceUserSearchProvider = StateProvider.autoDispose<String>((ref) {
+  return '';
+});
+
+/// Active users matching the picker search (doc 19: simple list from /users).
+final audienceUsersProvider =
+    FutureProvider.autoDispose<UserListResult>((ref) {
+  final query = ref.watch(audienceUserSearchProvider);
+  return ref.watch(usersRepositoryProvider).search(query: query);
 });
 
 /// Active list filters (search + chips). Page resets to 1 when filters change.

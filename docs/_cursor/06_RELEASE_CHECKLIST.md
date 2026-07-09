@@ -1,7 +1,7 @@
 # Release Checklist — ExpoApp Phase 1
 
 **Generated:** 2026-07-09  
-**Updated:** 2026-07-09 (T-REL-01)  
+**Updated:** 2026-07-09 (T-FIX-01 audit gap closure)  
 **Sources:** Master prompt §16, `32`, `33`, `36`  
 **Status:** Complete
 
@@ -34,7 +34,10 @@
 - [x] Reference data endpoint
 - [x] Dashboard summary role-aware
 - [x] Notifications create/list/detail/read/stats/cancel
-- [x] Access requests create/list/detail/cancel + timeline
+- [x] Scheduled notifications auto-publish when due (ADR-C012)
+- [x] `GET /users` admin audience lookup (ADR-C014)
+- [x] `POST /device-tokens` push-token registration (docs 10 + 15)
+- [x] Access requests create/list/detail/cancel + timeline (all roles may submit — ADR-C013)
 - [x] Approvals list + decision + workflow transitions
 - [x] Audit service + list endpoint
 - [x] FusionAdapter + MockFusionAdapter + Oracle scaffold
@@ -54,9 +57,12 @@
 - [x] Dashboard from API
 - [x] Notifications list/detail/read
 - [x] Admin create notification + confirmation for CRITICAL
+- [x] USERS audience picker (searchable list from `/users`) (doc 19)
 - [x] Access request form/list/detail/cancel
 - [x] Approval queue/decision
 - [x] Audit viewer (authorized only)
+- [x] Profile shows role/department/employee number (doc 20 screen 13)
+- [x] Settings screen: language, app version, API environment (doc 20 screen 14)
 - [x] Profile/settings + language switch
 - [x] EN/AR ARB; no hardcoded UI strings
 - [x] RTL verified
@@ -87,7 +93,8 @@
 
 - [x] GitHub Actions CI exists
 - [x] CI runs compose config, api lint/test/e2e/build, flutter analyze/test
-- [x] Main/setup branch CI green — https://github.com/albarami/expoapp/actions/runs/29044389419
+- [x] Prior release branch CI green — https://github.com/albarami/expoapp/actions/runs/29045013104
+- [ ] T-FIX-01 branch CI green — pending push of `agent/T-FIX-01-audit-gaps`
 - [x] No skipped/ignored failing tests
 
 ## H. Handover / Phase 2 blockers documented
@@ -102,4 +109,4 @@
 
 Phase 1 go-live ready only when A–G are complete and H documents remaining external items.
 
-**Current verdict:** **YES — Phase 1 go-live ready** (with Phase 2 externals documented).
+**Current verdict:** **YES — Phase 1 go-live ready** (with Phase 2 externals documented). T-FIX-01 closes the audit-identified gaps (users lookup, device-token registration, scheduled publishing, real Settings/Profile screens, RBAC alignment); verdict is confirmed once `agent/T-FIX-01-audit-gaps` CI is green.

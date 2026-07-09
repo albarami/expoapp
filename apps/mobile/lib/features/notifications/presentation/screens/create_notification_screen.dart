@@ -31,6 +31,7 @@ class _CreateNotificationScreenState
   AppAudienceType _audienceType = AppAudienceType.all;
   final Set<String> _departmentCodes = {};
   final Set<String> _roles = {};
+  final Set<String> _userIds = {};
   bool _publishNow = true;
   DateTime? _publishAt;
   DateTime? _expiresAt;
@@ -54,9 +55,7 @@ class _CreateNotificationScreenState
       case AppAudienceType.role:
         return {'roles': _roles.toList()..sort()};
       case AppAudienceType.users:
-        // Phase 1: USERS audience requires explicit IDs; keep empty so
-        // validation surfaces a clear form error before submit.
-        return {'userIds': <String>[]};
+        return {'userIds': _userIds.toList()..sort()};
     }
   }
 
@@ -145,9 +144,9 @@ class _CreateNotificationScreenState
       );
       return;
     }
-    if (_audienceType == AppAudienceType.users) {
+    if (_audienceType == AppAudienceType.users && _userIds.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.audienceUsersUnavailable)),
+        SnackBar(content: Text(l10n.validationAudienceRequired)),
       );
       return;
     }
@@ -296,11 +295,10 @@ class _CreateNotificationScreenState
               decoration: InputDecoration(labelText: l10n.audienceType),
               items: [
                 for (final type in AppAudienceType.values)
-                  if (type != AppAudienceType.users)
-                    DropdownMenuItem(
-                      value: type,
-                      child: Text(_audienceLabel(l10n, type)),
-                    ),
+                  DropdownMenuItem(
+                    value: type,
+                    child: Text(_audienceLabel(l10n, type)),
+                  ),
               ],
               onChanged: (value) {
                 if (value == null) return;
@@ -308,7 +306,10 @@ class _CreateNotificationScreenState
               },
             ),
             const SizedBox(height: AppSpacing.md),
-            catalogAsync.when(
+            if (_audienceType == AppAudienceType.users)
+              _buildUserPicker(context, l10n, isArabic)
+            else
+              catalogAsync.when(
               loading: () => const Padding(
                 padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
                 child: Center(
@@ -483,6 +484,89 @@ class _CreateNotificationScreenState
           ),
         ),
       ),
+    );
+  }
+
+  /// Searchable active-user picker for the USERS audience (doc 19).
+  Widget _buildUserPicker(
+    BuildContext context,
+    AppLocalizations l10n,
+    bool isArabic,
+  ) {
+    final usersAsync = ref.watch(audienceUsersProvider);
+    final theme = Theme.of(context);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        TextField(
+          key: const Key('audienceUserSearchField'),
+          decoration: InputDecoration(
+            labelText: l10n.searchUsers,
+            prefixIcon: const Icon(Icons.search),
+          ),
+          onChanged: (value) =>
+              ref.read(audienceUserSearchProvider.notifier).state = value,
+        ),
+        const SizedBox(height: AppSpacing.sm),
+        Text(
+          l10n.selectedUsersCount(_userIds.length),
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
+        const SizedBox(height: AppSpacing.sm),
+        usersAsync.when(
+          loading: () => const Padding(
+            padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
+            child: Center(
+              child: SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            ),
+          ),
+          error: (error, _) => Text(
+            error is ApiError ? localizeApiError(l10n, error) : l10n.errorGeneric,
+          ),
+          data: (result) {
+            if (result.items.isEmpty) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                child: Text(
+                  l10n.noUsersFound,
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              );
+            }
+            return Column(
+              children: [
+                for (final user in result.items)
+                  CheckboxListTile(
+                    key: Key('audienceUser-${user.id}'),
+                    contentPadding: EdgeInsets.zero,
+                    controlAffinity: ListTileControlAffinity.leading,
+                    title: Text(user.localizedName(arabic: isArabic)),
+                    subtitle: Text(user.email),
+                    value: _userIds.contains(user.id),
+                    onChanged: (selected) {
+                      setState(() {
+                        if (selected == true) {
+                          _userIds.add(user.id);
+                        } else {
+                          _userIds.remove(user.id);
+                        }
+                      });
+                    },
+                  ),
+              ],
+            );
+          },
+        ),
+      ],
     );
   }
 

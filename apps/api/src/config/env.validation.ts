@@ -126,6 +126,12 @@ export class EnvironmentVariables {
   @IsString()
   @IsNotEmpty()
   LOG_LEVEL = 'debug';
+
+  @Transform(({ value }) => toInteger(value, 30000))
+  @Type(() => Number)
+  @IsInt()
+  @Min(1000)
+  NOTIFICATION_SCHEDULER_INTERVAL_MS = 30000;
 }
 
 export function validateEnv(

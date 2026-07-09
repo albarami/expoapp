@@ -25,8 +25,6 @@
   "submit": "Submit",
   "retry": "Retry",
   "loading": "Loading…",
-  "comingSoon": "Coming soon",
-  "foundationPlaceholder": "Foundation screen — feature UI arrives in a later task.",
   "noNotifications": "No notifications yet",
   "noNotificationsMessage": "Important announcements will appear here.",
   "noRequests": "No access requests yet",
@@ -123,7 +121,16 @@
   "audienceRole": "Roles",
   "audienceUsers": "Selected users",
   "audienceAllHint": "This notification will be delivered to all active users.",
-  "audienceUsersUnavailable": "Selecting individual users is not available in this build. Choose All, Department, or Role.",
+  "searchUsers": "Search users",
+  "noUsersFound": "No matching users found",
+  "selectedUsersCount": "{count} selected",
+  "@selectedUsersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "publishNow": "Publish now",
   "publishNowHint": "Recipients are created immediately.",
   "schedulePublishHint": "Schedule a future publish time.",
@@ -193,6 +200,18 @@
   },
   "security": "Security",
   "create": "Create",
+  "role": "Role",
+  "department": "Department",
+  "employeeNumber": "Employee number",
+  "notAvailable": "Not available",
+  "roleEmployee": "Employee",
+  "roleManager": "Manager",
+  "roleSecurityAdmin": "Security Admin",
+  "roleSystemAdmin": "System Admin",
+  "about": "About",
+  "appVersion": "App version",
+  "apiEnvironment": "API environment",
+  "apiBaseUrl": "API base URL",
   "filterPending": "Pending",
   "filterCompleted": "Completed",
   "filterRejected": "Rejected",

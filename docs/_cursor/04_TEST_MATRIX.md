@@ -22,6 +22,9 @@ Update this file as tests are added.
 | BU-05 | AuditService | record writes expected fields; no secrets; list filters/pagination | same | **passing** |
 | BU-06 | MockFusionAdapter | profile; roles; validate; provision; status | same | **passing** |
 | BU-07 | Request number | Format `AR-YYYY-######` | same | **passing** (covered in access-requests unit submit) |
+| BU-10 | UsersService (T-FIX-01) | Active-only list + pagination; search across name/email/employeeNumber; role + department filters | same | **passing** (`users.service.spec.ts`) |
+| BU-11 | DeviceTokensService (T-FIX-01) | Upsert new token; trim + reassign existing token; persistence failure propagates | same | **passing** (`device-tokens.service.spec.ts`) |
+| BU-12 | ScheduledNotificationsService (T-FIX-01) | Publishes due + recipients + audit; skip concurrently-claimed; nothing due; failure isolated per notification | same | **passing** (`scheduled-notifications.service.spec.ts`) |
 
 ---
 
@@ -38,6 +41,10 @@ Update this file as tests are added.
 | BI-07 | Audit | Admin list/filters/pagination; employee/manager 403 | `npm run test:e2e` (`audit.e2e-spec.ts`) | **passing** (list/filters; submit/cancel + approval/provisioning writes covered) |
 | BI-08 | Seed | Idempotent second run; expected entity counts/statuses | `npm run seed` ×2 + `npm run test` (`seed.idempotency.spec.ts`) | **passing** |
 | BI-09 | Reference + dashboard | Auth required; reference payload complete; role-aware `/dashboard/summary` | `npm run test:e2e` (`reference-dashboard.e2e-spec.ts`) | **passing** |
+| BI-10 | Users lookup (T-FIX-01) | Admin paginated list (active only); search; SECURITY_ADMIN allowed; employee 403 + anon 401 | `npm run test:e2e` (`users.e2e-spec.ts`) | **passing** |
+| BI-11 | Device tokens (T-FIX-01) | Store token for caller; upsert reassigns on (platform,token); invalid platform 400 + anon 401 | `npm run test:e2e` (`device-tokens.e2e-spec.ts`) | **passing** |
+| BI-12 | Scheduled publish (T-FIX-01) | Due SCHEDULED → PUBLISHED + recipients + audit + now visible; future left untouched; cancelled not published | `npm run test:e2e` (`scheduled-notifications.e2e-spec.ts`) | **passing** |
+| BI-13 | RBAC access request (T-FIX-01, ADR-C013) | SYSTEM_ADMIN may submit own access request | `npm run test:e2e` (`access-requests.e2e-spec.ts`) | **passing** |
 
 ---
 
@@ -53,6 +60,9 @@ Update this file as tests are added.
 | FU-06 | Router guards | Employee blocked from `/audit`, `/approvals`, and create notification | same | **passing** (create route in T-MOB-04; approvals T-MOB-06; audit T-MOB-02/07) |
 | FU-07 | Error mapping | Known codes → l10n including approval codes | same | **passing** (T-MOB-01/05/06 error_mapper_test) |
 | FU-08 | Audit logs viewer | Filters; pagination; metadata modal; empty/error; SECURITY/SYSTEM admin guard | same | **passing** (T-MOB-07 audit_test) |
+| FU-09 | USERS audience picker (T-FIX-01) | Publish with selected userIds; search filter + empty state; blocks publish with no selection | same | **passing** (`notifications_test.dart`) |
+| FU-10 | Profile screen (T-FIX-01) | Role/department/employee number shown; fallback when missing; logout; gear → /settings | same | **passing** (`profile_settings_test.dart`) |
+| FU-11 | Settings screen (T-FIX-01) | Language switcher; app version; API environment (debug) | same | **passing** (`profile_settings_test.dart`) |
 
 ---
 
