@@ -12,7 +12,7 @@ Update this file as tests are added.
 
 | ID | Area | Cases | Command | Status |
 |---|---|---|---|---|
-| BU-01 | AuthService | Login success; wrong password; inactive user | `cd apps/api && npm run test` | pending |
+| BU-01 | AuthService | Login success; wrong password; inactive user | `cd apps/api && npm run test` | **passing** |
 | BU-02 | Audience resolver | ALL / DEPARTMENT / ROLE / USERS; exclude inactive; invalid filter | same | pending |
 | BU-03 | Access request validation | Justification length; dates; inactive role; missing manager; duplicate active | same | pending |
 | BU-04 | Approval transitions | Manager approve→security; manager reject; security approve→complete (mock); security reject; already decided | same | pending |
@@ -26,9 +26,9 @@ Update this file as tests are added.
 
 | ID | Area | Cases | Command | Status |
 |---|---|---|---|---|
-| BI-01 | Health | GET `/health` ok with DB | `npm run test` / e2e | pending |
-| BI-02 | Auth | Login all demo users; `/auth/me`; logout | same | pending |
-| BI-03 | Authz | Missing token → 401; employee POST notifications → 403; employee GET audit → 403 | same | pending |
+| BI-01 | Health | GET `/health` ok with DB | `npm run test` / e2e | **passing** (e2e envelope; DB via health unit/service) |
+| BI-02 | Auth | Login all demo users; `/auth/me`; logout | same | **passing** |
+| BI-03 | Authz | Missing token → 401; employee POST notifications → 403; employee GET audit → 403 | same | **passing** (RBAC probe routes until feature modules) |
 | BI-04 | Notifications | Admin create+recipients; employee list/detail/read; stats; cancel | same | pending |
 | BI-05 | Access requests | Submit → MANAGER_PENDING + task; list scoped; cancel rules | same | pending |
 | BI-06 | Approvals | Manager approve creates security task; wrong assignee 403; security completes mock | same | pending |

@@ -150,11 +150,12 @@ T-DOC-01
 | Title | Login, JWT, me, logout, guards, roles, permissions |
 | Source | `14_AUTH_AND_RBAC.md`, `10_API_CONTRACT.md` |
 | Dependencies | T-API-02 |
-| Files | `apps/api/src/auth/**`, users as needed |
+| Files | `apps/api/src/auth/**`, `apps/api/prisma/seed.ts` (auth-ready depts/users), RBAC probe routes |
 | Acceptance | Demo logins work after seed; guards enforce roles |
-| Local tests | BU-01, BI-02, BI-03 |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | BU-01, BI-02, BI-03 — **PASS 2026-07-09** |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29028053503 |
+| Branch/PR | `agent/T-API-03-auth-rbac` |
+| Status | **passed** |
 
 ---
 
