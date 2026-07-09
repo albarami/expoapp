@@ -7,6 +7,31 @@ import 'package:expoapp_mobile/app/app.dart';
 import 'package:expoapp_mobile/core/auth/token_storage.dart';
 import 'package:expoapp_mobile/core/localization/locale_controller.dart';
 import 'package:expoapp_mobile/core/providers.dart';
+import 'package:expoapp_mobile/features/auth/data/auth_repository.dart';
+import 'package:expoapp_mobile/core/api/api_error.dart';
+import 'package:expoapp_mobile/core/auth/app_user.dart';
+
+class _NoopAuthRepository implements AuthRepository {
+  @override
+  Future<AppUser> fetchCurrentUser() async {
+    throw const ApiError(
+      code: 'UNAUTHORIZED',
+      message: 'Unauthorized',
+      statusCode: 401,
+    );
+  }
+
+  @override
+  Future<AuthSession> login({
+    required String email,
+    required String password,
+  }) async {
+    throw ApiError.unknown('unused');
+  }
+
+  @override
+  Future<void> logout() async {}
+}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +45,7 @@ void main() {
       ProviderScope(
         overrides: [
           tokenStorageProvider.overrideWithValue(InMemoryTokenStorage()),
+          authRepositoryProvider.overrideWithValue(_NoopAuthRepository()),
         ],
         child: const ExpoApp(),
       ),
@@ -36,6 +62,7 @@ void main() {
       ProviderScope(
         overrides: [
           tokenStorageProvider.overrideWithValue(InMemoryTokenStorage()),
+          authRepositoryProvider.overrideWithValue(_NoopAuthRepository()),
           localeControllerProvider.overrideWith(
             (ref) => LocaleController(initialLocale: const Locale('ar')),
           ),

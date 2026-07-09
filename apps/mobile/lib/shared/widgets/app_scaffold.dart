@@ -151,6 +151,7 @@ class ExpoTextField extends StatelessWidget {
     this.textInputAction,
     this.autofillHints,
     this.enabled = true,
+    this.onFieldSubmitted,
   });
 
   final String label;
@@ -162,6 +163,7 @@ class ExpoTextField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final Iterable<String>? autofillHints;
   final bool enabled;
+  final ValueChanged<String>? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -174,6 +176,7 @@ class ExpoTextField extends StatelessWidget {
       textInputAction: textInputAction,
       autofillHints: autofillHints,
       enabled: enabled,
+      onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
         labelText: label,
         alignLabelWithHint: true,

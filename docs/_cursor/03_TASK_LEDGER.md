@@ -295,11 +295,13 @@ T-DOC-01
 | Title | Login, demo buttons, token session, role tabs |
 | Source | `14`, `13`, `20` screens 1–2 |
 | Dependencies | T-MOB-01, T-API-03 |
-| Files | `features/auth/**`, `app/router.dart` |
+| Files | `features/auth/**`, `app/router.dart`, `core/auth/**` |
 | Acceptance | All demo users login; tabs by role; 401 → login |
 | Skills | ui-ux-pro-max |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | `flutter analyze`, `flutter test` — **PASS 2026-07-09** (29 tests) |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-MOB-02-auth-session` |
+| Status | **in_progress** |
 
 ---
 
@@ -424,10 +426,11 @@ T-DOC-01
 
 1. ~~T-ENV-01~~ **passed**
 2. ~~T-ENV-02~~ **passed**
-3. ~~T-CI-01~~ **passed** (workflow exists)
-4. ~~T-ENV-03~~ **passed** (CI green: run 29025032699)
-5. ~~T-API-01~~ **passed** (CI green: run 29025984791)
-6. ~~T-API-02~~ **passed** (CI green: run 29026568179)
-7. **T-API-03** — Auth + RBAC (next)
+3. ~~T-CI-01~~ **passed**
+4. ~~T-ENV-03~~ **passed**
+5. ~~T-API-01~~ … ~~T-API-10~~ **passed**
+6. ~~T-MOB-01~~ **passed** (CI green: run 29036867939)
+7. **T-MOB-02** — Flutter auth + session + role shell (in progress)
+8. T-MOB-03 — Flutter dashboard (next after T-MOB-02 CI green)
 
-**Resume at T-API-03.**
+**Resume at T-MOB-02 until CI green, then T-MOB-03.**

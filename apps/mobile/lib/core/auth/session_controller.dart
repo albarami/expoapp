@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../features/auth/data/auth_repository.dart';
+import '../api/api_error.dart';
 import 'app_user.dart';
 import 'token_storage.dart';
 
@@ -21,26 +23,36 @@ class SessionState {
     required this.status,
     this.user,
     this.accessToken,
+    this.errorMessage,
   });
 
   final SessionStatus status;
   final AppUser? user;
   final String? accessToken;
+  final String? errorMessage;
 
   bool get isAuthenticated =>
       status == SessionStatus.authenticated && user != null;
+
+  bool get isBootstrapping => status == SessionStatus.unknown;
+
+  bool get isAuthenticating => status == SessionStatus.authenticating;
 
   SessionState copyWith({
     SessionStatus? status,
     AppUser? user,
     String? accessToken,
+    String? errorMessage,
     bool clearUser = false,
     bool clearToken = false,
+    bool clearError = false,
   }) {
     return SessionState(
       status: status ?? this.status,
       user: clearUser ? null : (user ?? this.user),
       accessToken: clearToken ? null : (accessToken ?? this.accessToken),
+      errorMessage:
+          clearError ? null : (errorMessage ?? this.errorMessage),
     );
   }
 
@@ -49,42 +61,106 @@ class SessionState {
       SessionState(status: SessionStatus.unauthenticated);
 }
 
-/// Foundation session controller — restores tokens; full `/auth/me` in T-MOB-02.
+/// Auth session controller: login, `/auth/me` restore, logout, 401 expiry.
 class SessionController extends StateNotifier<SessionState> {
-  SessionController(this._tokenStorage) : super(SessionState.unknown) {
-    restore();
+  SessionController({
+    required this.tokenStorage,
+    required this.authRepository,
+  }) : super(SessionState.unknown) {
+    ready = restore();
   }
 
-  final TokenStorage _tokenStorage;
+  final TokenStorage tokenStorage;
+  final AuthRepository authRepository;
 
+  /// Completes when the initial [restore] finishes.
+  late final Future<void> ready;
+
+  /// Loads token from secure storage and validates via `/auth/me`.
   Future<void> restore() async {
-    state = state.copyWith(status: SessionStatus.unknown);
-    final token = await _tokenStorage.readAccessToken();
+    state = state.copyWith(
+      status: SessionStatus.unknown,
+      clearError: true,
+    );
+    final token = await tokenStorage.readAccessToken();
     if (token == null || token.isEmpty) {
       state = SessionState.unauthenticated;
       return;
     }
 
-    final cached = await _tokenStorage.readCurrentUserJson();
-    if (cached != null && cached.isNotEmpty) {
-      try {
-        final user =
-            AppUser.fromJson(jsonDecode(cached) as Map<String, dynamic>);
-        state = SessionState(
-          status: SessionStatus.authenticated,
-          user: user,
-          accessToken: token,
-        );
+    try {
+      final user = await authRepository.fetchCurrentUser();
+      await tokenStorage.writeCurrentUserJson(jsonEncode(user.toJson()));
+      state = SessionState(
+        status: SessionStatus.authenticated,
+        user: user,
+        accessToken: token,
+      );
+    } on ApiError catch (error) {
+      await tokenStorage.clear();
+      if (error.isUnauthorized) {
+        state = const SessionState(status: SessionStatus.expired);
         return;
-      } on FormatException {
-        // Fall through to unauthenticated if cache is corrupt.
       }
+      // Prefer cached profile for transient network failures so cold start
+      // still reaches the shell; next API call will re-validate.
+      final cached = await tokenStorage.readCurrentUserJson();
+      if (cached != null && cached.isNotEmpty && error.isNetwork) {
+        try {
+          final user =
+              AppUser.fromJson(jsonDecode(cached) as Map<String, dynamic>);
+          state = SessionState(
+            status: SessionStatus.authenticated,
+            user: user,
+            accessToken: token,
+          );
+          return;
+        } on FormatException {
+          // Fall through.
+        }
+      }
+      await tokenStorage.clear();
+      state = SessionState.unauthenticated;
+    } catch (_) {
+      await tokenStorage.clear();
+      state = SessionState.unauthenticated;
     }
+  }
 
-    // Token present but no user cache yet — treat as unauthenticated until
-    // T-MOB-02 wires `/auth/me`. Clear stale token to avoid half-sessions.
-    await _tokenStorage.clear();
-    state = SessionState.unauthenticated;
+  Future<bool> login({
+    required String email,
+    required String password,
+  }) async {
+    state = state.copyWith(
+      status: SessionStatus.authenticating,
+      clearError: true,
+      clearUser: true,
+      clearToken: true,
+    );
+    try {
+      final session = await authRepository.login(
+        email: email,
+        password: password,
+      );
+      await setAuthenticated(
+        user: session.user,
+        accessToken: session.accessToken,
+        refreshToken: session.refreshToken,
+      );
+      return true;
+    } on ApiError catch (error) {
+      state = SessionState(
+        status: SessionStatus.unauthenticated,
+        errorMessage: error.message,
+      );
+      return false;
+    } catch (error) {
+      state = SessionState(
+        status: SessionStatus.unauthenticated,
+        errorMessage: error.toString(),
+      );
+      return false;
+    }
   }
 
   Future<void> setAuthenticated({
@@ -92,11 +168,11 @@ class SessionController extends StateNotifier<SessionState> {
     required String accessToken,
     String? refreshToken,
   }) async {
-    await _tokenStorage.writeTokens(
+    await tokenStorage.writeTokens(
       accessToken: accessToken,
       refreshToken: refreshToken,
     );
-    await _tokenStorage.writeCurrentUserJson(jsonEncode(user.toJson()));
+    await tokenStorage.writeCurrentUserJson(jsonEncode(user.toJson()));
     state = SessionState(
       status: SessionStatus.authenticated,
       user: user,
@@ -105,12 +181,28 @@ class SessionController extends StateNotifier<SessionState> {
   }
 
   Future<void> markExpired() async {
-    await _tokenStorage.clear();
-    state = const SessionState(status: SessionStatus.expired);
+    await tokenStorage.clear();
+    state = const SessionState(
+      status: SessionStatus.expired,
+      errorMessage: null,
+    );
+  }
+
+  Future<void> clearExpiredBanner() async {
+    if (state.status == SessionStatus.expired) {
+      state = SessionState.unauthenticated;
+    }
   }
 
   Future<void> signOut() async {
-    await _tokenStorage.clear();
+    try {
+      await authRepository.logout();
+    } on ApiError {
+      // Always clear local session even if the network call fails.
+    } catch (_) {
+      // Ignore unexpected logout transport errors.
+    }
+    await tokenStorage.clear();
     state = SessionState.unauthenticated;
   }
 }

@@ -63,6 +63,26 @@
   "errorDuplicateActiveRequest": "لديك طلب نشط بالفعل لهذه الصلاحية.",
   "errorValidation": "يرجى التحقق من النموذج والمحاولة مرة أخرى.",
   "errorUnauthorized": "انتهت جلستك. يرجى تسجيل الدخول مرة أخرى.",
+  "errorInvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+  "validationEmailRequired": "البريد الإلكتروني مطلوب.",
+  "validationEmailInvalid": "أدخل بريداً إلكترونياً صالحاً.",
+  "validationPasswordRequired": "كلمة المرور مطلوبة.",
+  "demoQuickLogin": "دخول تجريبي سريع",
+  "demoEmployee": "موظف",
+  "demoManager": "مدير",
+  "demoSecurityAdmin": "مسؤول الأمن",
+  "demoSystemAdmin": "مسؤول النظام",
+  "showPassword": "إظهار كلمة المرور",
+  "hidePassword": "إخفاء كلمة المرور",
+  "sessionRestoring": "جاري استعادة جلستك…",
+  "signedInAs": "مسجّل الدخول باسم {name}",
+  "@signedInAs": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "security": "الأمن",
   "create": "إنشاء"
 }

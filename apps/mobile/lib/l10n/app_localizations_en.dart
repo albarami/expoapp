@@ -203,6 +203,47 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorUnauthorized => 'Your session expired. Please sign in again.';
 
   @override
+  String get errorInvalidCredentials => 'Invalid email or password.';
+
+  @override
+  String get validationEmailRequired => 'Email is required.';
+
+  @override
+  String get validationEmailInvalid => 'Enter a valid email address.';
+
+  @override
+  String get validationPasswordRequired => 'Password is required.';
+
+  @override
+  String get demoQuickLogin => 'Quick demo login';
+
+  @override
+  String get demoEmployee => 'Employee';
+
+  @override
+  String get demoManager => 'Manager';
+
+  @override
+  String get demoSecurityAdmin => 'Security Admin';
+
+  @override
+  String get demoSystemAdmin => 'System Admin';
+
+  @override
+  String get showPassword => 'Show password';
+
+  @override
+  String get hidePassword => 'Hide password';
+
+  @override
+  String get sessionRestoring => 'Restoring your session…';
+
+  @override
+  String signedInAs(String name) {
+    return 'Signed in as $name';
+  }
+
+  @override
   String get security => 'Security';
 
   @override

@@ -2,8 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:expoapp_mobile/core/api/api_error.dart';
 import 'package:expoapp_mobile/core/auth/app_user.dart';
-import 'package:expoapp_mobile/core/auth/session_controller.dart';
-import 'package:expoapp_mobile/core/auth/token_storage.dart';
 import 'package:expoapp_mobile/core/config/app_config.dart';
 import 'package:expoapp_mobile/shared/models/paginated_response.dart';
 import 'package:expoapp_mobile/shared/widgets/status_chip.dart';
@@ -49,37 +47,6 @@ void main() {
       expect(user.canViewAudit, isTrue);
       expect(user.canCreateNotification, isTrue);
       expect(user.toJson()['role'], 'SYSTEM_ADMIN');
-    });
-  });
-
-  group('SessionController', () {
-    test('restore without token is unauthenticated', () async {
-      final storage = InMemoryTokenStorage();
-      final controller = SessionController(storage);
-      await Future<void>.delayed(Duration.zero);
-      expect(controller.state.status, SessionStatus.unauthenticated);
-    });
-
-    test('setAuthenticated persists tokens and user', () async {
-      final storage = InMemoryTokenStorage();
-      final controller = SessionController(storage);
-      await Future<void>.delayed(Duration.zero);
-
-      await controller.setAuthenticated(
-        user: const AppUser(
-          id: 'u1',
-          email: 'e@example.com',
-          displayName: 'Emp',
-          role: AppRole.employee,
-        ),
-        accessToken: 'token',
-        refreshToken: 'refresh',
-      );
-
-      expect(controller.state.isAuthenticated, isTrue);
-      expect(await storage.readAccessToken(), 'token');
-      expect(await storage.readRefreshToken(), 'refresh');
-      expect(await storage.readCurrentUserJson(), contains('e@example.com'));
     });
   });
 

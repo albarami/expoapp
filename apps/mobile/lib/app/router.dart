@@ -6,11 +6,14 @@ import '../core/auth/app_user.dart';
 import '../core/auth/session_controller.dart';
 import '../core/providers.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
+import '../features/auth/presentation/screens/splash_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../shared/widgets/foundation_placeholder_screen.dart';
 import 'app_shell.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+final _scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>(debugLabel: 'scaffoldMessenger');
 
 /// Listenable bridge so GoRouter rebuilds on session changes.
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -36,33 +39,49 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/login',
+    initialLocation: '/splash',
     refreshListenable: refresh,
     redirect: (context, state) {
       final session = ref.read(sessionControllerProvider);
-      final loggingIn = state.matchedLocation == '/login';
       final loc = state.matchedLocation;
+      final atSplash = loc == '/splash';
+      final loggingIn = loc == '/login';
 
       if (session.status == SessionStatus.unknown) {
-        return null;
+        return atSplash ? null : '/splash';
       }
 
-      if (!session.isAuthenticated) {
-        return loggingIn ? null : '/login';
+      if (session.status == SessionStatus.expired ||
+          !session.isAuthenticated) {
+        if (loggingIn) return null;
+        return '/login';
       }
 
-      if (loggingIn) {
+      // Authenticated
+      if (loggingIn || atSplash) {
         return '/';
       }
 
       final user = session.user;
       if (user != null && !_isAllowed(user.role, loc)) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          final messenger = _scaffoldMessengerKey.currentState;
+          final l10n = AppLocalizations.of(context);
+          messenger?.showSnackBar(
+            SnackBar(content: Text(l10n.unauthorizedMessage)),
+          );
+        });
         return '/';
       }
 
       return null;
     },
     routes: [
+      GoRoute(
+        path: '/splash',
+        name: 'splash',
+        builder: (context, state) => const SplashScreen(),
+      ),
       GoRoute(
         path: '/login',
         name: 'login',
@@ -174,6 +193,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   );
 });
 
+/// Root scaffold messenger key for unauthorized snackbars from redirects.
+GlobalKey<ScaffoldMessengerState> get appScaffoldMessengerKey =>
+    _scaffoldMessengerKey;
+
 bool _isAllowed(AppRole role, String location) {
   if (location.startsWith('/audit')) {
     return role == AppRole.securityAdmin || role == AppRole.systemAdmin;
@@ -200,8 +223,8 @@ class RoleAwareShell extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
     final user = ref.watch(sessionControllerProvider).user;
     final location = GoRouterState.of(context).uri.path;
-    final tabs = _tabsFor(user?.role, l10n);
-    final selected = _selectedIndex(location, tabs);
+    final tabs = tabsForRole(user?.role, l10n);
+    final selected = selectedTabIndex(location, tabs);
     final width = MediaQuery.sizeOf(context).width;
     final useRail = width >= 900;
 
@@ -251,8 +274,8 @@ class RoleAwareShell extends ConsumerWidget {
   }
 }
 
-class _ShellTab {
-  const _ShellTab({
+class ShellTab {
+  const ShellTab({
     required this.path,
     required this.label,
     required this.icon,
@@ -267,38 +290,39 @@ class _ShellTab {
   final String? matchPrefix;
 }
 
-List<_ShellTab> _tabsFor(AppRole? role, AppLocalizations l10n) {
+/// Role → bottom-nav / rail destinations (testable).
+List<ShellTab> tabsForRole(AppRole? role, AppLocalizations l10n) {
   switch (role) {
     case AppRole.manager:
       return [
-        _ShellTab(
+        ShellTab(
           path: '/',
           label: l10n.home,
           icon: Icons.home_outlined,
           selectedIcon: Icons.home,
         ),
-        _ShellTab(
+        ShellTab(
           path: '/notifications',
           label: l10n.notifications,
           icon: Icons.notifications_outlined,
           selectedIcon: Icons.notifications,
           matchPrefix: '/notifications',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/requests',
           label: l10n.requests,
           icon: Icons.assignment_outlined,
           selectedIcon: Icons.assignment,
           matchPrefix: '/requests',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/approvals',
           label: l10n.approvals,
           icon: Icons.fact_check_outlined,
           selectedIcon: Icons.fact_check,
           matchPrefix: '/approvals',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/profile',
           label: l10n.profile,
           icon: Icons.person_outline,
@@ -308,34 +332,34 @@ List<_ShellTab> _tabsFor(AppRole? role, AppLocalizations l10n) {
       ];
     case AppRole.securityAdmin:
       return [
-        _ShellTab(
+        ShellTab(
           path: '/',
           label: l10n.home,
           icon: Icons.home_outlined,
           selectedIcon: Icons.home,
         ),
-        _ShellTab(
+        ShellTab(
           path: '/notifications',
           label: l10n.notifications,
           icon: Icons.notifications_outlined,
           selectedIcon: Icons.notifications,
           matchPrefix: '/notifications',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/approvals',
           label: l10n.security,
           icon: Icons.security_outlined,
           selectedIcon: Icons.security,
           matchPrefix: '/approvals',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/audit',
           label: l10n.auditLogs,
           icon: Icons.history_outlined,
           selectedIcon: Icons.history,
           matchPrefix: '/audit',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/profile',
           label: l10n.profile,
           icon: Icons.person_outline,
@@ -345,34 +369,34 @@ List<_ShellTab> _tabsFor(AppRole? role, AppLocalizations l10n) {
       ];
     case AppRole.systemAdmin:
       return [
-        _ShellTab(
+        ShellTab(
           path: '/',
           label: l10n.home,
           icon: Icons.home_outlined,
           selectedIcon: Icons.home,
         ),
-        _ShellTab(
+        ShellTab(
           path: '/notifications',
           label: l10n.notifications,
           icon: Icons.notifications_outlined,
           selectedIcon: Icons.notifications,
           matchPrefix: '/notifications',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/admin/notifications/create',
           label: l10n.create,
           icon: Icons.add_circle_outline,
           selectedIcon: Icons.add_circle,
           matchPrefix: '/admin',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/audit',
           label: l10n.auditLogs,
           icon: Icons.history_outlined,
           selectedIcon: Icons.history,
           matchPrefix: '/audit',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/profile',
           label: l10n.profile,
           icon: Icons.person_outline,
@@ -383,27 +407,27 @@ List<_ShellTab> _tabsFor(AppRole? role, AppLocalizations l10n) {
     case AppRole.employee:
     case null:
       return [
-        _ShellTab(
+        ShellTab(
           path: '/',
           label: l10n.home,
           icon: Icons.home_outlined,
           selectedIcon: Icons.home,
         ),
-        _ShellTab(
+        ShellTab(
           path: '/notifications',
           label: l10n.notifications,
           icon: Icons.notifications_outlined,
           selectedIcon: Icons.notifications,
           matchPrefix: '/notifications',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/requests',
           label: l10n.requests,
           icon: Icons.assignment_outlined,
           selectedIcon: Icons.assignment,
           matchPrefix: '/requests',
         ),
-        _ShellTab(
+        ShellTab(
           path: '/profile',
           label: l10n.profile,
           icon: Icons.person_outline,
@@ -414,7 +438,7 @@ List<_ShellTab> _tabsFor(AppRole? role, AppLocalizations l10n) {
   }
 }
 
-int _selectedIndex(String location, List<_ShellTab> tabs) {
+int selectedTabIndex(String location, List<ShellTab> tabs) {
   for (var i = 0; i < tabs.length; i++) {
     final tab = tabs[i];
     final prefix = tab.matchPrefix;

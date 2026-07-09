@@ -66,6 +66,26 @@
   "errorDuplicateActiveRequest": "You already have an active request for this role.",
   "errorValidation": "Please check the form and try again.",
   "errorUnauthorized": "Your session expired. Please sign in again.",
+  "errorInvalidCredentials": "Invalid email or password.",
+  "validationEmailRequired": "Email is required.",
+  "validationEmailInvalid": "Enter a valid email address.",
+  "validationPasswordRequired": "Password is required.",
+  "demoQuickLogin": "Quick demo login",
+  "demoEmployee": "Employee",
+  "demoManager": "Manager",
+  "demoSecurityAdmin": "Security Admin",
+  "demoSystemAdmin": "System Admin",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password",
+  "sessionRestoring": "Restoring your session…",
+  "signedInAs": "Signed in as {name}",
+  "@signedInAs": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "security": "Security",
   "create": "Create"
 }

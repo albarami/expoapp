@@ -200,6 +200,48 @@ class AppLocalizationsAr extends AppLocalizations {
   String get errorUnauthorized => 'انتهت جلستك. يرجى تسجيل الدخول مرة أخرى.';
 
   @override
+  String get errorInvalidCredentials =>
+      'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+
+  @override
+  String get validationEmailRequired => 'البريد الإلكتروني مطلوب.';
+
+  @override
+  String get validationEmailInvalid => 'أدخل بريداً إلكترونياً صالحاً.';
+
+  @override
+  String get validationPasswordRequired => 'كلمة المرور مطلوبة.';
+
+  @override
+  String get demoQuickLogin => 'دخول تجريبي سريع';
+
+  @override
+  String get demoEmployee => 'موظف';
+
+  @override
+  String get demoManager => 'مدير';
+
+  @override
+  String get demoSecurityAdmin => 'مسؤول الأمن';
+
+  @override
+  String get demoSystemAdmin => 'مسؤول النظام';
+
+  @override
+  String get showPassword => 'إظهار كلمة المرور';
+
+  @override
+  String get hidePassword => 'إخفاء كلمة المرور';
+
+  @override
+  String get sessionRestoring => 'جاري استعادة جلستك…';
+
+  @override
+  String signedInAs(String name) {
+    return 'مسجّل الدخول باسم $name';
+  }
+
+  @override
   String get security => 'الأمن';
 
   @override

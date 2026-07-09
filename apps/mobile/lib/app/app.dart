@@ -19,6 +19,7 @@ class ExpoApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'ExpoApp',
       debugShowCheckedModeBanner: false,
+      scaffoldMessengerKey: appScaffoldMessengerKey,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: ThemeMode.system,

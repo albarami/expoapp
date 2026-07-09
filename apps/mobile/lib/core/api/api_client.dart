@@ -10,15 +10,16 @@ typedef UnauthorizedHandler = Future<void> Function();
 /// Dio-backed HTTP client with bearer auth and typed [ApiError] mapping.
 class ApiClient {
   ApiClient({
-    required this._config,
-    required this._tokenStorage,
-    this._onUnauthorized,
+    required AppConfig config,
+    required this.tokenStorage,
+    this.onUnauthorized,
     Dio? dio,
-  }) : _dio = dio ?? _createDio(_config) {
+  })  : _config = config,
+        _dio = dio ?? _createDio(config) {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final token = await _tokenStorage.readAccessToken();
+          final token = await tokenStorage.readAccessToken();
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
           }
@@ -28,9 +29,13 @@ class ApiClient {
           handler.next(options);
         },
         onError: (error, handler) async {
-          if (error.response?.statusCode == 401) {
-            await _tokenStorage.clear();
-            final callback = _onUnauthorized;
+          final status = error.response?.statusCode;
+          final path = error.requestOptions.path;
+          // Invalid credentials on login are not a session expiry.
+          final isLoginAttempt = path.endsWith('/auth/login');
+          if (status == 401 && !isLoginAttempt) {
+            await tokenStorage.clear();
+            final callback = onUnauthorized;
             if (callback != null) {
               await callback();
             }
@@ -57,8 +62,10 @@ class ApiClient {
 
   final AppConfig _config;
   final Dio _dio;
-  final TokenStorage _tokenStorage;
-  final UnauthorizedHandler? _onUnauthorized;
+  final TokenStorage tokenStorage;
+
+  /// Invoked after a 401 clears stored tokens (wired by session provider).
+  UnauthorizedHandler? onUnauthorized;
 
   Dio get dio => _dio;
 

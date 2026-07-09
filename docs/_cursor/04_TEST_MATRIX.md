@@ -58,10 +58,10 @@ Update this file as tests are added.
 
 | ID | Cases | Status |
 |---|---|---|
-| NAV-01 | Unauthenticated → `/login` | **passing** (T-MOB-01 widget smoke) |
-| NAV-02 | Authenticated `/login` → `/` | pending |
-| NAV-03 | Role tab sets match `06` / `13` | pending |
-| NAV-04 | Deep restricted route shows unauthorized | pending |
+| NAV-01 | Unauthenticated → `/login` | **passing** (T-MOB-02 widget) |
+| NAV-02 | Authenticated `/login` → `/` | **passing** (T-MOB-02 session restore + redirect) |
+| NAV-03 | Role tab sets match `06` / `13` | **passing** (unit: tabsForRole) |
+| NAV-04 | Deep restricted route shows unauthorized | **passing** (redirect + snackbar; T-MOB-02) |
 
 ---
 
@@ -69,9 +69,9 @@ Update this file as tests are added.
 
 | ID | Cases | Status |
 |---|---|---|
-| RP-01 | ApiClient attaches Bearer; maps 401 | pending |
+| RP-01 | ApiClient attaches Bearer; maps 401 | **passing** (T-MOB-02 ApiClient 401 test) |
 | RP-02 | NotificationsProvider loading/error/data | pending |
-| RP-03 | SessionController restore from secure storage | pending |
+| RP-03 | SessionController restore from secure storage | **passing** (T-MOB-02 `/auth/me` restore) |
 
 ---
 
@@ -80,7 +80,7 @@ Update this file as tests are added.
 | ID | Cases | Status |
 |---|---|---|
 | RBAC-01 | Matrix from `06_PERSONAS_ROLES_PERMISSIONS.md` API-level | pending |
-| RBAC-02 | UI tabs hidden for unauthorized roles | pending |
+| RBAC-02 | UI tabs hidden for unauthorized roles | **passing** (T-MOB-02 role tab unit + widget) |
 | RBAC-03 | Manager cannot decide non-assigned task | pending |
 
 ---
@@ -89,7 +89,7 @@ Update this file as tests are added.
 
 | ID | Forms | Status |
 |---|---|---|
-| FV-01 | Login email/password | pending |
+| FV-01 | Login email/password | **passing** (T-MOB-02 widget validation) |
 | FV-02 | Create notification fields + audience | pending |
 | FV-03 | Access request fields | pending |
 | FV-04 | Reject requires comment | pending |

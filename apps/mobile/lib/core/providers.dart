@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../features/auth/data/auth_repository.dart';
 import 'api/api_client.dart';
 import 'auth/session_controller.dart';
 import 'auth/token_storage.dart';
@@ -14,20 +15,30 @@ final tokenStorageProvider = Provider<TokenStorage>((ref) {
   return SecureTokenStorage();
 });
 
-final sessionControllerProvider =
-    StateNotifierProvider<SessionController, SessionState>((ref) {
-  return SessionController(ref.watch(tokenStorageProvider));
-});
-
+/// Shared [ApiClient]. Unauthorized handler is wired after session exists.
 final apiClientProvider = Provider<ApiClient>((ref) {
   final config = ref.watch(appConfigProvider);
   final storage = ref.watch(tokenStorageProvider);
-  final session = ref.read(sessionControllerProvider.notifier);
   return ApiClient(
     config: config,
     tokenStorage: storage,
-    onUnauthorized: () => session.markExpired(),
   );
+});
+
+final authRepositoryProvider = Provider<AuthRepository>((ref) {
+  return ApiAuthRepository(ref.watch(apiClientProvider));
+});
+
+final sessionControllerProvider =
+    StateNotifierProvider<SessionController, SessionState>((ref) {
+  final controller = SessionController(
+    tokenStorage: ref.watch(tokenStorageProvider),
+    authRepository: ref.watch(authRepositoryProvider),
+  );
+  // Wire 401 → session expiry without creating a circular provider read
+  // during ApiClient construction.
+  ref.read(apiClientProvider).onUnauthorized = () => controller.markExpired();
+  return controller;
 });
 
 final localeControllerProvider =

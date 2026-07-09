@@ -476,6 +476,84 @@ abstract class AppLocalizations {
   /// **'Your session expired. Please sign in again.'**
   String get errorUnauthorized;
 
+  /// No description provided for @errorInvalidCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password.'**
+  String get errorInvalidCredentials;
+
+  /// No description provided for @validationEmailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required.'**
+  String get validationEmailRequired;
+
+  /// No description provided for @validationEmailInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email address.'**
+  String get validationEmailInvalid;
+
+  /// No description provided for @validationPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required.'**
+  String get validationPasswordRequired;
+
+  /// No description provided for @demoQuickLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick demo login'**
+  String get demoQuickLogin;
+
+  /// No description provided for @demoEmployee.
+  ///
+  /// In en, this message translates to:
+  /// **'Employee'**
+  String get demoEmployee;
+
+  /// No description provided for @demoManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager'**
+  String get demoManager;
+
+  /// No description provided for @demoSecurityAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Security Admin'**
+  String get demoSecurityAdmin;
+
+  /// No description provided for @demoSystemAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'System Admin'**
+  String get demoSystemAdmin;
+
+  /// No description provided for @showPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Show password'**
+  String get showPassword;
+
+  /// No description provided for @hidePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide password'**
+  String get hidePassword;
+
+  /// No description provided for @sessionRestoring.
+  ///
+  /// In en, this message translates to:
+  /// **'Restoring your session…'**
+  String get sessionRestoring;
+
+  /// No description provided for @signedInAs.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed in as {name}'**
+  String signedInAs(String name);
+
   /// No description provided for @security.
   ///
   /// In en, this message translates to:
