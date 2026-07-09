@@ -42,7 +42,17 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     env:
+      NODE_ENV: test
+      API_PREFIX: api/v1
       DATABASE_URL: postgresql://expoapp:expoapp@localhost:5432/expoapp?schema=public
+      REDIS_URL: redis://localhost:6379
+      JWT_SECRET: ci-test-jwt-secret-not-for-production
+      JWT_EXPIRES_IN: 8h
+      JWT_REFRESH_EXPIRES_IN: 30d
+      CORS_ORIGINS: http://localhost:3000
+      FUSION_MODE: mock
+      PUSH_MODE: mock
+      LOG_LEVEL: error
     steps:
       - name: Checkout
         uses: actions/checkout@v4

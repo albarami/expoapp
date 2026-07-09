@@ -59,6 +59,8 @@ async function bootstrap(): Promise<void> {
       'bearer',
     )
     .addTag('health', 'Liveness and dependency checks')
+    .addTag('auth', 'Authentication and session')
+    .addTag('rbac-probe', 'Temporary RBAC probe endpoints (T-API-03)')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);

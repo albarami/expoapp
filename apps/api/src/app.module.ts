@@ -1,5 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 import { TraceIdMiddleware } from './common/middleware/trace-id.middleware';
 import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
@@ -18,6 +19,7 @@ import { PrismaModule } from './prisma/prisma.module';
       validate: validateEnv,
     }),
     PrismaModule,
+    AuthModule,
     HealthModule,
   ],
 })
