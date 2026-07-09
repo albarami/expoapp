@@ -22,5 +22,19 @@ void main() {
       ),
       l10n.networkError,
     );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'INVALID_ACCESS_DATES', message: 'x'),
+      ),
+      l10n.errorInvalidAccessDates,
+    );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'REQUEST_NOT_CANCELABLE', message: 'x'),
+      ),
+      l10n.errorRequestNotCancelable,
+    );
   });
 }

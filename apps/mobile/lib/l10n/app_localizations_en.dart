@@ -92,6 +92,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noRequests => 'No requests yet';
 
   @override
+  String get noRequestsMessage => 'Submit a new access request to get started.';
+
+  @override
   String get noApprovals => 'No approvals pending';
 
   @override
@@ -411,6 +414,17 @@ class AppLocalizationsEn extends AppLocalizations {
       'You already have an active request for this role.';
 
   @override
+  String get errorInvalidAccessDates =>
+      'Check the start and end dates for this request.';
+
+  @override
+  String get errorRequestNotCancelable =>
+      'This request can no longer be cancelled.';
+
+  @override
+  String get errorUserInactive => 'Your account is inactive.';
+
+  @override
   String get errorValidation => 'Please check the form and try again.';
 
   @override
@@ -462,4 +476,107 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get create => 'Create';
+
+  @override
+  String get filterPending => 'Pending';
+
+  @override
+  String get filterCompleted => 'Completed';
+
+  @override
+  String get filterRejected => 'Rejected';
+
+  @override
+  String get requestDetail => 'Request detail';
+
+  @override
+  String get requester => 'Requester';
+
+  @override
+  String get riskLevel => 'Risk level';
+
+  @override
+  String get currentStage => 'Current stage';
+
+  @override
+  String get nextApprover => 'Next approver';
+
+  @override
+  String get timeline => 'Timeline';
+
+  @override
+  String get noTimelineEvents => 'No timeline events yet.';
+
+  @override
+  String get cancelRequest => 'Cancel request';
+
+  @override
+  String get cancelRequestTitle => 'Cancel this request?';
+
+  @override
+  String cancelRequestMessage(String requestNumber) {
+    return 'Cancel request $requestNumber? This cannot be undone.';
+  }
+
+  @override
+  String get requestCancelled => 'Request cancelled.';
+
+  @override
+  String requestSubmitted(String requestNumber) {
+    return 'Request $requestNumber submitted.';
+  }
+
+  @override
+  String get newAccessRequestSubtitle =>
+      'Choose a system and role, then explain why you need access.';
+
+  @override
+  String justificationHelper(int min) {
+    return 'At least $min characters.';
+  }
+
+  @override
+  String get selectDate => 'Select a date';
+
+  @override
+  String get durationTemporary => 'Temporary';
+
+  @override
+  String get durationPermanent => 'Permanent';
+
+  @override
+  String get urgencyNormal => 'Normal';
+
+  @override
+  String get urgencyUrgent => 'Urgent';
+
+  @override
+  String get urgencyCritical => 'Critical';
+
+  @override
+  String get stageRequester => 'Requester';
+
+  @override
+  String get stageManager => 'Manager';
+
+  @override
+  String get stageSecurity => 'Security';
+
+  @override
+  String get stageProvisioning => 'Provisioning';
+
+  @override
+  String get stageComplete => 'Complete';
+
+  @override
+  String get riskLow => 'Low';
+
+  @override
+  String get riskMedium => 'Medium';
+
+  @override
+  String get riskHigh => 'High';
+
+  @override
+  String get riskCritical => 'Critical';
 }

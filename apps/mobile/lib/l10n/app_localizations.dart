@@ -260,6 +260,12 @@ abstract class AppLocalizations {
   /// **'No requests yet'**
   String get noRequests;
 
+  /// No description provided for @noRequestsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit a new access request to get started.'**
+  String get noRequestsMessage;
+
   /// No description provided for @noApprovals.
   ///
   /// In en, this message translates to:
@@ -860,6 +866,24 @@ abstract class AppLocalizations {
   /// **'You already have an active request for this role.'**
   String get errorDuplicateActiveRequest;
 
+  /// No description provided for @errorInvalidAccessDates.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the start and end dates for this request.'**
+  String get errorInvalidAccessDates;
+
+  /// No description provided for @errorRequestNotCancelable.
+  ///
+  /// In en, this message translates to:
+  /// **'This request can no longer be cancelled.'**
+  String get errorRequestNotCancelable;
+
+  /// No description provided for @errorUserInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account is inactive.'**
+  String get errorUserInactive;
+
   /// No description provided for @errorValidation.
   ///
   /// In en, this message translates to:
@@ -961,6 +985,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create'**
   String get create;
+
+  /// No description provided for @filterPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get filterPending;
+
+  /// No description provided for @filterCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get filterCompleted;
+
+  /// No description provided for @filterRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get filterRejected;
+
+  /// No description provided for @requestDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Request detail'**
+  String get requestDetail;
+
+  /// No description provided for @requester.
+  ///
+  /// In en, this message translates to:
+  /// **'Requester'**
+  String get requester;
+
+  /// No description provided for @riskLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Risk level'**
+  String get riskLevel;
+
+  /// No description provided for @currentStage.
+  ///
+  /// In en, this message translates to:
+  /// **'Current stage'**
+  String get currentStage;
+
+  /// No description provided for @nextApprover.
+  ///
+  /// In en, this message translates to:
+  /// **'Next approver'**
+  String get nextApprover;
+
+  /// No description provided for @timeline.
+  ///
+  /// In en, this message translates to:
+  /// **'Timeline'**
+  String get timeline;
+
+  /// No description provided for @noTimelineEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'No timeline events yet.'**
+  String get noTimelineEvents;
+
+  /// No description provided for @cancelRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel request'**
+  String get cancelRequest;
+
+  /// No description provided for @cancelRequestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this request?'**
+  String get cancelRequestTitle;
+
+  /// No description provided for @cancelRequestMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel request {requestNumber}? This cannot be undone.'**
+  String cancelRequestMessage(String requestNumber);
+
+  /// No description provided for @requestCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Request cancelled.'**
+  String get requestCancelled;
+
+  /// No description provided for @requestSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Request {requestNumber} submitted.'**
+  String requestSubmitted(String requestNumber);
+
+  /// No description provided for @newAccessRequestSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a system and role, then explain why you need access.'**
+  String get newAccessRequestSubtitle;
+
+  /// No description provided for @justificationHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'At least {min} characters.'**
+  String justificationHelper(int min);
+
+  /// No description provided for @selectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a date'**
+  String get selectDate;
+
+  /// No description provided for @durationTemporary.
+  ///
+  /// In en, this message translates to:
+  /// **'Temporary'**
+  String get durationTemporary;
+
+  /// No description provided for @durationPermanent.
+  ///
+  /// In en, this message translates to:
+  /// **'Permanent'**
+  String get durationPermanent;
+
+  /// No description provided for @urgencyNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get urgencyNormal;
+
+  /// No description provided for @urgencyUrgent.
+  ///
+  /// In en, this message translates to:
+  /// **'Urgent'**
+  String get urgencyUrgent;
+
+  /// No description provided for @urgencyCritical.
+  ///
+  /// In en, this message translates to:
+  /// **'Critical'**
+  String get urgencyCritical;
+
+  /// No description provided for @stageRequester.
+  ///
+  /// In en, this message translates to:
+  /// **'Requester'**
+  String get stageRequester;
+
+  /// No description provided for @stageManager.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager'**
+  String get stageManager;
+
+  /// No description provided for @stageSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get stageSecurity;
+
+  /// No description provided for @stageProvisioning.
+  ///
+  /// In en, this message translates to:
+  /// **'Provisioning'**
+  String get stageProvisioning;
+
+  /// No description provided for @stageComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete'**
+  String get stageComplete;
+
+  /// No description provided for @riskLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get riskLow;
+
+  /// No description provided for @riskMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get riskMedium;
+
+  /// No description provided for @riskHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get riskHigh;
+
+  /// No description provided for @riskCritical.
+  ///
+  /// In en, this message translates to:
+  /// **'Critical'**
+  String get riskCritical;
 }
 
 class _AppLocalizationsDelegate

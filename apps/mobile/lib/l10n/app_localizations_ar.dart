@@ -91,6 +91,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noRequests => 'لا توجد طلبات حتى الآن';
 
   @override
+  String get noRequestsMessage => 'قدّم طلب صلاحية جديداً للبدء.';
+
+  @override
   String get noApprovals => 'لا توجد موافقات معلقة';
 
   @override
@@ -406,6 +409,16 @@ class AppLocalizationsAr extends AppLocalizations {
       'لديك طلب نشط بالفعل لهذه الصلاحية.';
 
   @override
+  String get errorInvalidAccessDates =>
+      'تحقق من تاريخ البداية والنهاية لهذا الطلب.';
+
+  @override
+  String get errorRequestNotCancelable => 'لا يمكن إلغاء هذا الطلب بعد الآن.';
+
+  @override
+  String get errorUserInactive => 'حسابك غير نشط.';
+
+  @override
   String get errorValidation => 'يرجى التحقق من النموذج والمحاولة مرة أخرى.';
 
   @override
@@ -458,4 +471,107 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get create => 'إنشاء';
+
+  @override
+  String get filterPending => 'معلّق';
+
+  @override
+  String get filterCompleted => 'مكتمل';
+
+  @override
+  String get filterRejected => 'مرفوض';
+
+  @override
+  String get requestDetail => 'تفاصيل الطلب';
+
+  @override
+  String get requester => 'مقدّم الطلب';
+
+  @override
+  String get riskLevel => 'مستوى المخاطر';
+
+  @override
+  String get currentStage => 'المرحلة الحالية';
+
+  @override
+  String get nextApprover => 'المعتمد التالي';
+
+  @override
+  String get timeline => 'الجدول الزمني';
+
+  @override
+  String get noTimelineEvents => 'لا توجد أحداث في الجدول الزمني بعد.';
+
+  @override
+  String get cancelRequest => 'إلغاء الطلب';
+
+  @override
+  String get cancelRequestTitle => 'إلغاء هذا الطلب؟';
+
+  @override
+  String cancelRequestMessage(String requestNumber) {
+    return 'إلغاء الطلب $requestNumber؟ لا يمكن التراجع عن ذلك.';
+  }
+
+  @override
+  String get requestCancelled => 'تم إلغاء الطلب.';
+
+  @override
+  String requestSubmitted(String requestNumber) {
+    return 'تم تقديم الطلب $requestNumber.';
+  }
+
+  @override
+  String get newAccessRequestSubtitle =>
+      'اختر النظام والصلاحية، ثم اشرح سبب حاجتك للوصول.';
+
+  @override
+  String justificationHelper(int min) {
+    return 'على الأقل $min حرفاً.';
+  }
+
+  @override
+  String get selectDate => 'اختر تاريخاً';
+
+  @override
+  String get durationTemporary => 'مؤقت';
+
+  @override
+  String get durationPermanent => 'دائم';
+
+  @override
+  String get urgencyNormal => 'عادي';
+
+  @override
+  String get urgencyUrgent => 'عاجل';
+
+  @override
+  String get urgencyCritical => 'حرج';
+
+  @override
+  String get stageRequester => 'مقدّم الطلب';
+
+  @override
+  String get stageManager => 'المدير';
+
+  @override
+  String get stageSecurity => 'الأمن';
+
+  @override
+  String get stageProvisioning => 'التنفيذ';
+
+  @override
+  String get stageComplete => 'مكتمل';
+
+  @override
+  String get riskLow => 'منخفض';
+
+  @override
+  String get riskMedium => 'متوسط';
+
+  @override
+  String get riskHigh => 'عالٍ';
+
+  @override
+  String get riskCritical => 'حرج';
 }

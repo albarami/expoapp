@@ -30,6 +30,7 @@
   "noNotifications": "No notifications yet",
   "noNotificationsMessage": "You will see important announcements here.",
   "noRequests": "No requests yet",
+  "noRequestsMessage": "Submit a new access request to get started.",
   "noApprovals": "No approvals pending",
   "noData": "Nothing to show",
   "errorTitle": "Something went wrong",
@@ -165,6 +166,9 @@
   "errorManagerNotFound": "No manager found for this request.",
   "errorRoleNotRequestable": "This role cannot be requested.",
   "errorDuplicateActiveRequest": "You already have an active request for this role.",
+  "errorInvalidAccessDates": "Check the start and end dates for this request.",
+  "errorRequestNotCancelable": "This request can no longer be cancelled.",
+  "errorUserInactive": "Your account is inactive.",
   "errorValidation": "Please check the form and try again.",
   "errorUnauthorized": "Your session expired. Please sign in again.",
   "errorInvalidCredentials": "Invalid email or password.",
@@ -188,5 +192,58 @@
     }
   },
   "security": "Security",
-  "create": "Create"
+  "create": "Create",
+  "filterPending": "Pending",
+  "filterCompleted": "Completed",
+  "filterRejected": "Rejected",
+  "requestDetail": "Request detail",
+  "requester": "Requester",
+  "riskLevel": "Risk level",
+  "currentStage": "Current stage",
+  "nextApprover": "Next approver",
+  "timeline": "Timeline",
+  "noTimelineEvents": "No timeline events yet.",
+  "cancelRequest": "Cancel request",
+  "cancelRequestTitle": "Cancel this request?",
+  "cancelRequestMessage": "Cancel request {requestNumber}? This cannot be undone.",
+  "@cancelRequestMessage": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "requestCancelled": "Request cancelled.",
+  "requestSubmitted": "Request {requestNumber} submitted.",
+  "@requestSubmitted": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "newAccessRequestSubtitle": "Choose a system and role, then explain why you need access.",
+  "justificationHelper": "At least {min} characters.",
+  "@justificationHelper": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "selectDate": "Select a date",
+  "durationTemporary": "Temporary",
+  "durationPermanent": "Permanent",
+  "urgencyNormal": "Normal",
+  "urgencyUrgent": "Urgent",
+  "urgencyCritical": "Critical",
+  "stageRequester": "Requester",
+  "stageManager": "Manager",
+  "stageSecurity": "Security",
+  "stageProvisioning": "Provisioning",
+  "stageComplete": "Complete",
+  "riskLow": "Low",
+  "riskMedium": "Medium",
+  "riskHigh": "High",
+  "riskCritical": "Critical"
 }

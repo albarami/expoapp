@@ -27,6 +27,7 @@
   "noNotifications": "لا توجد إشعارات حتى الآن",
   "noNotificationsMessage": "ستظهر الإعلانات المهمة هنا.",
   "noRequests": "لا توجد طلبات حتى الآن",
+  "noRequestsMessage": "قدّم طلب صلاحية جديداً للبدء.",
   "noApprovals": "لا توجد موافقات معلقة",
   "noData": "لا توجد بيانات",
   "errorTitle": "حدث خطأ ما",
@@ -162,6 +163,9 @@
   "errorManagerNotFound": "لم يتم العثور على مدير لهذا الطلب.",
   "errorRoleNotRequestable": "لا يمكن طلب هذه الصلاحية.",
   "errorDuplicateActiveRequest": "لديك طلب نشط بالفعل لهذه الصلاحية.",
+  "errorInvalidAccessDates": "تحقق من تاريخ البداية والنهاية لهذا الطلب.",
+  "errorRequestNotCancelable": "لا يمكن إلغاء هذا الطلب بعد الآن.",
+  "errorUserInactive": "حسابك غير نشط.",
   "errorValidation": "يرجى التحقق من النموذج والمحاولة مرة أخرى.",
   "errorUnauthorized": "انتهت جلستك. يرجى تسجيل الدخول مرة أخرى.",
   "errorInvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
@@ -185,5 +189,58 @@
     }
   },
   "security": "الأمن",
-  "create": "إنشاء"
+  "create": "إنشاء",
+  "filterPending": "معلّق",
+  "filterCompleted": "مكتمل",
+  "filterRejected": "مرفوض",
+  "requestDetail": "تفاصيل الطلب",
+  "requester": "مقدّم الطلب",
+  "riskLevel": "مستوى المخاطر",
+  "currentStage": "المرحلة الحالية",
+  "nextApprover": "المعتمد التالي",
+  "timeline": "الجدول الزمني",
+  "noTimelineEvents": "لا توجد أحداث في الجدول الزمني بعد.",
+  "cancelRequest": "إلغاء الطلب",
+  "cancelRequestTitle": "إلغاء هذا الطلب؟",
+  "cancelRequestMessage": "إلغاء الطلب {requestNumber}؟ لا يمكن التراجع عن ذلك.",
+  "@cancelRequestMessage": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "requestCancelled": "تم إلغاء الطلب.",
+  "requestSubmitted": "تم تقديم الطلب {requestNumber}.",
+  "@requestSubmitted": {
+    "placeholders": {
+      "requestNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "newAccessRequestSubtitle": "اختر النظام والصلاحية، ثم اشرح سبب حاجتك للوصول.",
+  "justificationHelper": "على الأقل {min} حرفاً.",
+  "@justificationHelper": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "selectDate": "اختر تاريخاً",
+  "durationTemporary": "مؤقت",
+  "durationPermanent": "دائم",
+  "urgencyNormal": "عادي",
+  "urgencyUrgent": "عاجل",
+  "urgencyCritical": "حرج",
+  "stageRequester": "مقدّم الطلب",
+  "stageManager": "المدير",
+  "stageSecurity": "الأمن",
+  "stageProvisioning": "التنفيذ",
+  "stageComplete": "مكتمل",
+  "riskLow": "منخفض",
+  "riskMedium": "متوسط",
+  "riskHigh": "عالٍ",
+  "riskCritical": "حرج"
 }

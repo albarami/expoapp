@@ -5,6 +5,9 @@ import 'package:go_router/go_router.dart';
 import '../core/auth/app_user.dart';
 import '../core/auth/session_controller.dart';
 import '../core/providers.dart';
+import '../features/access_requests/presentation/screens/access_request_detail_screen.dart';
+import '../features/access_requests/presentation/screens/access_requests_list_screen.dart';
+import '../features/access_requests/presentation/screens/create_access_request_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/splash_screen.dart';
 import '../features/dashboard/presentation/screens/dashboard_screen.dart';
@@ -124,27 +127,19 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/requests',
             name: 'requests',
-            builder: (context, state) {
-              final l10n = AppLocalizations.of(context);
-              return FoundationPlaceholderScreen(title: l10n.requests);
-            },
+            builder: (context, state) => const AccessRequestsListScreen(),
             routes: [
               GoRoute(
                 path: 'new',
                 name: 'request-new',
-                builder: (context, state) {
-                  final l10n = AppLocalizations.of(context);
-                  return FoundationPlaceholderScreen(
-                    title: l10n.newAccessRequest,
-                  );
-                },
+                builder: (context, state) => const CreateAccessRequestScreen(),
               ),
               GoRoute(
                 path: ':id',
                 name: 'request-detail',
                 builder: (context, state) {
-                  final l10n = AppLocalizations.of(context);
-                  return FoundationPlaceholderScreen(title: l10n.requests);
+                  final id = state.pathParameters['id'] ?? '';
+                  return AccessRequestDetailScreen(requestId: id);
                 },
               ),
             ],

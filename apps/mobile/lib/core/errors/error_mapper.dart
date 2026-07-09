@@ -10,6 +10,12 @@ String localizeApiError(AppLocalizations l10n, ApiError error) {
       return l10n.errorRoleNotRequestable;
     case 'DUPLICATE_ACTIVE_REQUEST':
       return l10n.errorDuplicateActiveRequest;
+    case 'INVALID_ACCESS_DATES':
+      return l10n.errorInvalidAccessDates;
+    case 'REQUEST_NOT_CANCELABLE':
+      return l10n.errorRequestNotCancelable;
+    case 'USER_INACTIVE':
+      return l10n.errorUserInactive;
     case 'VALIDATION_ERROR':
       return l10n.errorValidation;
     case 'UNAUTHORIZED':
