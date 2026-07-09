@@ -1,14 +1,14 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (foundation setup run)  
+**Updated:** 2026-07-09 (CI green confirmed)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**Phase 1 foundations nearly complete.** Local validation passed.  
-**STOP feature work until GitHub CI is green on the setup branch**, then start **T-API-01**.
+**Phase 1 foundations complete for env/CI.** GitHub Actions is green on the setup branch.  
+**Resume at T-API-01** (NestJS backend foundation).
 
 ---
 
@@ -16,7 +16,8 @@
 
 - Branch: `agent/T-ENV-01-setup-control`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- Push: done this run (or in progress — verify with `gh run list`)
+- CI: **success** — https://github.com/albarami/expoapp/actions/runs/29025032699
+- PR: not created (`main` does not exist yet on remote)
 
 ---
 
@@ -24,7 +25,7 @@
 
 | Now | Next exact task |
 |---|---|
-| T-ENV-03 **in_progress** (local PASS) | Confirm GitHub Actions **green** on setup branch → mark T-ENV-03 **passed** → start **T-API-01** |
+| T-ENV-03 **passed** (local + CI green) | Start **T-API-01** — Nest foundation |
 
 ---
 
@@ -36,24 +37,13 @@
 4. Local validation — compose config/up, API lint/test/build, health 200, Flutter analyze/test — all pass
 5. Host ports remapped to **5433** (Postgres) / **6380** (Redis) due to `uaid_os` occupying 5432/6379
 6. Git init + remote + branch `agent/T-ENV-01-setup-control`
+7. T-ENV-03 — Pushed setup branch; GitHub Actions CI **green** (run 29025032699)
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Confirm CI green (finish T-ENV-03)
-
-```bash
-cd /home/barami/projects/expoapp
-git checkout agent/T-ENV-01-setup-control
-gh run list --branch agent/T-ENV-01-setup-control --limit 5
-# If red: fix, commit, push, wait again
-# If green: update ledger T-ENV-03 → passed; clear B-003
-```
-
-Optional: open PR into `main` once CI green (remote was empty — first push may establish branch; create `main` via PR merge when ready).
-
-### 2. Start T-API-01 (Nest foundation) — ONLY after CI green
+### 1. Start T-API-01 (Nest foundation)
 
 Implement per `11_BACKEND_NESTJS_SPEC.md`:
 
@@ -68,10 +58,12 @@ Implement per `11_BACKEND_NESTJS_SPEC.md`:
 
 Branch pattern: continue on setup branch if still open, or `agent/T-API-01-nest-foundation`.
 
-### 3. Then sequential foundation
+### 2. Then sequential foundation
 
 T-API-02 (full Prisma schema) → T-API-03 (auth) → T-API-04 (seed) → … per `03_TASK_LEDGER.md`  
 No parallel feature agents until `08_PARALLEL_EXECUTION_PLAN.md` foundations are stable.
+
+Optional later: create `main` from this branch / open PR once default branch exists.
 
 ---
 
@@ -99,7 +91,7 @@ See `PORTS.md`.
 
 ## Do not do next
 
-- Do not start T-API-02+ or T-MOB-* while T-ENV-03 CI is red/unknown
+- Do not skip T-API-01 and jump to T-API-02+ or T-MOB-*
 - Do not spawn parallel feature agents yet
 - Do not create Expo React Native apps
 - Do not force-push `main`

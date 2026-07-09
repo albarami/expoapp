@@ -105,9 +105,9 @@ T-DOC-01
 | Files | setup fixes as needed |
 | Acceptance | Local validation pass; GitHub CI green on setup branch |
 | Local tests | compose config; api lint/test/build; flutter analyze/test — **local PASS 2026-07-09** |
-| GitHub CI | **in_progress** after push — required green |
-| Branch/PR | `agent/T-ENV-01-setup-control` |
-| Status | **in_progress** (local done; awaiting CI green) |
+| GitHub CI | **success** — https://github.com/albarami/expoapp/actions/runs/29025032699 |
+| Branch/PR | `agent/T-ENV-01-setup-control` (PR skipped: remote `main` missing) |
+| Status | **passed** |
 
 ---
 
@@ -414,7 +414,7 @@ T-DOC-01
 1. ~~T-ENV-01~~ **passed**
 2. ~~T-ENV-02~~ **passed**
 3. ~~T-CI-01~~ **passed** (workflow exists)
-4. **T-ENV-03** — finish: confirm **GitHub CI green**, then mark passed
-5. Only then **T-API-01** …
+4. ~~T-ENV-03~~ **passed** (CI green: run 29025032699)
+5. **T-API-01** — NestJS backend foundation (next)
 
-**Do not start T-API-* / T-MOB-* feature work while T-ENV-03 CI is not green.**
+**Resume at T-API-01.** Foundations env/CI gate is clear.

@@ -1,19 +1,19 @@
 # Blockers — ExpoApp
 
-**Updated:** 2026-07-09 (setup run)  
+**Updated:** 2026-07-09 (CI green; B-003 cleared)  
 **Rule:** Only true blockers. Product/engineering decisions are made and recorded in architecture docs — not listed here.
 
 ---
 
 ## Active blockers (Phase 1 delivery)
 
-### B-003 — GitHub CI green gate (in progress)
+### B-003 — GitHub CI green gate (**cleared**)
 
 **Type:** DevOps  
-**Impact:** Cannot start T-API-01 until setup branch CI is green  
-**Detail:** CI workflow created; push/monitor on `agent/T-ENV-01-setup-control`  
-**Resolution:** Wait for Actions green; fix/push if red  
-**Status:** Open until CI green confirmed
+**Impact:** Was blocking T-API-01 until setup branch CI green  
+**Detail:** CI green on `agent/T-ENV-01-setup-control` — https://github.com/albarami/expoapp/actions/runs/29025032699  
+**Resolution:** Confirmed Actions success 2026-07-09  
+**Status:** Cleared
 
 ---
 
