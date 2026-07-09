@@ -311,7 +311,7 @@ class _DecisionBody extends StatelessWidget {
           SafeArea(
             top: false,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
+              padding: const EdgeInsetsDirectional.fromSTEB(
                 AppSpacing.md,
                 AppSpacing.sm,
                 AppSpacing.md,
@@ -571,9 +571,9 @@ class _DecisionBottomSheetState extends State<_DecisionBottomSheet> {
         : l10n.approveConfirmMessage(widget.requestNumber);
 
     return Padding(
-      padding: EdgeInsets.only(
-        left: AppSpacing.md,
-        right: AppSpacing.md,
+      padding: EdgeInsetsDirectional.only(
+        start: AppSpacing.md,
+        end: AppSpacing.md,
         top: AppSpacing.sm,
         bottom: bottomInset + AppSpacing.md,
       ),

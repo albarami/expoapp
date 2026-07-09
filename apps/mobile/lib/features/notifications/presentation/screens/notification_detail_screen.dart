@@ -95,7 +95,9 @@ class _NotificationDetailScreenState
           final priority =
               NotificationPriority.tryParse(notification.priority) ??
                   NotificationPriority.normal;
-          final dateLabel = DateFormat.yMMMd().add_jm().format(
+          final dateLabel = DateFormat.yMMMd(
+            Localizations.localeOf(context).toString(),
+          ).add_jm().format(
                 notification.createdAt.toLocal(),
               );
 

@@ -7,6 +7,7 @@ import '../../../../app/theme_tokens.dart';
 import '../../../../core/api/api_error.dart';
 import '../../../../core/auth/app_user.dart';
 import '../../../../core/errors/error_mapper.dart';
+import '../../../../core/localization/audit_labels.dart';
 import '../../../../core/providers.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/widgets/widgets.dart';
@@ -538,7 +539,9 @@ class _AuditList extends StatelessWidget {
       );
     }
 
-    final dateFormat = DateFormat.yMMMd().add_jm();
+    final dateFormat = DateFormat.yMMMd(
+      Localizations.localeOf(context).toString(),
+    ).add_jm();
 
     return Column(
       children: [
@@ -551,14 +554,14 @@ class _AuditList extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    item.action,
+                    localizeAuditAction(l10n, item.action),
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
-                    '${item.entityType}${item.entityId != null ? ' · ${item.entityId}' : ''}',
+                    '${localizeAuditEntityType(l10n, item.entityType)}${item.entityId != null ? ' · ${item.entityId}' : ''}',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const SizedBox(height: AppSpacing.xs),

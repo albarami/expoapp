@@ -402,7 +402,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('No notifications yet'), findsOneWidget);
-      expect(find.text('No requests yet'), findsOneWidget);
+      expect(find.text('No access requests yet'), findsOneWidget);
     });
   });
 }

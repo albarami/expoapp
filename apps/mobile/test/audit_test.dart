@@ -349,7 +349,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('No audit logs'), findsOneWidget);
+      expect(find.text('No audit logs match your filters'), findsOneWidget);
       expect(
         find.text('Security and admin events will appear here.'),
         findsOneWidget,
@@ -372,9 +372,9 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('APPROVAL_MANAGER_APPROVED'), findsOneWidget);
+      expect(find.text('Manager approved'), findsOneWidget);
       expect(find.text('faisal.otaibi@expo.sa'), findsOneWidget);
-      expect(find.text('Entity: AccessRequest'), findsOneWidget);
+      expect(find.text('Entity: Access request'), findsOneWidget);
       expect(find.byType(AuditLogCard), findsOneWidget);
 
       await tester.tap(find.text('View metadata'));
@@ -410,7 +410,7 @@ void main() {
 
       await tester.tap(find.byKey(const ValueKey('audit-action-null')));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('AUTH_LOGIN').last);
+      await tester.tap(find.text('Signed in').last);
       await tester.pumpAndSettle();
 
       expect(audit.lastQuery?.action, 'AUTH_LOGIN');

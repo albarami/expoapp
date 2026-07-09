@@ -50,5 +50,33 @@ void main() {
       ),
       l10n.errorNotTaskAssignee,
     );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'NOT_FOUND', message: 'x'),
+      ),
+      l10n.errorNotFound,
+    );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'INVALID_AUDIENCE_FILTER', message: 'x'),
+      ),
+      l10n.errorInvalidAudienceFilter,
+    );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'FUSION_CONFIGURATION_MISSING', message: 'x'),
+      ),
+      l10n.errorFusionConfigurationMissing,
+    );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'FUSION_PROVISIONING_FAILED', message: 'x'),
+      ),
+      l10n.errorFusionProvisioningFailed,
+    );
   });
 }

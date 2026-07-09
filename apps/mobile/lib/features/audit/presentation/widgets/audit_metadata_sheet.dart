@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../app/theme_tokens.dart';
+import '../../../../core/localization/audit_labels.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../domain/audit_models.dart';
 
@@ -42,7 +43,7 @@ class AuditMetadataSheet extends StatelessWidget {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
+          padding: const EdgeInsetsDirectional.fromSTEB(
             AppSpacing.md,
             AppSpacing.sm,
             AppSpacing.md,
@@ -64,7 +65,10 @@ class AuditMetadataSheet extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _DetailRow(label: l10n.auditFieldAction, value: entry.action),
+                      _DetailRow(
+                        label: l10n.auditFieldAction,
+                        value: localizeAuditAction(l10n, entry.action),
+                      ),
                       _DetailRow(
                         label: l10n.auditFieldActor,
                         value: entry.actorEmail?.trim().isNotEmpty == true
@@ -73,7 +77,7 @@ class AuditMetadataSheet extends StatelessWidget {
                       ),
                       _DetailRow(
                         label: l10n.auditFieldEntity,
-                        value: entry.entityType,
+                        value: localizeAuditEntityType(l10n, entry.entityType),
                       ),
                       if (entry.entityId != null && entry.entityId!.isNotEmpty)
                         _DetailRow(

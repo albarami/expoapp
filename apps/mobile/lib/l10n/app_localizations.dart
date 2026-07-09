@@ -251,19 +251,19 @@ abstract class AppLocalizations {
   /// No description provided for @noNotificationsMessage.
   ///
   /// In en, this message translates to:
-  /// **'You will see important announcements here.'**
+  /// **'Important announcements will appear here.'**
   String get noNotificationsMessage;
 
   /// No description provided for @noRequests.
   ///
   /// In en, this message translates to:
-  /// **'No requests yet'**
+  /// **'No access requests yet'**
   String get noRequests;
 
   /// No description provided for @noRequestsMessage.
   ///
   /// In en, this message translates to:
-  /// **'Submit a new access request to get started.'**
+  /// **'Create your first security access request.'**
   String get noRequestsMessage;
 
   /// No description provided for @noApprovals.
@@ -305,7 +305,7 @@ abstract class AppLocalizations {
   /// No description provided for @networkError.
   ///
   /// In en, this message translates to:
-  /// **'Network error. Check your connection and try again.'**
+  /// **'Cannot connect to the server. Check your network and try again.'**
   String get networkError;
 
   /// No description provided for @businessJustification.
@@ -1391,7 +1391,7 @@ abstract class AppLocalizations {
   /// No description provided for @noAuditLogs.
   ///
   /// In en, this message translates to:
-  /// **'No audit logs'**
+  /// **'No audit logs match your filters'**
   String get noAuditLogs;
 
   /// No description provided for @noAuditLogsMessage.
@@ -1403,7 +1403,7 @@ abstract class AppLocalizations {
   /// No description provided for @noAuditLogsFilteredMessage.
   ///
   /// In en, this message translates to:
-  /// **'No logs match the current filters.'**
+  /// **'Try changing the filters.'**
   String get noAuditLogsFilteredMessage;
 
   /// No description provided for @auditActorUnknown.
@@ -1495,6 +1495,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Page {page} of {totalPages} · {total} events'**
   String auditPageStatus(int page, int totalPages, int total);
+
+  /// No description provided for @errorNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'The requested item could not be found.'**
+  String get errorNotFound;
+
+  /// No description provided for @errorInvalidAudienceFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'The notification audience selection is invalid.'**
+  String get errorInvalidAudienceFilter;
+
+  /// No description provided for @errorFusionConfigurationMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Oracle Fusion is not configured for this environment.'**
+  String get errorFusionConfigurationMissing;
+
+  /// No description provided for @errorFusionProvisioningFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Provisioning with Oracle Fusion failed. Try again later.'**
+  String get errorFusionProvisioningFailed;
+
+  /// No description provided for @auditActionAuthLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed in'**
+  String get auditActionAuthLogin;
+
+  /// No description provided for @auditActionAuthLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed out'**
+  String get auditActionAuthLogout;
+
+  /// No description provided for @auditActionNotificationCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification created'**
+  String get auditActionNotificationCreated;
+
+  /// No description provided for @auditActionNotificationPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification published'**
+  String get auditActionNotificationPublished;
+
+  /// No description provided for @auditActionNotificationRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification read'**
+  String get auditActionNotificationRead;
+
+  /// No description provided for @auditActionNotificationCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification cancelled'**
+  String get auditActionNotificationCancelled;
+
+  /// No description provided for @auditActionAccessRequestSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Access request submitted'**
+  String get auditActionAccessRequestSubmitted;
+
+  /// No description provided for @auditActionAccessRequestCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Access request cancelled'**
+  String get auditActionAccessRequestCancelled;
+
+  /// No description provided for @auditActionAccessRequestProvisioningStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Provisioning started'**
+  String get auditActionAccessRequestProvisioningStarted;
+
+  /// No description provided for @auditActionAccessRequestCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Access request completed'**
+  String get auditActionAccessRequestCompleted;
+
+  /// No description provided for @auditActionAccessRequestFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Access request failed'**
+  String get auditActionAccessRequestFailed;
+
+  /// No description provided for @auditActionApprovalManagerApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager approved'**
+  String get auditActionApprovalManagerApproved;
+
+  /// No description provided for @auditActionApprovalManagerRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Manager rejected'**
+  String get auditActionApprovalManagerRejected;
+
+  /// No description provided for @auditActionApprovalSecurityApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Security approved'**
+  String get auditActionApprovalSecurityApproved;
+
+  /// No description provided for @auditActionApprovalSecurityRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Security rejected'**
+  String get auditActionApprovalSecurityRejected;
+
+  /// No description provided for @auditEntityUser.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get auditEntityUser;
+
+  /// No description provided for @auditEntityNotification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification'**
+  String get auditEntityNotification;
+
+  /// No description provided for @auditEntityAccessRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Access request'**
+  String get auditEntityAccessRequest;
+
+  /// No description provided for @auditEntityApprovalTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Approval task'**
+  String get auditEntityApprovalTask;
 }
 
 class _AppLocalizationsDelegate

@@ -28,7 +28,7 @@ class ApprovalsListScreen extends ConsumerWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(
+            padding: const EdgeInsetsDirectional.fromSTEB(
               AppSpacing.md,
               AppSpacing.md,
               AppSpacing.md,
@@ -99,7 +99,7 @@ class ApprovalsListScreen extends ConsumerWidget {
                     await ref.read(approvalsListProvider.future);
                   },
                   child: ListView.separated(
-                    padding: const EdgeInsets.fromLTRB(
+                    padding: const EdgeInsetsDirectional.fromSTEB(
                       AppSpacing.md,
                       AppSpacing.sm,
                       AppSpacing.md,

@@ -107,7 +107,7 @@ class _NotificationsListScreenState
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(
+            padding: const EdgeInsetsDirectional.fromSTEB(
               AppSpacing.md,
               AppSpacing.md,
               AppSpacing.md,

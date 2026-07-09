@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/providers.dart';
+import '../l10n/app_localizations.dart';
 import 'localization.dart';
 import 'router.dart';
 import 'theme.dart';
@@ -17,7 +18,14 @@ class ExpoApp extends ConsumerWidget {
     final locale = localePref.locale ?? Locale(config.defaultLocale);
 
     return MaterialApp.router(
-      title: 'ExpoApp',
+      onGenerateTitle: (context) {
+        // Localizations may not be ready on the first frame.
+        try {
+          return AppLocalizations.of(context).appName;
+        } on Object {
+          return 'ExpoApp';
+        }
+      },
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: appScaffoldMessengerKey,
       theme: AppTheme.light(),

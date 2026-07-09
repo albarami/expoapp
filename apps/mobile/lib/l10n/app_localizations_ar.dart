@@ -88,10 +88,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noNotificationsMessage => 'ستظهر الإعلانات المهمة هنا.';
 
   @override
-  String get noRequests => 'لا توجد طلبات حتى الآن';
+  String get noRequests => 'لا توجد طلبات صلاحيات حتى الآن';
 
   @override
-  String get noRequestsMessage => 'قدّم طلب صلاحية جديداً للبدء.';
+  String get noRequestsMessage => 'أنشئ أول طلب صلاحية أمنية.';
 
   @override
   String get noApprovals => 'لا توجد موافقات معلقة';
@@ -112,7 +112,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get unauthorizedMessage => 'ليس لديك صلاحية لعرض هذه الشاشة.';
 
   @override
-  String get networkError => 'خطأ في الشبكة. تحقق من الاتصال وحاول مرة أخرى.';
+  String get networkError =>
+      'لا يمكن الاتصال بالخادم. تحقق من الشبكة وحاول مرة أخرى.';
 
   @override
   String get businessJustification => 'مبرر العمل';
@@ -692,14 +693,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get clearFilters => 'مسح عوامل التصفية';
 
   @override
-  String get noAuditLogs => 'لا توجد سجلات تدقيق';
+  String get noAuditLogs => 'لا توجد سجلات تدقيق تطابق عوامل التصفية';
 
   @override
   String get noAuditLogsMessage => 'ستظهر هنا أحداث الأمن والإدارة.';
 
   @override
-  String get noAuditLogsFilteredMessage =>
-      'لا توجد سجلات تطابق عوامل التصفية الحالية.';
+  String get noAuditLogsFilteredMessage => 'حاول تغيير عوامل التصفية.';
 
   @override
   String get auditActorUnknown => 'فاعل غير معروف';
@@ -749,4 +749,75 @@ class AppLocalizationsAr extends AppLocalizations {
   String auditPageStatus(int page, int totalPages, int total) {
     return 'صفحة $page من $totalPages · $total حدث';
   }
+
+  @override
+  String get errorNotFound => 'تعذّر العثور على العنصر المطلوب.';
+
+  @override
+  String get errorInvalidAudienceFilter => 'اختيار جمهور الإشعار غير صالح.';
+
+  @override
+  String get errorFusionConfigurationMissing =>
+      'Oracle Fusion غير مُعدّ في هذه البيئة.';
+
+  @override
+  String get errorFusionProvisioningFailed =>
+      'فشل التزويد عبر Oracle Fusion. حاول مرة أخرى لاحقاً.';
+
+  @override
+  String get auditActionAuthLogin => 'تسجيل الدخول';
+
+  @override
+  String get auditActionAuthLogout => 'تسجيل الخروج';
+
+  @override
+  String get auditActionNotificationCreated => 'تم إنشاء إشعار';
+
+  @override
+  String get auditActionNotificationPublished => 'تم نشر إشعار';
+
+  @override
+  String get auditActionNotificationRead => 'تمت قراءة إشعار';
+
+  @override
+  String get auditActionNotificationCancelled => 'تم إلغاء إشعار';
+
+  @override
+  String get auditActionAccessRequestSubmitted => 'تم إرسال طلب صلاحية';
+
+  @override
+  String get auditActionAccessRequestCancelled => 'تم إلغاء طلب صلاحية';
+
+  @override
+  String get auditActionAccessRequestProvisioningStarted => 'بدأ التزويد';
+
+  @override
+  String get auditActionAccessRequestCompleted => 'اكتمل طلب الصلاحية';
+
+  @override
+  String get auditActionAccessRequestFailed => 'فشل طلب الصلاحية';
+
+  @override
+  String get auditActionApprovalManagerApproved => 'موافقة المدير';
+
+  @override
+  String get auditActionApprovalManagerRejected => 'رفض المدير';
+
+  @override
+  String get auditActionApprovalSecurityApproved => 'موافقة الأمن';
+
+  @override
+  String get auditActionApprovalSecurityRejected => 'رفض الأمن';
+
+  @override
+  String get auditEntityUser => 'مستخدم';
+
+  @override
+  String get auditEntityNotification => 'إشعار';
+
+  @override
+  String get auditEntityAccessRequest => 'طلب صلاحية';
+
+  @override
+  String get auditEntityApprovalTask => 'مهمة موافقة';
 }

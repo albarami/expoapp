@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import '../../../../app/theme_tokens.dart';
 import '../../../../core/api/api_error.dart';
 import '../../../../core/errors/error_mapper.dart';
+import '../../../../core/localization/audit_labels.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../domain/audit_models.dart';
@@ -119,7 +120,7 @@ class _AuditLogsScreenState extends ConsumerState<AuditLogsScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(
+            padding: const EdgeInsetsDirectional.fromSTEB(
               AppSpacing.md,
               AppSpacing.md,
               AppSpacing.md,
@@ -173,7 +174,7 @@ class _AuditLogsScreenState extends ConsumerState<AuditLogsScreen> {
                             (code) => DropdownMenuItem<String?>(
                               value: code,
                               child: Text(
-                                code,
+                                localizeAuditAction(l10n, code),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -208,7 +209,7 @@ class _AuditLogsScreenState extends ConsumerState<AuditLogsScreen> {
                           ...AuditEntityTypes.all.map(
                             (type) => DropdownMenuItem<String?>(
                               value: type,
-                              child: Text(type),
+                              child: Text(localizeAuditEntityType(l10n, type)),
                             ),
                           ),
                         ],
@@ -305,7 +306,7 @@ class _AuditLogsScreenState extends ConsumerState<AuditLogsScreen> {
                   },
                   child: ListView.separated(
                     physics: const AlwaysScrollableScrollPhysics(),
-                    padding: const EdgeInsets.fromLTRB(
+                    padding: const EdgeInsetsDirectional.fromSTEB(
                       AppSpacing.md,
                       AppSpacing.sm,
                       AppSpacing.md,

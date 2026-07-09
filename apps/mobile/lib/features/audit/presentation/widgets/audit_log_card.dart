@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../app/theme_tokens.dart';
+import '../../../../core/localization/audit_labels.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../domain/audit_models.dart';
@@ -39,7 +40,7 @@ class AuditLogCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  entry.action,
+                  localizeAuditAction(l10n, entry.action),
                   style: theme.textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
@@ -63,7 +64,9 @@ class AuditLogCard extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.xs),
           Text(
-            l10n.auditEntityLabel(entry.entityType),
+            l10n.auditEntityLabel(
+              localizeAuditEntityType(l10n, entry.entityType),
+            ),
             style: theme.textTheme.bodyMedium?.copyWith(
               color: theme.colorScheme.onSurfaceVariant,
             ),

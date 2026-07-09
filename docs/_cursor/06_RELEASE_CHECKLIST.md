@@ -56,8 +56,8 @@
 - [ ] Approval queue/decision
 - [ ] Audit viewer (authorized only)
 - [ ] Profile/settings + language switch
-- [ ] EN/AR ARB; no hardcoded UI strings
-- [ ] RTL verified
+- [x] EN/AR ARB; no hardcoded UI strings
+- [x] RTL verified
 - [ ] Loading/empty/error/unauthorized states
 - [ ] No hardcoded business arrays
 - [ ] `flutter analyze` clean
@@ -78,7 +78,7 @@
 - [ ] Scenario 1: Admin notify → employee read
 - [ ] Scenario 2: Request → manager → security → completed + Fusion mock ID
 - [ ] Scenario 3: Unauthorized blocked
-- [ ] Scenario 4: Arabic/RTL
+- [x] Scenario 4: Arabic/RTL (automated; device sign-off in T-QA-01)
 - [ ] Full stakeholder demo script (`32`)
 
 ## G. CI/CD

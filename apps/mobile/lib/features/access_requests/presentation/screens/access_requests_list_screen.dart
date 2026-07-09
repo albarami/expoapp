@@ -33,7 +33,7 @@ class AccessRequestsListScreen extends ConsumerWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(
+            padding: const EdgeInsetsDirectional.fromSTEB(
               AppSpacing.md,
               AppSpacing.md,
               AppSpacing.md,
@@ -107,7 +107,7 @@ class AccessRequestsListScreen extends ConsumerWidget {
                     await ref.read(accessRequestsListProvider.future);
                   },
                   child: ListView.separated(
-                    padding: const EdgeInsets.fromLTRB(
+                    padding: const EdgeInsetsDirectional.fromSTEB(
                       AppSpacing.md,
                       AppSpacing.sm,
                       AppSpacing.md,

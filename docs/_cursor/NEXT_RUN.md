@@ -1,23 +1,23 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-MOB-07 passed — CI green)  
+**Updated:** 2026-07-09 (T-L10N-01 local green — CI pending)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-MOB-07 Flutter audit** — **passed** on `agent/T-MOB-07-audit`. Next: **T-L10N-01**.
+**T-L10N-01 Localization & RTL polish** — **passed locally** on `agent/T-L10N-01-polish`. Next: **T-QA-01**.
 
-CI: https://github.com/albarami/expoapp/actions/runs/29042259598
+CI: pending after push — update URL when green.
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-MOB-07-audit`
+- Branch: `agent/T-L10N-01-polish`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- CI (T-MOB-07): **green** — https://github.com/albarami/expoapp/actions/runs/29042259598
+- CI (T-L10N-01): **pending**
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -26,26 +26,32 @@ CI: https://github.com/albarami/expoapp/actions/runs/29042259598
 
 | Now | Next exact task |
 |---|---|
-| T-MOB-07 **passed** | Start **T-L10N-01** Localization & RTL polish |
+| T-L10N-01 **passed** (local; CI pending) | Start **T-QA-01** Automated + manual QA |
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-L10N-01
+### 1. Confirm T-L10N-01 CI green
+
+```bash
+gh run list --branch agent/T-L10N-01-polish --limit 3
+# gh run watch <id> --exit-status
+# Then mark ledger CI URL and Status passed with green CI
+```
+
+### 2. Start T-QA-01
 
 ```bash
 cd /home/barami/projects/expoapp
-git checkout -B agent/T-L10N-01-polish origin/agent/T-MOB-07-audit
-# Full string audit; RTL; error code mapping per ledger
-# Use .cursor/skills/ui-ux-pro-max/
-cd apps/mobile && flutter analyze && flutter test
-git push -u origin agent/T-L10N-01-polish
+git checkout -B agent/T-QA-01-qa origin/agent/T-L10N-01-polish
+# Complete test matrix + demo scenarios per ledger / 04_TEST_MATRIX.md
+git push -u origin agent/T-QA-01-qa
 ```
 
-### 2. Sequential foundation only
+### 3. Sequential path remaining
 
-Still prefer sequential until L10N + QA path; remaining: T-L10N-01 → T-QA-01 → T-REL-01.
+T-QA-01 → T-REL-01.
 
 ---
 

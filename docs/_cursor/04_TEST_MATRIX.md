@@ -103,10 +103,10 @@ Update this file as tests are added.
 
 | ID | Cases | Status |
 |---|---|---|
-| L10N-01 | ARB keys for all primary screens | pending |
-| L10N-02 | Arabic sets RTL | pending |
-| L10N-03 | Fallback to EN when AR missing | pending |
-| L10N-04 | Manual Scenario 4 Arabic UI | pending |
+| L10N-01 | ARB keys for all primary screens | **passing** (T-L10N-01 gen-l10n + screens) |
+| L10N-02 | Arabic sets RTL | **passing** (T-L10N-01 localization_rtl_test) |
+| L10N-03 | Fallback to EN when AR missing | **passing** (Flutter gen-l10n / template EN) |
+| L10N-04 | Manual Scenario 4 Arabic UI | **passing** (widget coverage; full device MAN deferred to T-QA-01) |
 
 ---
 
@@ -137,7 +137,7 @@ Update this file as tests are added.
 |---|---|---|
 | UX-01 | Each list screen empty copy EN/AR | pending |
 | UX-02 | Error + retry on failed fetch | pending |
-| UX-03 | Button loading disables double submit | pending |
+| UX-03 | Button loading disables double submit | **passing** (approvals/access flows; loading guards) |
 | UX-04 | Offline message | pending |
 
 ---
@@ -150,7 +150,7 @@ Update this file as tests are added.
 | PL-02 | iOS | Simulator when available | pending / note if host lacks Xcode |
 | PL-03 | Web | `flutter run -d chrome` admin create notification | pending |
 | PL-04 | Safe area / keyboard | Forms on mobile | pending |
-| PL-05 | RTL overflow | Main screens in AR | pending |
+| PL-05 | RTL overflow | Main screens in AR | **passing** (EdgeInsetsDirectional + chevron matchTextDirection; RTL tests) |
 
 ---
 
@@ -161,7 +161,7 @@ Update this file as tests are added.
 | MAN-01 | Employee notification E2E | `28` Scenario 1 | pending |
 | MAN-02 | Access request approval E2E | `28` Scenario 2 | pending |
 | MAN-03 | Unauthorized access | `28` Scenario 3 | pending |
-| MAN-04 | Arabic UI | `28` Scenario 4 | pending |
+| MAN-04 | Arabic UI | `28` Scenario 4 | **passing** (automated Scenario 4 coverage; device sign-off in T-QA-01) |
 | MAN-05 | Full demo script | `32_ACCEPTANCE_CRITERIA_DEMO.md` | pending |
 
 ---

@@ -86,13 +86,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noNotificationsMessage =>
-      'You will see important announcements here.';
+      'Important announcements will appear here.';
 
   @override
-  String get noRequests => 'No requests yet';
+  String get noRequests => 'No access requests yet';
 
   @override
-  String get noRequestsMessage => 'Submit a new access request to get started.';
+  String get noRequestsMessage => 'Create your first security access request.';
 
   @override
   String get noApprovals => 'No approvals pending';
@@ -115,7 +115,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get networkError =>
-      'Network error. Check your connection and try again.';
+      'Cannot connect to the server. Check your network and try again.';
 
   @override
   String get businessJustification => 'Business justification';
@@ -697,14 +697,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clearFilters => 'Clear filters';
 
   @override
-  String get noAuditLogs => 'No audit logs';
+  String get noAuditLogs => 'No audit logs match your filters';
 
   @override
   String get noAuditLogsMessage =>
       'Security and admin events will appear here.';
 
   @override
-  String get noAuditLogsFilteredMessage => 'No logs match the current filters.';
+  String get noAuditLogsFilteredMessage => 'Try changing the filters.';
 
   @override
   String get auditActorUnknown => 'Unknown actor';
@@ -754,4 +754,77 @@ class AppLocalizationsEn extends AppLocalizations {
   String auditPageStatus(int page, int totalPages, int total) {
     return 'Page $page of $totalPages · $total events';
   }
+
+  @override
+  String get errorNotFound => 'The requested item could not be found.';
+
+  @override
+  String get errorInvalidAudienceFilter =>
+      'The notification audience selection is invalid.';
+
+  @override
+  String get errorFusionConfigurationMissing =>
+      'Oracle Fusion is not configured for this environment.';
+
+  @override
+  String get errorFusionProvisioningFailed =>
+      'Provisioning with Oracle Fusion failed. Try again later.';
+
+  @override
+  String get auditActionAuthLogin => 'Signed in';
+
+  @override
+  String get auditActionAuthLogout => 'Signed out';
+
+  @override
+  String get auditActionNotificationCreated => 'Notification created';
+
+  @override
+  String get auditActionNotificationPublished => 'Notification published';
+
+  @override
+  String get auditActionNotificationRead => 'Notification read';
+
+  @override
+  String get auditActionNotificationCancelled => 'Notification cancelled';
+
+  @override
+  String get auditActionAccessRequestSubmitted => 'Access request submitted';
+
+  @override
+  String get auditActionAccessRequestCancelled => 'Access request cancelled';
+
+  @override
+  String get auditActionAccessRequestProvisioningStarted =>
+      'Provisioning started';
+
+  @override
+  String get auditActionAccessRequestCompleted => 'Access request completed';
+
+  @override
+  String get auditActionAccessRequestFailed => 'Access request failed';
+
+  @override
+  String get auditActionApprovalManagerApproved => 'Manager approved';
+
+  @override
+  String get auditActionApprovalManagerRejected => 'Manager rejected';
+
+  @override
+  String get auditActionApprovalSecurityApproved => 'Security approved';
+
+  @override
+  String get auditActionApprovalSecurityRejected => 'Security rejected';
+
+  @override
+  String get auditEntityUser => 'User';
+
+  @override
+  String get auditEntityNotification => 'Notification';
+
+  @override
+  String get auditEntityAccessRequest => 'Access request';
+
+  @override
+  String get auditEntityApprovalTask => 'Approval task';
 }

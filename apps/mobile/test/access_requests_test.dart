@@ -496,7 +496,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(AccessRequestsListScreen), findsOneWidget);
-      expect(find.text('No requests yet'), findsOneWidget);
+      expect(find.text('No access requests yet'), findsOneWidget);
       expect(find.byType(FloatingActionButton), findsOneWidget);
     });
 

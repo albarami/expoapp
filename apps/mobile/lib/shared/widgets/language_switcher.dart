@@ -43,7 +43,7 @@ Future<bool?> showConfirmDecisionSheet({
     builder: (context) {
       return SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+          padding: const EdgeInsetsDirectional.fromSTEB(24, 8, 24, 24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
