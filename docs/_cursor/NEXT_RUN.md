@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-MOB-06 **passed** — CI green)  
+**Updated:** 2026-07-09 (T-MOB-07 implementation complete — awaiting CI)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-MOB-07 Flutter audit** — audit logs viewer against audit API. T-MOB-06 approvals is complete.
+**T-MOB-07 Flutter audit** — implementation complete on `agent/T-MOB-07-audit`; wait for GitHub CI green, then mark passed and start **T-L10N-01**.
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-MOB-06-approvals` (T-MOB-06 complete; start T-MOB-07 from this HEAD or a new `agent/T-MOB-07-*` branch)
+- Branch: `agent/T-MOB-07-audit`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
 - Base: T-MOB-06 green HEAD / CI https://github.com/albarami/expoapp/actions/runs/29041340812
-- CI (T-MOB-06): **green** — https://github.com/albarami/expoapp/actions/runs/29041340812
+- CI (T-MOB-07): **pending** after push
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,42 +25,46 @@
 
 | Now | Next exact task |
 |---|---|
-| T-MOB-06 **passed** | Start **T-MOB-07** Flutter audit |
+| T-MOB-07 **implemented** (local analyze/test green) | Confirm CI green → mark T-MOB-07 **passed** → start **T-L10N-01** |
 
 ---
 
-## Completed this run (T-MOB-06)
+## Completed this run (T-MOB-07)
 
-1. Approvals queue with Pending/Completed segmented control, pull-to-refresh, risk/urgency chips
-2. Approval detail with request summary, timeline, approve/reject bottom sheets
-3. Reject requires comment; approve comment optional; EN/AR l10n
-4. Role guards: manager/security/admin only on `/approvals` and `/approvals/:taskId`
-5. Error mapping for `APPROVAL_TASK_NOT_PENDING`, `NOT_TASK_ASSIGNEE`, `FORBIDDEN`
-6. ui-ux-pro-max applied (enterprise Material 3, 44px targets, loading/empty/error)
-7. Local `flutter analyze` clean + 73 tests; GitHub CI green
+1. Audit logs list against `GET /audit-logs` (Riverpod + Dio repository)
+2. Filters: actor email search, action, entity type, from/to dates; clear filters
+3. Pagination controls; pull-to-refresh; loading/empty/error states
+4. Metadata detail modal (JSON, IP, user agent, entity id)
+5. Route guard: SECURITY_ADMIN / SYSTEM_ADMIN only on `/audit`
+6. EN/AR l10n strings; ui-ux-pro-max (Material 3, 44px targets, enterprise list)
+7. Local `flutter analyze` clean + 81 tests
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-MOB-07
+### 1. Confirm T-MOB-07 CI
 
 ```bash
 cd /home/barami/projects/expoapp
-git checkout -B agent/T-MOB-07-audit origin/agent/T-MOB-06-approvals
-# Implement audit logs viewer (filters, metadata modal, route guard)
-# Use .cursor/skills/ui-ux-pro-max/
-# Depends on T-API-10 (already passed)
-cd apps/mobile && flutter analyze && flutter test
-git push -u origin agent/T-MOB-07-audit
-# wait for GitHub CI green; update ledger/NEXT_RUN
+gh run list --branch agent/T-MOB-07-audit --limit 3
+# when green: update ledger Status to passed + CI URL; then T-L10N-01
 ```
 
-### 2. Sequential foundation only
+### 2. Start T-L10N-01 (after CI green)
 
-Still prefer sequential mobile feature tasks until navigation + shared contracts feel stable per `08_PARALLEL_EXECUTION_PLAN.md`.
+```bash
+cd /home/barami/projects/expoapp
+git checkout -B agent/T-L10N-01-polish origin/agent/T-MOB-07-audit
+# Full string audit; RTL; error code mapping per ledger
+# Use .cursor/skills/ui-ux-pro-max/
+cd apps/mobile && flutter analyze && flutter test
+git push -u origin agent/T-L10N-01-polish
+```
 
-Remaining sequential mobile path: T-MOB-07; T-L10N-01 polish later.
+### 3. Sequential foundation only
+
+Still prefer sequential until L10N + QA path; remaining: T-L10N-01 → T-QA-01 → T-REL-01.
 
 ---
 

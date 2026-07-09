@@ -383,8 +383,10 @@ T-DOC-01
 | Files | `features/audit/**` |
 | Acceptance | Filters; metadata modal; route guard |
 | Skills | ui-ux-pro-max |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | `flutter analyze` + `flutter test` — **PASS** (81 tests) |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-MOB-07-audit` |
+| Status | **in_progress** (implementation complete; awaiting CI) |
 
 ---
 
@@ -443,6 +445,6 @@ T-DOC-01
 9. ~~T-MOB-04~~ **passed** (CI green: run 29039489370)
 10. ~~T-MOB-05~~ **passed** (CI green: run 29040425846)
 11. ~~T-MOB-06~~ **passed** (CI green: run 29041340812)
-12. **T-MOB-07** — Flutter audit (next)
+12. **T-MOB-07** — Flutter audit (implementation done; awaiting CI on `agent/T-MOB-07-audit`)
 
-**Resume at T-MOB-07.**
+**Resume at T-MOB-07 CI / then T-L10N-01.**

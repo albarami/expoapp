@@ -49,8 +49,9 @@ Update this file as tests are added.
 | FU-03 | Notification card | Localized title; priority chip; AR title | same | **passing** (T-MOB-04 notifications_test) |
 | FU-04 | Access request form | Catalog load; payload contract; list/detail/cancel UI | same | **passing** (T-MOB-05 access_requests_test) |
 | FU-05 | Approvals queue/decision | Pending/completed tabs; approve confirm; reject requires comment; role guard | same | **passing** (T-MOB-06 approvals_test) |
-| FU-06 | Router guards | Employee blocked from `/audit`, `/approvals`, and create notification | same | **passing** (create route in T-MOB-04; approvals T-MOB-06; audit covered T-MOB-02) |
+| FU-06 | Router guards | Employee blocked from `/audit`, `/approvals`, and create notification | same | **passing** (create route in T-MOB-04; approvals T-MOB-06; audit T-MOB-02/07) |
 | FU-07 | Error mapping | Known codes → l10n including approval codes | same | **passing** (T-MOB-01/05/06 error_mapper_test) |
+| FU-08 | Audit logs viewer | Filters; pagination; metadata modal; empty/error; SECURITY/SYSTEM admin guard | same | **passing** (T-MOB-07 audit_test) |
 
 ---
 
