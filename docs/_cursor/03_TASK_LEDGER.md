@@ -445,6 +445,7 @@ T-DOC-01
 9. ~~T-MOB-04~~ **passed** (CI green: run 29039489370)
 10. ~~T-MOB-05~~ **passed** (CI green: run 29040425846)
 11. ~~T-MOB-06~~ **passed** (CI green: run 29041340812)
-12. **T-MOB-07** — Flutter audit (implementation done; awaiting CI on `agent/T-MOB-07-audit`)
+12. ~~T-MOB-07~~ **passed** (CI green: run 29042259598)
+13. **T-L10N-01** — Localization & RTL polish (next)
 
-**Resume at T-MOB-07 CI / then T-L10N-01.**
+**Resume at T-L10N-01.**
