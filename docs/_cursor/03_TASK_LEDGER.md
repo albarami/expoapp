@@ -134,11 +134,12 @@ T-DOC-01
 | Title | Implement full schema; migrate init |
 | Source | `07_DATA_MODEL.md`, `08_DATABASE_SCHEMA_PRISMA.md` |
 | Dependencies | T-API-01 |
-| Files | `apps/api/prisma/schema.prisma`, migrations |
+| Files | `apps/api/prisma/schema.prisma`, `prisma/migrations/*`, schema/migrate tests, CI migrate deploy |
 | Acceptance | `prisma migrate dev` on clean DB succeeds; client generates |
-| Local tests | migrate + generate |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | migrate + generate + schema/smoke tests — **PASS 2026-07-09** |
+| GitHub CI | **green** — https://github.com/albarami/expoapp/actions/runs/29026568179 |
+| Branch/PR | `agent/T-API-02-prisma-schema` |
+| Status | **passed** |
 
 ---
 
@@ -417,6 +418,7 @@ T-DOC-01
 3. ~~T-CI-01~~ **passed** (workflow exists)
 4. ~~T-ENV-03~~ **passed** (CI green: run 29025032699)
 5. ~~T-API-01~~ **passed** (CI green: run 29025984791)
-6. **T-API-02** — Prisma schema + migration (next)
+6. ~~T-API-02~~ **passed** (CI green: run 29026568179)
+7. **T-API-03** — Auth + RBAC (next)
 
-**Resume at T-API-02.**
+**Resume at T-API-03.**
