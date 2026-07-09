@@ -1,17 +1,29 @@
-# expoapp_mobile
+# ExpoApp Mobile
 
-A new Flutter project.
+Flutter client for ExpoApp (iOS / Android / Web).
 
-## Getting Started
+## Stack
 
-This project is a starting point for a Flutter application.
+- Flutter + Material 3
+- Riverpod, GoRouter, Dio, flutter_secure_storage
+- EN/AR localization (`lib/l10n`)
 
-A few resources to get you started if this is your first Flutter project:
+## Run
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```bash
+cd apps/mobile
+flutter pub get
+flutter run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+API base URL defaults to Android emulator host (`http://10.0.2.2:3000/api/v1`).
+Override with `--dart-define=API_BASE_URL=http://localhost:3000/api/v1` for iOS simulator / web / desktop.
+
+See `.env.example` for documented defines.
+
+## Validate
+
+```bash
+flutter analyze
+flutter test
+```

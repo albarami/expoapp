@@ -1,0 +1,210 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for English (`en`).
+class AppLocalizationsEn extends AppLocalizations {
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get appName => 'ExpoApp';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get dashboard => 'Dashboard';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get requests => 'Requests';
+
+  @override
+  String get approvals => 'Approvals';
+
+  @override
+  String get auditLogs => 'Audit Logs';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get newAccessRequest => 'New Access Request';
+
+  @override
+  String get createNotification => 'Create Notification';
+
+  @override
+  String get markAsRead => 'Mark as read';
+
+  @override
+  String get approve => 'Approve';
+
+  @override
+  String get reject => 'Reject';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get loading => 'Loading…';
+
+  @override
+  String get comingSoon => 'Coming soon';
+
+  @override
+  String get foundationPlaceholder =>
+      'Foundation screen — feature UI arrives in a later task.';
+
+  @override
+  String get noNotifications => 'No notifications yet';
+
+  @override
+  String get noNotificationsMessage =>
+      'You will see important announcements here.';
+
+  @override
+  String get noRequests => 'No requests yet';
+
+  @override
+  String get noApprovals => 'No approvals pending';
+
+  @override
+  String get noData => 'Nothing to show';
+
+  @override
+  String get errorTitle => 'Something went wrong';
+
+  @override
+  String get errorGeneric => 'Please try again.';
+
+  @override
+  String get unauthorizedTitle => 'Access denied';
+
+  @override
+  String get unauthorizedMessage =>
+      'You do not have permission to view this screen.';
+
+  @override
+  String get networkError =>
+      'Network error. Check your connection and try again.';
+
+  @override
+  String get businessJustification => 'Business justification';
+
+  @override
+  String get system => 'System';
+
+  @override
+  String get securityRole => 'Security role';
+
+  @override
+  String get duration => 'Duration';
+
+  @override
+  String get urgency => 'Urgency';
+
+  @override
+  String get startDate => 'Start date';
+
+  @override
+  String get endDate => 'End date';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get demoLoginHint => 'Use a seeded demo account to sign in.';
+
+  @override
+  String get statusManagerPending => 'Pending Manager';
+
+  @override
+  String get statusSecurityPending => 'Pending Security';
+
+  @override
+  String get statusProvisioning => 'Provisioning';
+
+  @override
+  String get statusCompleted => 'Completed';
+
+  @override
+  String get statusManagerRejected => 'Rejected by Manager';
+
+  @override
+  String get statusSecurityRejected => 'Rejected by Security';
+
+  @override
+  String get statusCancelled => 'Cancelled';
+
+  @override
+  String get statusFailed => 'Failed';
+
+  @override
+  String get priorityLow => 'Low';
+
+  @override
+  String get priorityNormal => 'Normal';
+
+  @override
+  String get priorityHigh => 'High';
+
+  @override
+  String get priorityUrgent => 'Urgent';
+
+  @override
+  String get errorManagerNotFound => 'No manager found for this request.';
+
+  @override
+  String get errorRoleNotRequestable => 'This role cannot be requested.';
+
+  @override
+  String get errorDuplicateActiveRequest =>
+      'You already have an active request for this role.';
+
+  @override
+  String get errorValidation => 'Please check the form and try again.';
+
+  @override
+  String get errorUnauthorized => 'Your session expired. Please sign in again.';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get create => 'Create';
+}

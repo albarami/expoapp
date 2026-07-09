@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:expoapp_mobile/core/api/api_error.dart';
+import 'package:expoapp_mobile/core/errors/error_mapper.dart';
+import 'package:expoapp_mobile/l10n/app_localizations.dart';
+
+void main() {
+  test('localizeApiError maps known codes', () async {
+    final l10n = await AppLocalizations.delegate.load(const Locale('en'));
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'MANAGER_NOT_FOUND', message: 'x'),
+      ),
+      l10n.errorManagerNotFound,
+    );
+    expect(
+      localizeApiError(
+        l10n,
+        const ApiError(code: 'NETWORK_ERROR', message: 'x'),
+      ),
+      l10n.networkError,
+    );
+  });
+}
