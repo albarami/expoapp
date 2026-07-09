@@ -216,9 +216,10 @@ T-DOC-01
 | Dependencies | T-API-05, T-API-09, T-API-10 |
 | Files | `access-requests/**` |
 | Acceptance | Workflow start states; validation codes; timeline |
-| Local tests | BI-05 |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | BU-03, BU-07, BI-05 — **PASS 2026-07-09** |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-API-07-access-requests` |
+| Status | **in_progress** (local green; awaiting CI) |
 
 ---
 
