@@ -1,22 +1,22 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (T-API-03 CI green)  
+**Updated:** 2026-07-09 (T-API-04 local green; awaiting CI)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**T-API-03 Auth + RBAC passed** (JWT login/me/logout, guards, role permissions, auth-ready seed).  
-**Resume at T-API-04** (full seed data per `09_SEED_DATA.md`).
+**T-API-04 Seed data implemented** (full idempotent seed per `09_SEED_DATA.md`).  
+**Resume at T-API-05** after CI green on this branch (reference-data + dashboard).
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-API-03-auth-rbac`
+- Branch: `agent/T-API-04-seed-data`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- CI: **success** — https://github.com/albarami/expoapp/actions/runs/29028053503
+- CI: pending push / Actions
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,34 +25,35 @@
 
 | Now | Next exact task |
 |---|---|
-| T-API-03 **passed** (local + CI green) | Start **T-API-04** — Seed data (core + full) |
+| T-API-04 **local pass** (seed ×2 + BI-08) | Confirm CI green, then start **T-API-05** — Reference data + dashboard |
 
 ---
 
 ## Completed this run
 
-1. Branched `agent/T-API-03-auth-rbac` from T-API-02 green HEAD
-2. Auth module: POST `/auth/login`, GET `/auth/me`, POST `/auth/logout`
-3. JWT access + refresh tokens; Passport JWT strategy; global `JwtAuthGuard` + `RolesGuard`
-4. `@Public()`, `@Roles()`, `@CurrentUser()`; ROLE_PERMISSIONS map
-5. Auth-ready idempotent seed (5 departments + 5 demo users, bcrypt `Password123!`)
-6. Temporary RBAC probe routes for BI-03 until notifications/audit modules exist
-7. Unit + e2e tests (BU-01, BI-02, BI-03); local lint/test/e2e/build PASS
-8. GitHub Actions CI **green** (run 29028053503)
+1. Branched `agent/T-API-04-seed-data` from T-API-03 green HEAD
+2. Expanded `apps/api/prisma/seed.ts` to full `09_SEED_DATA.md`
+3. Seeded: 5 departments, 5 users, 5 systems, 9 security roles, 6 notifications (+ recipients), 4 access requests, 5 approval tasks, 11 request events, 25 seed-keyed audit logs
+4. Idempotent upserts / find-first sync; second `npm run seed` stable
+5. BI-08 Jest DB test `seed.idempotency.spec.ts`
+6. Local lint / unit / e2e / build PASS
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-API-04 (Seed data)
+### 1. Confirm T-API-04 CI green
 
-Expand `apps/api/prisma/seed.ts` to full `09_SEED_DATA.md` (systems, security roles, notifications, access requests, approvals, audit samples). Keep idempotent. Auth users/departments already seeded in T-API-03 — extend, do not break login.
+Push `agent/T-API-04-seed-data`, wait for GitHub Actions success, mark ledger **passed**.
 
-Branch pattern: `agent/T-API-04-seed-data` from T-API-03 green HEAD.
+### 2. Start T-API-05 (Reference data + dashboard)
 
-### 2. Then sequential foundation
+Implement GET `/reference-data` and GET `/dashboard/summary` per `10_API_CONTRACT.md`.  
+Branch pattern: `agent/T-API-05-reference-dashboard` from T-API-04 green HEAD.
 
-T-API-05 (reference/dashboard) → … per `03_TASK_LEDGER.md`  
+### 3. Then sequential foundation
+
+T-API-06+ per `03_TASK_LEDGER.md`  
 No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md`.
 
 ---
@@ -65,7 +66,7 @@ See `PORTS.md`.
 
 ## Do not do next
 
-- Do not skip T-API-04 and jump to feature modules or T-MOB-*
+- Do not skip T-API-05 and jump to feature modules or T-MOB-*
 - Do not spawn parallel feature agents yet
 - Do not create Expo React Native apps
 - Do not force-push `main`

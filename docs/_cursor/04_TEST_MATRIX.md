@@ -33,7 +33,7 @@ Update this file as tests are added.
 | BI-05 | Access requests | Submit → MANAGER_PENDING + task; list scoped; cancel rules | same | pending |
 | BI-06 | Approvals | Manager approve creates security task; wrong assignee 403; security completes mock | same | pending |
 | BI-07 | Audit | Submit/approve write logs; filters work | same | pending |
-| BI-08 | Seed | Idempotent second run | manual + script | pending |
+| BI-08 | Seed | Idempotent second run; expected entity counts/statuses | `npm run seed` ×2 + `npm run test` (`seed.idempotency.spec.ts`) | **passing** |
 
 ---
 

@@ -166,11 +166,12 @@ T-DOC-01
 | Title | Idempotent seed per 09_SEED_DATA |
 | Source | `09_SEED_DATA.md` |
 | Dependencies | T-API-02 (expand after modules as needed) |
-| Files | `apps/api/prisma/seed.ts` |
+| Files | `apps/api/prisma/seed.ts`, `apps/api/src/prisma/seed.idempotency.spec.ts` |
 | Acceptance | All demo users/depts/systems/roles/notifications/requests/audit; second run safe |
-| Local tests | `npm run seed` ×2 |
-| GitHub CI | green |
-| Status | **pending** |
+| Local tests | `npm run seed` ×2 + BI-08 — **PASS 2026-07-09** (5 depts, 5 users, 5 systems, 9 roles, 6 notifs, 4 requests, 5 approval tasks, 11 events, 25 seed audit logs) |
+| GitHub CI | pending push |
+| Branch/PR | `agent/T-API-04-seed-data` |
+| Status | **in_progress** |
 
 ---
 
