@@ -57,3 +57,8 @@ See `PORTS.md`.
 - Do not create Expo React Native apps
 - Do not force-push `main`
 - Do not require real Oracle credentials in Phase 1
+---
+
+## Handoff docs
+
+Developer handoff README improvements: task **T-DOCS-01** (branch `agent/T-DOCS-01-developer-handoff`). Prefer the root `README.md` for setup; continue Phase 2 from this file and `07_BLOCKERS.md`.

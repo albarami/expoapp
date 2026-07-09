@@ -59,3 +59,12 @@ Include:
 - API documentation link
 - Demo video/screenshots if available
 - Phase 2 integration plan
+
+## Developer share checklist (T-DOCS-01)
+
+- [x] README covers Phase 1 vs Phase 2, ports, stop commands, accurate npm/prisma scripts.
+- [x] Flutter `API_BASE_URL` dart-define documented (Android emulator + web/iOS).
+- [x] Demo users include `salem.alqahtani@expo.sa`.
+- [x] Links to `docs/_cursor/NEXT_RUN.md` and `docs/_cursor/07_BLOCKERS.md`.
+- [x] `apps/api/.env.example` synced with root (FCM/APNS placeholders).
+- [x] `.env` gitignored; only `.env.example` committed.
