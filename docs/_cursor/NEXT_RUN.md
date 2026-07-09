@@ -1,22 +1,23 @@
 # NEXT_RUN.md — Resume Point
 
-**Updated:** 2026-07-09 (CI green confirmed)  
+**Updated:** 2026-07-09 (T-API-01 local green; push/CI pending)  
 **Read this file first on every new Cursor session.**
 
 ---
 
 ## Current phase
 
-**Phase 1 foundations complete for env/CI.** GitHub Actions is green on the setup branch.  
-**Resume at T-API-01** (NestJS backend foundation).
+**T-API-01 Nest foundation implemented locally** (config validation, exception filter, response envelope, trace ID, Swagger/Helmet polish, hardened health).  
+**Awaiting GitHub CI green on `agent/T-API-01-nest-foundation`.**  
+After CI green → mark T-API-01 **passed**, then start **T-API-02** (Prisma schema).
 
 ---
 
 ## Current branch
 
-- Branch: `agent/T-ENV-01-setup-control`
+- Branch: `agent/T-API-01-nest-foundation`
 - Remote: `origin` → `https://github.com/albarami/expoapp.git`
-- CI: **success** — https://github.com/albarami/expoapp/actions/runs/29025032699
+- CI: pending first push of this branch
 - PR: not created (`main` does not exist yet on remote)
 
 ---
@@ -25,45 +26,38 @@
 
 | Now | Next exact task |
 |---|---|
-| T-ENV-03 **passed** (local + CI green) | Start **T-API-01** — Nest foundation |
+| T-API-01 local **PASS** (lint/test/e2e/build/health/docs) | Confirm CI green → then **T-API-02** Prisma schema |
 
 ---
 
 ## Completed this run
 
-1. T-ENV-01 — Verified Node 22.22.1, npm 9.2.0, Docker 29.6.1, Compose v5.3.0, Git 2.53.0; installed Flutter 3.44.5 stable to `~/flutter`
-2. T-ENV-02 — Scaffolded `apps/api` (NestJS + Prisma), `apps/mobile` (Flutter), `docker-compose.yml`, `.env.example`, `.gitignore`, `README.md`, `PORTS.md`
-3. T-CI-01 — Added `.github/workflows/ci.yml` (compose + api + flutter jobs)
-4. Local validation — compose config/up, API lint/test/build, health 200, Flutter analyze/test — all pass
-5. Host ports remapped to **5433** (Postgres) / **6380** (Redis) due to `uaid_os` occupying 5432/6379
-6. Git init + remote + branch `agent/T-ENV-01-setup-control`
-7. T-ENV-03 — Pushed setup branch; GitHub Actions CI **green** (run 29025032699)
+1. Branched `agent/T-API-01-nest-foundation` from setup HEAD
+2. ConfigModule + `validateEnv` (required env at startup)
+3. Global ValidationPipe (whitelist, forbidNonWhitelisted, transform)
+4. `GlobalExceptionFilter` + `BusinessException` + stable error envelope
+5. Trace ID middleware (`x-trace-id`) + response envelope interceptor (`data`/`meta`)
+6. Helmet + Swagger polish (`/docs`, bearer auth scheme)
+7. Health service checks DB + Redis + fusionMode; envelope response
+8. Unit tests (16) + e2e (2); local health 200 + Swagger 200
 
 ---
 
 ## Exact next actions (in order)
 
-### 1. Start T-API-01 (Nest foundation)
+### 1. Finish T-API-01 gate
 
-Implement per `11_BACKEND_NESTJS_SPEC.md`:
+- Push branch if not yet pushed
+- Wait for GitHub Actions green
+- Update ledger T-API-01 → **passed** with CI run URL
+- Update this file resume point to T-API-02
 
-- ConfigModule validation
-- Global ValidationPipe (already partial)
-- Exception filter + response envelope
-- Trace ID middleware/interceptor
-- Helmet (already partial)
-- Swagger polish
-- Health endpoint hardened
-- Do **not** jump to full Prisma product schema yet (that is T-API-02)
+### 2. Start T-API-02 (Prisma schema)
 
-Branch pattern: continue on setup branch if still open, or `agent/T-API-01-nest-foundation`.
+Implement full schema per `07_DATA_MODEL.md` + `08_DATABASE_SCHEMA_PRISMA.md`; migrate init.  
+Do **not** start auth (T-API-03) until schema migrates cleanly.
 
-### 2. Then sequential foundation
-
-T-API-02 (full Prisma schema) → T-API-03 (auth) → T-API-04 (seed) → … per `03_TASK_LEDGER.md`  
-No parallel feature agents until `08_PARALLEL_EXECUTION_PLAN.md` foundations are stable.
-
-Optional later: create `main` from this branch / open PR once default branch exists.
+No parallel feature agents until foundations per `08_PARALLEL_EXECUTION_PLAN.md`.
 
 ---
 
@@ -91,7 +85,7 @@ See `PORTS.md`.
 
 ## Do not do next
 
-- Do not skip T-API-01 and jump to T-API-02+ or T-MOB-*
+- Do not skip CI green gate for T-API-01
 - Do not spawn parallel feature agents yet
 - Do not create Expo React Native apps
 - Do not force-push `main`

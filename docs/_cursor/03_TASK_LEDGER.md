@@ -120,9 +120,10 @@ T-DOC-01
 | Dependencies | T-ENV-03 |
 | Files | `apps/api/src/main.ts`, `app.module.ts`, `common/**`, `health/**`, `config/**` |
 | Acceptance | `/health` works; Swagger loads; envelope/errors consistent |
-| Local tests | `npm run test`; manual `/health` |
-| GitHub CI | green required |
-| Status | **pending** |
+| Local tests | `npm run lint/test/test:e2e/build`; manual `/health` + `/docs` — **PASS 2026-07-09** |
+| GitHub CI | pending push (update after green) |
+| Branch/PR | `agent/T-API-01-nest-foundation` |
+| Status | **in_progress** (local green; awaiting CI) |
 
 ---
 
@@ -415,6 +416,7 @@ T-DOC-01
 2. ~~T-ENV-02~~ **passed**
 3. ~~T-CI-01~~ **passed** (workflow exists)
 4. ~~T-ENV-03~~ **passed** (CI green: run 29025032699)
-5. **T-API-01** — NestJS backend foundation (next)
+5. **T-API-01** — NestJS backend foundation (**local green**; confirm CI then mark passed)
+6. **T-API-02** — Prisma schema + migration (next after T-API-01 CI)
 
-**Resume at T-API-01.** Foundations env/CI gate is clear.
+**Resume:** confirm T-API-01 CI green → T-API-02.
